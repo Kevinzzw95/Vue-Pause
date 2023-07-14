@@ -196,7 +196,7 @@ const createPurchase = () => {
     order.payment = payment.value
     order.totalPrice = computed(() => store.getters['cart/cartTotalPrice']).value;
     order.totalQuantity = computed(() => store.getters['cart/cartTotalQuantity']).value;
-    order.shipping = 0
+    order.shippingFee = 0
 
     const orderItems: OrderItem[] = [];
     const cartItems = computed((): CartItem[] => store.getters['cart/cartProducts']).value;

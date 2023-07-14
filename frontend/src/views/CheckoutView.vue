@@ -18,7 +18,7 @@
                     <h1 :class="[$route.name === 'chooseshipping' ? '' : 'hidden']">Shipping: calculated at next step</h1>
                     <h1 :class="[$route.name === 'pickup' ? '' : 'hidden']">Shipping: 0</h1>
                     <h1 :class="[$route.name === 'shipping' ? '' : 'hidden']">Shipping: {{ shipping }}</h1>
-                    <h1 :class="[$route.name === 'confirmation' ? '' : 'hidden']">Shipping: {{ getPurchase.order?.shipping }}</h1>
+                    <h1 :class="[$route.name === 'confirmation' ? '' : 'hidden']">Shipping: {{ getPurchase.order?.shippingFee }}</h1>
                     <h1>Subtotal: {{ totalPrice }}</h1>
                 </div>
                 
