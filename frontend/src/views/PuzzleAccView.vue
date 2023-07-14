@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import { Product } from '@/types/Product';
+import { Product } from '../types/Product';
 import ProductCard from '../components/ProductCard.vue';
 import axios from 'axios';
 import { onMounted, ref, watch } from 'vue';

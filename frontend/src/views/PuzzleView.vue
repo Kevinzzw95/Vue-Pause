@@ -1,18 +1,18 @@
 <template>
     <div class="container p-3 md:p-16 2xl:p-32 space-y-4 h-full">
-        <div class="flex flex-row justify-center py-10">
-            <div class="tabs">
-                <a @click="() => curPieces = 500" :class="['tab','tab-bordered', curPieces === 500 ?  ['tab-active','text-deep'] : '']">500 pcs</a> 
-                <a @click="() => curPieces = 800" :class="['tab','tab-bordered', curPieces === 800 ?  ['tab-active','text-deep'] : '']">800 pcs</a> 
-                <a @click="() => curPieces = 1000" :class="['tab','tab-bordered', curPieces === 1000 ?  ['tab-active','text-deep'] : '']">1000 pcs</a>
-                <a @click="() => curPieces = 2000" :class="['tab','tab-bordered', curPieces === 2000 ?  ['tab-active','text-deep'] : '']">2000 pcs</a>
+        <div class="py-10">
+            <div class="tabs flex flex-row justify-center">
+                <a @click="() => curPieces = 500" :class="['tab','tab-bordered','basis-1/4', curPieces === 500 ?  ['tab-active','text-deep'] : '']">500 PC</a> 
+                <a @click="() => curPieces = 800" :class="['tab','tab-bordered','basis-1/4', curPieces === 800 ?  ['tab-active','text-deep'] : '']">800 PC</a> 
+                <a @click="() => curPieces = 1000" :class="['tab','tab-bordered','basis-1/4', curPieces === 1000 ?  ['tab-active','text-deep'] : '']">1000 PC</a>
+                <a @click="() => curPieces = 2000" :class="['tab','tab-bordered','basis-1/4', curPieces === 2000 ?  ['tab-active','text-deep'] : '']">2000 PC</a>
             </div>
         </div>
 
         <div class="flex flex-row items-center space-x-2 md:space-x-4 text-sm md:text-md">
             <h1>Filter:</h1>
             <select v-model="curBrandId" class="select select-xs md:select-sm bg-base">
-                <option :value="undefined">All Brands</option>
+                <option :value="undefined">ALL BRANDS</option>
                 <option v-for="brand in brands" :value="brand.id">{{ brand.name }}</option>
             </select>
             <label class="swap btn btn-xs md:btn-sm bg-base w-auto">

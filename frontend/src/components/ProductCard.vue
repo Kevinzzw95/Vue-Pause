@@ -6,9 +6,9 @@
                 <!-- <img v-if="!item.active" src="../assets/coming-soon.png" class="absolute top-[25%] md:left-10 w-[12rem]" /> -->
                 <!-- <img v-if="item.unitsInStock === 0" src="../assets/sold-out.png" class="absolute top-[25%] md:left-10 w-[12rem]" /> -->
             </button>
-            <div class="flex flex-col h-[4.5rem] md:h-[5rem] p-1 font-primary space-y-3">
+            <div class="grid grid-rows-4 h-[4.5rem] md:h-[5rem] p-1 font-primary">
                 <!-- <router-link :to="'/details/' + item.id" class="self-center"> -->
-                <button @click="showDetails()" class="self-center items-center">
+                <button @click="showDetails()" class="self-start items-center row-span-3">
                     <h2 class="text-xs md:text-sm flex flex-col font-bold">
                         <p>{{ item.name.split(" ")[0] }}</p>
                         <p>{{ item.name.split(/ (.*)/)[1] }}</p>
@@ -26,8 +26,8 @@
                     </form>
                 </dialog>
 			
-                <div class="flex flex-row self-end font-default text-xs space-x-1">
-                    <div v-if="item.unitsInStock === 0" class="inline-flex badge badge-outline badge-sm md:badge-md  text-deep">Sold Out</div>
+                <div class="flex flex-row justify-end font-default text-xs space-x-1">
+                    <div v-if="item.unitsInStock === 0" class="inline-flex badge badge-outline badge-sm md:badge-md text-deep">Sold Out</div>
                     <div v-if="!item.active" class="inline-flex badge badge-outline badge-sm md:badge-md  text-deep">COMING SOON</div>
                     <div v-if="item.special" class="inline-flex badge badge-outline badge-sm md:badge-md">{{ item.special }}</div>
                 </div>
