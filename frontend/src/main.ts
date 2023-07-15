@@ -7,8 +7,9 @@ import {key, store} from './store'
 import {XCircleIcon} from '@heroicons/vue/24/outline'
 import {CheckCircleIcon} from '@heroicons/vue/24/outline'
 import axios from 'axios'
+import '@/assets/fonts/fonts.css'
 
-axios.defaults.baseURL = 'http://ALBForECS-901029861.ca-central-1.elb.amazonaws.com/api'
+axios.defaults.baseURL = 'https://ALBForECS-282675400.ca-central-1.elb.amazonaws.com/api'
 
 const app = createApp(App)
 

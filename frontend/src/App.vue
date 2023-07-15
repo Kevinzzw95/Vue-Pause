@@ -12,7 +12,6 @@
 
 <script setup lang="ts">
 import SiteNavigation from './components/SiteNavigation.vue';
-import TheHeader from './components/TheHeader.vue';
 import TheFooter from './components/TheFooter.vue';
 
 </script>

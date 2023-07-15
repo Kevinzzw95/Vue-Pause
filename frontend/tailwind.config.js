@@ -33,8 +33,8 @@ module.exports = {
       center: true,
     },
     fontFamily: {
-      default: ["'Bebas Neue', sans-serif"],
-      primary: ["'Kosugi Maru', sans-serif"],
+      default: ['YRDZST'],
+      primary: ['shangshouhupoti'],
       secondary: ["Inter, sans-serif"],
     }
   },
