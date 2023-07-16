@@ -1,13 +1,13 @@
 @font-face {
-    font-family: 'YRDZST';
-    src: url('/fonts/YRDZST.ttf');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'YRDZST';
+  src: url('/fonts/YRDZST.ttf');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
   font-family: 'shangshouhupoti';
-  src: url('/fonts/shangshouhupoti.TTF');
+  src: url('/fonts/shangshouhupoti.ttf');
   font-weight: lighter;
   font-style: normal;
 }
