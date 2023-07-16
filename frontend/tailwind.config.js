@@ -33,7 +33,7 @@ module.exports = {
       center: true,
     },
     fontFamily: {
-      default: ['YRDZST'],
+      default: ['shangshouhupoti'],
       primary: ['shangshouhupoti'],
       secondary: ["Inter, sans-serif"],
     }

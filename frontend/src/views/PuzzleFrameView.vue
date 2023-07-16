@@ -1,13 +1,13 @@
 <template>
-    <div class="container p-3 md:p-16 2xl:p-32 space-y-4 h-full">
+    <div class="container p-3 md:p-16 2xl:p-32 space-y-4 h-screen">
 
-        <div class="flex flex-row justify-center">
+        <!-- <div class="flex flex-row justify-center">
             <div class="tabs">
                 <a class="tab tab-bordered">50cm * 70cm</a> 
                 <a class="tab tab-bordered tab-active text-deep">1000 PCs</a> 
                 <a class="tab tab-bordered">2000 PCs</a>
             </div>
-        </div>
+        </div> -->
 
         <div class="flex flex-row items-center space-x-2 md:space-x-4 text-sm md:text-md">
             <h1>Filter:</h1>

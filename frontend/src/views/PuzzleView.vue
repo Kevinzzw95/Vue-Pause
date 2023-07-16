@@ -1,5 +1,5 @@
 <template>
-    <div class="container p-3 md:p-16 2xl:p-32 space-y-4 h-full">
+    <div class="container p-3 md:p-16 2xl:p-32 space-y-4 min-h-screen">
         <div class="py-10">
             <div class="tabs flex flex-row justify-center">
                 <a @click="() => curPieces = 500" :class="['tab','tab-bordered','basis-1/4', curPieces === 500 ?  ['tab-active','text-deep'] : '']">500 PC</a> 
