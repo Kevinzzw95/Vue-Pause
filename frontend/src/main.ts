@@ -9,7 +9,7 @@ import {CheckCircleIcon} from '@heroicons/vue/24/outline'
 import axios from 'axios'
 import '@/assets/fonts/fonts.css'
 
-axios.defaults.baseURL = 'https://www.pausestore.ca/api'
+axios.defaults.baseURL = 'https://ALBForECS-282675400.ca-central-1.elb.amazonaws.com/api'
 
 const app = createApp(App)
 
