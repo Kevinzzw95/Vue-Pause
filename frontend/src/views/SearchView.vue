@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="sticky top-0 z-10 p-3 md:p-16 2xl:p-32 bg-white">
-            <div class="flex flex-row items-center space-x-2 md:space-x-4 text-sm md:text-md">
+        <div class="sticky top-0 z-10 px-3 md:px-16 2xl:px-32 bg-white">
+            <div class="flex flex-row items-center space-x-2 md:space-x-4 text-sm md:text-md py-5">
                 <h1>Filter:</h1>
                 <label class="swap btn btn-xs md:btn-sm bg-base w-auto">
                     <input v-model="inStock" type="checkbox" />

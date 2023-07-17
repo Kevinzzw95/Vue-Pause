@@ -1,7 +1,7 @@
 <template>
     <div >
-        <div class="sticky top-0 z-20 p-3 md:p-16 2xl:p-32 bg-white">
-            <div class="py-10">
+        <div class="sticky top-0 z-20 px-3 md:px-16 2xl:px-32 bg-white">
+            <div class="py-5">
                 <div class="tabs flex flex-row justify-center">
                     <a @click="() => curPieces = 500" :class="['tab','tab-bordered','tab-sm','basis-1/4', curPieces === 500 ?  ['tab-active','text-deep'] : '']">500 PC</a> 
                     <a @click="() => curPieces = 800" :class="['tab','tab-bordered','tab-sm','basis-1/4', curPieces === 800 ?  ['tab-active','text-deep'] : '']">800 PC</a> 
@@ -85,6 +85,7 @@ const refresh = async () => {
         },
         (err) => console.log(err) 
     )
+    scrollToTop();
 }
 
 watch(
@@ -113,6 +114,10 @@ onMounted(() => {
     )
     refresh();
 })
+
+const scrollToTop = () => {
+    window.scrollTo(0,0);
+}
 
 
 </script>

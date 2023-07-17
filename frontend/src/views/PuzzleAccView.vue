@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="sticky top-0 z-10 p-3 md:p-16 2xl:p-32 bg-white">
-            <div class="flex flex-row items-center space-x-2 md:space-x-4 text-sm md:text-md">
+        <div class="sticky top-0 z-10 px-3 md:p-16 2xl:p-32 bg-white">
+            <div class="flex flex-row items-center space-x-2 md:space-x-4 text-sm md:text-md py-5">
                 <h1>Filter:</h1>
                 <label class="swap btn btn-xs md:btn-sm bg-base w-auto">
                     <input v-model="inStock" type="checkbox" />
@@ -12,7 +12,7 @@
             </div>
         </div>
         
-        <div class="container p-3 md:p-16 2xl:p-32 min-h-screen space-y-5">
+        <div class="container px-3 md:px-16 2xl:px-32 min-h-screen space-y-5">
             <div class="container">
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
                     <product-card :item="product" v-for="product in products" :key="product.id"/>
