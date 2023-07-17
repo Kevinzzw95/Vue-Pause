@@ -51,7 +51,7 @@
             </div>
             
         </div>
-        <div class="flex flex-col w-full md:flex-row gap-4 font-default">
+        <div class="flex flex-col w-full md:flex-row gap-4 font-default pt-5">
             <div class="basis-1/2 bg-base rounded-lg p-5">
                 <h1 class="text-lg font-bold">Shipping</h1>
                 <p>Free shipping on orders over $95 in Scarborough/Markham/Richmond HIill/Vaughan/North York, over $150 Canada wide, over $180 worldwide.</p>

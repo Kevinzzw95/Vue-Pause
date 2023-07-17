@@ -1,25 +1,28 @@
 <template>
-    <div class="container p-3 md:p-16 2xl:p-32 space-y-4 min-h-screen">
-
-        <div class="flex flex-row items-center space-x-2 md:space-x-4 text-sm md:text-md">
-            <h1>Filter:</h1>
-            <label class="swap btn btn-xs md:btn-sm bg-base w-auto">
-                <input v-model="inStock" type="checkbox" />
-                <div class="swap-off" for="false">All Products</div>
-                <div class="swap-on" for="true">In Stock</div>
-            </label>
-            
-        </div>
-
-        <div class="container">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-                <product-card :item="product" v-for="product in products" :key="product.sku"/>
+    <div>
+        <div class="sticky top-0 z-10 p-3 md:p-16 2xl:p-32 bg-white">
+            <div class="flex flex-row items-center space-x-2 md:space-x-4 text-sm md:text-md">
+                <h1>Filter:</h1>
+                <label class="swap btn btn-xs md:btn-sm bg-base w-auto">
+                    <input v-model="inStock" type="checkbox" />
+                    <div class="swap-off" for="false">All Products</div>
+                    <div class="swap-on" for="true">In Stock</div>
+                </label>
             </div>
         </div>
+        
+        <div class="container p-3 md:p-16 2xl:p-32 space-y-4 min-h-screen">
+            <div class="container">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+                    <product-card :item="product" v-for="product in products" :key="product.sku"/>
+                </div>
+            </div>
 
-        <div v-if="totalPages > 1" class="join flex justify-center">
-            <input @click="curPage = index" v-for="index in totalPages" class="join-item btn btn-square" type="radio" name="options" :aria-label="index.toString()" :checked="index === curPage" />
+            <div v-if="totalPages > 1" class="join flex justify-center">
+                <input @click="curPage = index" v-for="index in totalPages" class="join-item btn btn-square" type="radio" name="options" :aria-label="index.toString()" :checked="index === curPage" />
+            </div>
         </div>
+        
     </div>
     
 

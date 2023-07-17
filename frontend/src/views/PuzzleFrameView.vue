@@ -1,5 +1,5 @@
 <template>
-    <div class="container p-3 md:p-16 2xl:p-32 min-h-screen space-y-5">
+    <div>
 
         <!-- <div class="flex flex-row justify-center">
             <div class="tabs">
@@ -8,26 +8,30 @@
                 <a class="tab tab-bordered">2000 PCs</a>
             </div>
         </div> -->
-
-        <div class="flex flex-row items-center space-x-2 md:space-x-4 text-sm md:text-md">
-            <h1>Filter:</h1>
-            <label class="swap btn btn-xs md:btn-sm bg-base w-auto">
-                <input v-model="inStock" type="checkbox" />
-                <div class="swap-off" :value="false">All Products</div>
-                <div class="swap-on" :value="true">In Stock</div>
-            </label>
-            
-        </div>
-
-        <div class="container">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-                <product-card :item="product" v-for="product in products" :key="product.id"/>
+        <div class="sticky top-0 z-10 p-3 md:p-16 2xl:p-32 bg-white">
+            <div class="flex flex-row items-center space-x-2 md:space-x-4 text-sm md:text-md">
+                <h1>Filter:</h1>
+                <label class="swap btn btn-xs md:btn-sm bg-base w-auto">
+                    <input v-model="inStock" type="checkbox" />
+                    <div class="swap-off" :value="false">All Products</div>
+                    <div class="swap-on" :value="true">In Stock</div>
+                </label>
+                
             </div>
         </div>
+        
+        <div class="container p-3 md:p-16 2xl:p-32 min-h-screen space-y-5">
+            <div>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+                    <product-card :item="product" v-for="product in products" :key="product.id"/>
+                </div>
+            </div>
 
-        <div v-if="totalPages > 1" class="join flex justify-center">
-            <input @click="curPage = index" v-for="index in totalPages" class="join-item btn btn-square" type="radio" name="options" :aria-label="index.toString()" :checked="index === curPage" />
+            <div v-if="totalPages > 1" class="join flex justify-center">
+                <input @click="curPage = index" v-for="index in totalPages" class="join-item btn btn-square" type="radio" name="options" :aria-label="index.toString()" :checked="index === curPage" />
+            </div>  
         </div>
+        
     </div>
     
 

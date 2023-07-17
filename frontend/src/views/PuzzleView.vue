@@ -1,37 +1,42 @@
 <template>
-    <div class="container p-3 md:p-16 2xl:p-32 min-h-screen space-y-5">
-        <div class="py-10">
-            <div class="tabs flex flex-row justify-center">
-                <a @click="() => curPieces = 500" :class="['tab','tab-bordered','basis-1/4', curPieces === 500 ?  ['tab-active','text-deep'] : '']">500 PC</a> 
-                <a @click="() => curPieces = 800" :class="['tab','tab-bordered','basis-1/4', curPieces === 800 ?  ['tab-active','text-deep'] : '']">800 PC</a> 
-                <a @click="() => curPieces = 1000" :class="['tab','tab-bordered','basis-1/4', curPieces === 1000 ?  ['tab-active','text-deep'] : '']">1000 PC</a>
-                <a @click="() => curPieces = 2000" :class="['tab','tab-bordered','basis-1/4', curPieces === 2000 ?  ['tab-active','text-deep'] : '']">2000 PC</a>
+    <div >
+        <div class="sticky top-0 z-20 p-3 md:p-16 2xl:p-32 bg-white">
+            <div class="py-10">
+                <div class="tabs flex flex-row justify-center">
+                    <a @click="() => curPieces = 500" :class="['tab','tab-bordered','tab-sm','basis-1/4', curPieces === 500 ?  ['tab-active','text-deep'] : '']">500 PC</a> 
+                    <a @click="() => curPieces = 800" :class="['tab','tab-bordered','tab-sm','basis-1/4', curPieces === 800 ?  ['tab-active','text-deep'] : '']">800 PC</a> 
+                    <a @click="() => curPieces = 1000" :class="['tab','tab-bordered','tab-sm','basis-1/4', curPieces === 1000 ?  ['tab-active','text-deep'] : '']">1000 PC</a>
+                    <a @click="() => curPieces = 2000" :class="['tab','tab-bordered','tab-sm','basis-1/4', curPieces === 2000 ?  ['tab-active','text-deep'] : '']">2000 PC</a>
+                </div>
+            </div>
+
+            <div class="flex flex-row items-center space-x-2 md:space-x-4 text-sm md:text-md">
+                <h1>Filter:</h1>
+                <select v-model="curBrandId" class="select select-xs md:select-sm bg-base">
+                    <option :value="undefined">ALL BRANDS</option>
+                    <option v-for="brand in brands" :value="brand.id">{{ brand.name }}</option>
+                </select>
+                <label class="swap btn btn-xs md:btn-sm bg-base w-auto">
+                    <input v-model="inStock" type="checkbox" />
+                    <div class="swap-off" :value="false">All Products</div>
+                    <div class="swap-on" :value="true">In Stock</div>
+                </label>
+                
             </div>
         </div>
+        
+        <div class="container p-3 md:p-16 2xl:p-32 min-h-screen space-y-5">
+            <div class="container">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+                    <product-card :item="product" v-for="product in products" :key="product.sku"/>
+                </div>
+            </div>
 
-        <div class="flex flex-row items-center space-x-2 md:space-x-4 text-sm md:text-md">
-            <h1>Filter:</h1>
-            <select v-model="curBrandId" class="select select-xs md:select-sm bg-base">
-                <option :value="undefined">ALL BRANDS</option>
-                <option v-for="brand in brands" :value="brand.id">{{ brand.name }}</option>
-            </select>
-            <label class="swap btn btn-xs md:btn-sm bg-base w-auto">
-                <input v-model="inStock" type="checkbox" />
-                <div class="swap-off" :value="false">All Products</div>
-                <div class="swap-on" :value="true">In Stock</div>
-            </label>
-            
-        </div>
-
-        <div class="container">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-                <product-card :item="product" v-for="product in products" :key="product.sku"/>
+            <div v-if="totalPages > 1" class="join flex justify-center pt-5">
+                <input @click="curPage = index" v-for="index in totalPages" class="join-item btn btn-square" type="radio" name="options" :aria-label="index.toString()" :checked="index === curPage" />
             </div>
         </div>
-
-        <div v-if="totalPages > 1" class="join flex justify-center pt-5">
-            <input @click="curPage = index" v-for="index in totalPages" class="join-item btn btn-square" type="radio" name="options" :aria-label="index.toString()" :checked="index === curPage" />
-        </div>
+        
     </div>
     
 
