@@ -1,7 +1,13 @@
 <template>
-	<div class="h-full">
-		<div class="min-w-full w-auto overflow-hidden pb-1">
+	<div class="min-h-screen">
+		
+		<div class="min-w-full w-auto pb-2">
 			<!-- <video-player /> -->
+			<HeroSlider>
+				<Slide v-for="slide in 4" :key="slide">
+					<HeroCard/>
+				</Slide>
+			</HeroSlider>
 		</div>
 
 		<!-- ======= Slogan Section ======= -->
@@ -19,7 +25,7 @@
 		</div>
 		<!-- End Slogan Section -->
 
-		<div class="pt-1 pb-1">
+		<div class="pt-2">
 			<event-slider>
 				<Slide v-for="slide in 4" :key="slide">
 					<event-card />
@@ -35,7 +41,9 @@
 	import VideoPlayer from '../components/VideoPlayer.vue';
 	import EventCard from '../components/EventCard.vue';
 	import EventSlider from '../components/EventSlider.vue';
-	import { Slide } from 'vue3-carousel'
+	import { Slide } from 'vue3-carousel';
+	import HeroCard from '../components/HeroCard.vue';
+import HeroSlider from '../components/HeroSlider.vue';
 </script>
 
 <style scope>

@@ -1,0 +1,41 @@
+<template>
+    <Carousel v-bind="settings" :breakpoints="breakpoints" class="flex flex-col">
+        <slot></slot>
+  
+      <template #addons>
+        <Pagination />
+        <Navigation />
+      </template>
+    </Carousel>
+  </template>
+  
+  <script lang="ts">
+  import { defineComponent } from 'vue'
+  import { Carousel, Navigation, Slide, Pagination } from 'vue3-carousel'
+  import 'vue3-carousel/dist/carousel.css'
+  export default defineComponent({
+    name: 'ExamplePagination',
+    components: {
+      Pagination,
+      Carousel,
+      Slide,
+      Navigation,
+    },
+    data: () => ({
+      // carousel settings
+      settings: {
+        itemsToShow: 1,
+        snapAlign: 'center',
+      },
+      // breakpoints are mobile first
+      // any settings not specified will fallback to the carousel settings
+      breakpoints: {
+        // 700px and up
+        700: {
+          itemsToShow: 1,
+          snapAlign: 'center',
+        },
+      },
+    }),
+  })
+</script>

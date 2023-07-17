@@ -1,5 +1,5 @@
 <template>
-    <div class="container p-3 md:p-16 2xl:p-32 space-y-4 min-h-screen">
+    <div class="container p-3 md:p-16 2xl:p-32 space-y-10 min-h-screen">
         <div class="py-10">
             <div class="tabs flex flex-row justify-center">
                 <a @click="() => curPieces = 500" :class="['tab','tab-bordered','basis-1/4', curPieces === 500 ?  ['tab-active','text-deep'] : '']">500 PC</a> 
@@ -25,7 +25,7 @@
 
         <div class="container">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-                <product-card :item="product" v-for="product in products" :key="product.id"/>
+                <product-card :item="product" v-for="product in products" :key="product.sku"/>
             </div>
         </div>
 

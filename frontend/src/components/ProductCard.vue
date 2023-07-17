@@ -22,7 +22,7 @@
                 
                 <!-- </router-link> -->
                 <dialog ref="detail_modal" class="modal modal-bottom sm:modal-middle">
-                    <form method="dialog" class="modal-box relative min-w-[90%] h-full">
+                    <form v-if="isOpen" method="dialog" class="modal-box relative min-w-[90%] h-full">
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                         <product-details :item="item" :is-open="isOpen" :key="item.sku"/>
                         
