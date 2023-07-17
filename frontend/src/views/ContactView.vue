@@ -12,7 +12,7 @@
           </div> -->
           <!-- End Google Maps -->
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-5">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-5">
                 <div class="flex bg-base p-6 items-center">
                     <div class="bg-deep rounded-full mr-5 p-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="white" class="bi bi-wechat" viewBox="0 0 16 16">

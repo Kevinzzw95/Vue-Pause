@@ -40,7 +40,7 @@
 
 <style scope>
 .slogan {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/img/stats-bg.jpg") center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/stats-bg.jpg") center center;
   background-size: cover;
   padding: 50px 0;
 }

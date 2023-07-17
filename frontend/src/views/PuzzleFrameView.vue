@@ -1,5 +1,5 @@
 <template>
-    <div class="container p-3 md:p-16 2xl:p-32 space-y-4 h-screen">
+    <div class="container p-3 md:p-16 2xl:p-32 space-y-4 min-h-screen">
 
         <!-- <div class="flex flex-row justify-center">
             <div class="tabs">
