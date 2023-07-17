@@ -1,7 +1,7 @@
 <template>
     <div class="container lg:p-20 gap-5">
-        <div class="grid grid-cols-1 lg:grid-rows-2 lg:grid-cols-7 lg:gap-4 lg:space-x-16">
-            <div class="row-span-2 col-span-3 max-h-[45rem] space-y-4">
+        <div class="grid grid-cols-1 lg:grid-cols-7 lg:gap-4 lg:space-x-16">
+            <div class="row-span-2 col-span-3 max-h-[40rem]">
                 <div class="relative flex flex-col-reverse lg:flex-row lg:gap-8">
                     <div class="flex flex-row w-full lg:flex-col lg:w-[4rem] justify-center lg:gap-4">
                         <div v-for="(imgUrl, index) in item.imageUrl" :key="index" class="flex flex-col py-2 gap-3">
@@ -20,7 +20,7 @@
                     
                 </div>
             </div>
-            <div class="col-span-4 pt-10 lg:pt-20 space-y-8">
+            <div class="col-span-4 space-y-8 pt-32">
                 <h1 class="text-xl lg:text-3xl font-bold">{{ item.name }}</h1>
                 <div>
                     <h1 class="text-lg">Brand: {{ brand?.name }}</h1>
@@ -29,12 +29,6 @@
                 </div>
                 
                 <h1 class="text-2xl font-bold text-deep">C$ {{ item.unitPrice }}</h1>
-            </div>
-            <div class="col-span-4 pt-5">
-                <!-- <h1 class="text-xl font-bold">Description</h1>
-                <p class="lg:text-lg py-2">
-                    {{ item.description }}
-                </p> -->
                 <div v-if="item.active && item.unitsInStock > 0" class="relative mt-10 flex flex-wrap gap-4">
                     <div class="join outline outline-gray-300 rounded-lg">
                         <h1 class="join-item self-center text-lg px-2">Qnt.</h1>
@@ -54,18 +48,21 @@
                         <span>Items in your cart can not exceed items in stock({{ item.unitsInStock }})!</span>
                     </div>
                 </div>
-                <div class="flex flex-col w-full md:flex-row gap-4 pt-10">
-                    <div class="basis-1/2 bg-base rounded-lg p-5 h-[8rem]">
-                        <h1 class="text-lg font-bold">Shipping</h1>
-                    </div>
-                    <div class="basis-1/2 bg-base rounded-lg p-5 h-[8rem]">
-                        <h1 class="text-lg font-bold">Return</h1>
-                    </div>
-                </div>
             </div>
             
         </div>
-
+        <div class="flex flex-col w-full md:flex-row gap-4 font-default">
+            <div class="basis-1/2 bg-base rounded-lg p-5">
+                <h1 class="text-lg font-bold">Shipping</h1>
+                <p>Free shipping on orders over $95 in Scarborough/Markham/Richmond HIill/Vaughan/North York, over $150 Canada wide, over $180 worldwide.</p>
+            </div>
+            <div class="basis-1/2 bg-base rounded-lg p-5">
+                <h1 class="text-lg font-bold">Return</h1>
+                <p>The item can be returned within 10 days of the original shipment date.</p> 
+                <p>Opened packages cannot be returned. All items must be in the original packages with all pieces and in original condition.</p> 
+                <p>Original shipping charges will not be refunded.</p>
+            </div>
+        </div>
     </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="container p-3 md:p-16 2xl:p-32 space-y-10 min-h-screen">
+    <div class="container p-3 md:p-16 2xl:p-32 min-h-screen space-y-5">
         <div class="py-10">
             <div class="tabs flex flex-row justify-center">
                 <a @click="() => curPieces = 500" :class="['tab','tab-bordered','basis-1/4', curPieces === 500 ?  ['tab-active','text-deep'] : '']">500 PC</a> 
@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <div v-if="totalPages > 1" class="join flex justify-center">
+        <div v-if="totalPages > 1" class="join flex justify-center pt-5">
             <input @click="curPage = index" v-for="index in totalPages" class="join-item btn btn-square" type="radio" name="options" :aria-label="index.toString()" :checked="index === curPage" />
         </div>
     </div>

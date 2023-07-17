@@ -25,7 +25,7 @@
 		</div>
 		<!-- End Slogan Section -->
 
-		<div class="pt-2">
+		<div class="py-2">
 			<event-slider>
 				<Slide v-for="slide in 4" :key="slide">
 					<event-card />

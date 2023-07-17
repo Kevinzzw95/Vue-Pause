@@ -12,7 +12,7 @@
             <div class="grid grid-rows-4 h-[4.5rem] md:h-[5rem] p-1 font-primary">
                 <!-- <router-link :to="'/details/' + item.id" class="self-center"> -->
                 <button @click="showDetails()" class="self-start items-center row-span-3">
-                    <h2 class="text-xs md:text-lg flex flex-col font-bold">
+                    <h2 class="text-sm md:text-md flex flex-col font-bold">
                         <p>{{ item.name.split(" ")[0] }}</p>
                         <p>{{ item.name.split(/ (.*)/)[1] }}</p>
                     <!-- <div class="badge badge-secondary">NEW</div> -->
@@ -22,10 +22,12 @@
                 
                 <!-- </router-link> -->
                 <dialog ref="detail_modal" class="modal modal-bottom sm:modal-middle">
-                    <form v-if="isOpen" method="dialog" class="modal-box relative min-w-[90%] h-full">
-                        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    <form v-if="isOpen" method="dialog" class="modal-box relative min-w-[90%] h-[75%]">
                         <product-details :item="item" :is-open="isOpen" :key="item.sku"/>
                         
+                    </form>
+                    <form v-if="isOpen" method="dialog" class="modal-backdrop">
+                        <button>close</button>
                     </form>
                 </dialog>
 			
