@@ -33,8 +33,8 @@ module.exports = {
       center: true,
     },
     fontFamily: {
-      default: ['shangshouhupoti'],
-      primary: ['shangshouhupoti'],
+      default: ['modist'],
+      primary: ['modist'],
       secondary: ["Inter, sans-serif"],
     }
   },

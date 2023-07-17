@@ -44,7 +44,7 @@ const baseUrl = `/accessories`;
 
 
 const refresh = () => {
-    var targetUrl = baseUrl + `/search/findByStock?inStock=${inStock.value}`;  
+    var targetUrl = baseUrl + `/search/findByStock?inStock=${inStock.value}&size=12`;  
     if(curPage.value !== 1){
         targetUrl += `&page=${curPage.value}`
     }

@@ -53,7 +53,7 @@ const baseUrl = `/puzzleFrames/search/findBySizeAndStock`;
 
 
 const refresh = () => {
-    var targetUrl = baseUrl + `?size=${curSize.value}&inStock=${inStock.value}`;
+    var targetUrl = baseUrl + `?size=${curSize.value}&inStock=${inStock.value}&size=12`;
     if(curPage.value){
         targetUrl += `&page=${curPage.value}`
     }

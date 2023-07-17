@@ -63,7 +63,7 @@ const baseUrl = `/puzzles/search/findByPiecesAndFilter`;
 
 
 const refresh = async () => {
-    var targetUrl = baseUrl + `?pieces=${curPieces.value}&inStock=${inStock.value}`;
+    var targetUrl = baseUrl + `?pieces=${curPieces.value}&inStock=${inStock.value}&size=12`;
     if(curBrandId.value) {
         targetUrl += `&id=${curBrandId.value}`;
         if(curPage.value) {

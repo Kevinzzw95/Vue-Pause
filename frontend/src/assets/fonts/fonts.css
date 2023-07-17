@@ -11,3 +11,10 @@
   font-weight: lighter;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'modist';
+  src: url('/fonts/modist-d9zmv.ttf');
+  font-weight: lighter;
+  font-style: normal;
+}
