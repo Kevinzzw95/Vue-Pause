@@ -1,7 +1,7 @@
 <template>
     <div id="video-frame" class="h-full" data-aos="fade-up">
 		<div class="t-video h-full ">
-			<video ref="video" class="w-full overflow-hidden" src="/sample.mp4"></video>
+			<video ref="video" class="w-full overflow-hidden" src="sample.mp4"></video>
 			<div class="controls">
 				<div class="green-bar">
 				<div ref="timeline" class="green-apple"></div>

@@ -1,7 +1,7 @@
 <template>
 	<div class="h-full">
 		<div class="min-w-full w-auto overflow-hidden pb-1">
-			<video-player />
+			<!-- <video-player /> -->
 		</div>
 
 		<!-- ======= Slogan Section ======= -->
