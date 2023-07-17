@@ -12,7 +12,7 @@
             <div class="grid grid-rows-4 h-[4.5rem] md:h-[5rem] p-1 font-primary">
                 <!-- <router-link :to="'/details/' + item.id" class="self-center"> -->
                 <button @click="showDetails()" class="self-start items-center row-span-3">
-                    <h2 class="text-sm md:text-md flex flex-col font-bold">
+                    <h2 class="text-xs md:text-md flex flex-col font-bold">
                         <p>{{ item.name.split(" ")[0] }}</p>
                         <p>{{ item.name.split(/ (.*)/)[1] }}</p>
                     <!-- <div class="badge badge-secondary">NEW</div> -->
