@@ -8,19 +8,19 @@
                 </label>
                 <ul tabindex="0" class="dropdown-content z-50 menu mt-3 p-2 shadow bg-deep w-65 text-white font-primary rounded-md">
                     <router-link to="/puzzles/1000">
-                        <li><a>拼图 Puzzles</a></li>
+                        <li><a>拼图 PUZZLES</a></li>
                     </router-link>
                     <router-link to="/puzzle_frames">
-                        <li><a>拼图框 Puzzle Frames</a></li>
+                        <li><a>拼图框 PUZZLE FRAMES</a></li>
                     </router-link>
                     <router-link to="/puzzle_acc">
-                        <li><a>拼图配件 Puzzle Accessories</a></li>
+                        <li><a>拼图配件 PUZZLE ACCESSORIES</a></li>
                     </router-link>
                     <router-link to="/table_games">
-                        <li><a>桌游 Table Games</a></li>
+                        <li><a>桌游 TABLE GAMES</a></li>
                     </router-link>
                     <router-link to="/contact">
-                        <li><a>联系我们 Contact Us</a></li>
+                        <li><a>联系我们 CONTACT US</a></li>
                     </router-link>
                     
                 </ul>
@@ -50,7 +50,6 @@
                     <label for="my-drawer" class="drawer-overlay"></label>
                     <ul class="menu p-4 w-80 h-full bg-base-200 text-base-content space-y-2">
                         <!-- Sidebar content here -->
-                        <div class="">
                             <div class="flex flex-row items-center space-x-2">
                                 <input @keyup.enter="search(keywords!)" v-model="keywords" type="text" placeholder="Search for products" class="input input-bordered input-deep w-full max-w-xs" />
                                 <label for="my-drawer" class="btn btn-circle btn-ghost selection:drawer-button">✕</label>
@@ -61,7 +60,7 @@
                                 <li><a @click="search('城市月色')">城市月色</a></li>
                                 <li><a @click="search('摘')">摘</a></li>
                             </ul>
-                        </div>
+
                         
                     
                     </ul>

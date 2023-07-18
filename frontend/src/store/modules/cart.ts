@@ -14,6 +14,10 @@ const state: CartState = {
     checkoutStatus: ""
 }
 
+const updateLocalStorage = (items: CartItem[]) => {
+    localStorage.setItem('cart', JSON.stringify(items));
+}
+
 // getters
 const getters = {
     cartProducts: (state: CartState) => {
@@ -51,8 +55,8 @@ const getters = {
 // actions
 const actions = {
     async checkout({commit, state, rootState}: { state: CartState, commit: Function, rootState: RootState }) {
-        const savedCartItems = [...state.items];
-        const purchase = rootState.purchase.purchaseItem;
+    const savedCartItems = [...state.items];
+        const purchase = rootState.purchase.purchaseItem;        
         commit('setCheckoutStatus', null);
         let orderNumber =""
         // empty cart
@@ -78,7 +82,7 @@ const actions = {
         product,
         qnt
     }: { product: Product, qnt: number }) {
-        commit('setCheckoutStatus', null)
+        commit('setCheckoutStatus', null);
         if (product.unitsInStock >= qnt) {
             const cartItem = state.items.find((item: CartItem) => item.id === product.id)
             if (!cartItem) {
@@ -93,7 +97,8 @@ const actions = {
             // remove 1 item from stock
             //commit('products/decrementProductInventory', { id: product.id }, { root: true })
         }
-    }
+    },
+
 }
 
 // mutations
@@ -102,21 +107,31 @@ const mutations = {
         const newItem = new CartItem(product);
         newItem.quantity = quantity;
         state.items.push(newItem);
+        updateLocalStorage(state.items);
+    },
+
+    updateCartFromLocalStorage(state: CartState) {
+        const cart = localStorage.getItem('cart');
+        if(cart) {
+            state.items = JSON.parse(cart);
+        }
     },
 
     removeItemFromCart(state: CartState, id: string ) {
-        state.items = state.items.filter((item) => item.id !== id)
+        state.items = state.items.filter((item) => item.id !== id);
+        updateLocalStorage(state.items);
     },
 
     setItemQuantity(state: CartState, {id, quantity}: { id: string, quantity: number }) {
         
         const cartItem = state.items.find(item => item.id === id)!
-        cartItem.quantity = quantity
-
+        cartItem.quantity = quantity;
+        updateLocalStorage(state.items);
     },
 
     setCartItems(state: CartState, {items} : {items: CartItem[]}) {
-        state.items = items
+        state.items = items;
+        updateLocalStorage(state.items);
     },
 
     setCheckoutStatus(state: CartState, status: string) {

@@ -1,8 +1,8 @@
 <template>
-    <div class="container lg:p-20 gap-5">
+    <div class="container lg:px-24 gap-5">
         <div class="grid grid-cols-1 lg:grid-cols-7 lg:gap-4 lg:space-x-16">
             <div class="row-span-2 col-span-3 max-h-[40rem]">
-                <div class="relative flex flex-col-reverse lg:flex-row lg:gap-8">
+                <div class="relative flex flex-col-reverse lg:flex-row lg:gap-4">
                     <div class="flex flex-row w-full lg:flex-col lg:w-[4rem] justify-center lg:gap-4">
                         <div v-for="(imgUrl, index) in item.imageUrl" :key="index" class="flex flex-col py-2 gap-3">
                             <a @click="currPic = index" class="btn btn-link w-15 h-20 p-0">
@@ -13,14 +13,14 @@
                     <div class="self-center py-5">
                         <div v-for="(imgUrl, index) in item.imageUrl" :key="index" class="items-center">
                             <div v-if="currPic === index" class="">
-                                <img :src="imgUrl" class="object-fill h-[18rem] lg:object-cover md:h-[28rem] lg:h-[32rem] lg:w-[28rem] rounded-lg" />
+                                <img :src="imgUrl" class="object-contain w-96 rounded-lg" />
                             </div> 
                         </div>  
                     </div>
                     
                 </div>
             </div>
-            <div class="col-span-4 space-y-8 pt-32">
+            <div class="col-span-4 space-y-8 pt-[2rem] pl-3">
                 <h1 class="text-xl lg:text-3xl font-bold">{{ item.name }}</h1>
                 <div>
                     <h1 class="text-lg">Brand: {{ brand?.name }}</h1>
@@ -71,12 +71,12 @@ import { store } from '@/store';
 import type { Brand } from '@/types/Brand';
 import { Product } from '@/types/Product';
 import axios from 'axios';
-import { computed, ref, watch } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 
 
 const props = defineProps<{
     item: Product,
-    isOpen: boolean
+
 }>();
 
 const currPic = ref(0);
@@ -96,10 +96,6 @@ const getData = (async() => {
         }
     }
 });
-
-watch(() => props.isOpen, () => {
-    getData()
-})
 
 
 const cartItemQauntity = computed((): number => store.getters['cart/findCartQauntity'](props.item.id))
@@ -130,5 +126,9 @@ const addProduct = (product: Product) => {
         }, 1000);
     }
 }
+
+onMounted(() => {
+    getData();
+});
 
 </script>

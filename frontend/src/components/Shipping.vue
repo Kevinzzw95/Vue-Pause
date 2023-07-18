@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col">
+    <div class="flex flex-col w-full">
         <h1 class="font-bold text-xl self-start">Shipping Infomation</h1>
     
         <div> 
@@ -7,7 +7,7 @@
                 <span class="label-text font-bold">Email Address*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
-                <input type="text" placeholder="" class="input input-bordered input-primary w-full max-w-lg max-h-[42px]" v-model="email"/> 
+                <input type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" v-model="email"/> 
                 <CheckCircleIcon v-if="validEmail && email" class="inline-flex flex-none w-6 h-6 text-green-700"/>
                 <XCircleIcon v-if="!validEmail && email" class="inline-flex flex-none w-6 h-6 text-red-600"/>
             </div>
@@ -18,7 +18,7 @@
                 <span class="label-text font-bold">Telephone*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
-                <input type="text" placeholder="" class="input input-bordered input-primary w-full max-w-lg max-h-[42px]" v-model="phone"/>
+                <input type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" v-model="phone"/>
                 <CheckCircleIcon v-if="validPhone && phone" class="inline-flex flex-none w-6 h-6 text-green-700"/>
                 <XCircleIcon v-if="!validPhone && phone" class="inline-flex flex-none w-6 h-6 text-red-600"/>
             </div>
@@ -29,7 +29,7 @@
                 <span class="label-text font-bold">First Name*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
-                <input v-model="firstName" type="text" placeholder="" class="input input-bordered input-primary w-full max-w-lg max-h-[42px]" />
+                <input v-model="firstName" type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" />
                 <CheckCircleIcon v-if="validFirstName && firstName" class="inline-flex flex-none w-6 h-6 text-green-700"/>
                 <XCircleIcon v-if="!validFirstName && firstName" class="inline-flex flex-none w-6 h-6 text-red-600"/>
             </div>
@@ -37,7 +37,7 @@
                 <span class="label-text font-bold">Last Name*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
-                <input v-model="lastName" type="text" placeholder=" " class="input input-bordered input-primary w-full max-w-lg max-h-[42px]" />
+                <input v-model="lastName" type="text" placeholder=" " class="input input-bordered input-primary w-full max-w-full max-h-[42px]" />
                 <CheckCircleIcon v-if="validLastName && lastName" class="inline-flex flex-none w-6 h-6 text-green-700"/>
                 <XCircleIcon v-if="!validLastName && lastName" class="inline-flex flex-none w-6 h-6 text-red-600"/>
             </div>
@@ -45,21 +45,21 @@
                 <span class="label-text font-bold">Address*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
-                <input v-model="street" type="text" placeholder="" class="input input-bordered input-primary w-full max-w-lg max-h-[42px]" />
+                <input v-model="street" type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" />
                 <CheckCircleIcon v-if="street" class="inline-flex flex-none w-6 h-6 text-green-700"/>
             </div>
             <label class="label">
                 <span class="label-text font-bold">City*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
-                <input v-model="city" type="text" placeholder="" class="input input-bordered input-primary w-full max-w-lg max-h-[42px]" />
+                <input v-model="city" type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" />
                 <CheckCircleIcon v-if="city" class="inline-flex flex-none w-6 h-6 text-green-700"/>
             </div>
             <label class="label">
                 <span class="label-text font-bold">Province*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
-                <select v-model="province" class="shrink select select-bordered w-full max-w-lg max-h-[40px]">
+                <select v-model="province" class="shrink select select-bordered w-full max-w-full max-h-[40px]">
                     <option disabled selected>Select A Province</option>
                     <option>ON</option>
                     <option>QC</option>
@@ -79,7 +79,7 @@
                 <span class="label-text font-bold">Post Code*(e.g. L4B 3P8)</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
-                <input v-model="zipCode" type="text" placeholder="" class="input input-bordered input-primary w-full max-w-lg max-h-[42px]" />
+                <input v-model="zipCode" type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" />
                 <CheckCircleIcon v-if="validZipCode && zipCode" class="inline-flex flex-none w-6 h-6 text-green-700"/>
                 <XCircleIcon v-if="!validZipCode && zipCode" class="inline-flex flex-none w-6 h-6 text-red-600"/>
             </div>
@@ -89,8 +89,8 @@
             <label class="label">
                 <span class="label-text font-bold">Payment Method*</span>
             </label>
-            <div class="flex flex-row space-x-2 items-center ">
-                <select v-model="payment" class="shrink select select-bordered w-full max-w-lg max-h-[40px]">
+            <div class="flex flex-row space-x-2 items-center">
+                <select v-model="payment" class="shrink select select-bordered w-full max-w-full max-h-[40px]">
                     <option disabled selected>Select A Method</option>
                     <option>e-Transfer</option>
                     <option>WeChat</option>
@@ -131,10 +131,8 @@ import type { CartItem } from '@/types/CartItem';
 import { Address } from '@/types/Address';
 import { XCircleIcon } from '@heroicons/vue/24/outline'
 import { CheckCircleIcon } from '@heroicons/vue/24/outline'
-
-const freeShipping = [
-    'L4J'
-]
+import axios from 'axios';
+import { zip } from 'rxjs';
 
 const store = useStore()
 const purchaseInfo = computed((): Purchase => store.getters['purchase/getPurchase']).value;
@@ -160,29 +158,33 @@ const validZipCode = ref(ZIPCODE_REGEX.test(zipCode.value!))
 const validFirstName = ref(NAME_REGEX.test(firstName.value!))
 const validLastName = ref(NAME_REGEX.test(lastName.value!))
 
+const shippingFee = ref(purchaseInfo.order?.shippingFee);
+
 const emit = defineEmits<{
   (e: 'shipping', shipping: number | null): void
 }>()
 
-
-watch( [email, phone, zipCode, firstName, lastName], () => {
+watch( [email, phone, firstName, lastName], () => {
     validEmail.value = USER_REGEX.test(email.value);
     validPhone.value = PHONE_REGEX.test(phone.value);
-    validZipCode.value = ZIPCODE_REGEX.test(zipCode.value!)
     validFirstName.value = NAME_REGEX.test(firstName.value!)
     validLastName.value = NAME_REGEX.test(lastName.value!)
 
-    var shipping = null;
+})
 
-    if(validZipCode.value) {
-        if(freeShipping.find((item) => item === zipCode.value?.split(' ')[0].toUpperCase())) {
-            shipping = 0
-        }
-        else {
-            shipping = 10
-        }
+watch([zipCode, province], () => {
+    validZipCode.value = ZIPCODE_REGEX.test(zipCode.value!);
+    if(province.value && validZipCode.value) {
+        axios.post<number>("/checkout/shipping", {province: province.value, postCode: zipCode.value}).then(
+            res => {
+                shippingFee.value = res.data;
+                emit('shipping', res.data);
+            },
+            err => console.log(err)
+        )
+        
     }
-    emit('shipping', shipping);
+    
 })
 
 const createPurchase = () => {
@@ -196,7 +198,7 @@ const createPurchase = () => {
     order.payment = payment.value
     order.totalPrice = computed(() => store.getters['cart/cartTotalPrice']).value;
     order.totalQuantity = computed(() => store.getters['cart/cartTotalQuantity']).value;
-    order.shippingFee = 0
+    order.shippingFee = shippingFee.value;
 
     const orderItems: OrderItem[] = [];
     const cartItems = computed((): CartItem[] => store.getters['cart/cartProducts']).value;

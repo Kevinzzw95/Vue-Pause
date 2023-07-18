@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Carousel :items-to-show="2" :autoplay="2000" :wrap-around="true">
+        <Carousel v-bind="settings" :autoplay="3000" :wrap-around="true" :breakpoints="breakpoints">
             <slot></slot>
         </Carousel>
     </div>
@@ -19,6 +19,27 @@
             Carousel,
             EventCard,
         },
+        data: () => ({
+    // carousel settings
+    settings: {
+      itemsToShow: 2,
+      snapAlign: 'center',
+    },
+    // breakpoints are mobile first
+    // any settings not specified will fallback to the carousel settings
+    breakpoints: {
+      // 700px and up
+      700: {
+        itemsToShow: 3.5,
+        snapAlign: 'center',
+      },
+      // 1024 and up
+      1024: {
+        itemsToShow: 4,
+        snapAlign: 'start',
+      },
+    },
+  }),
     })
 </script>
 

@@ -5,16 +5,19 @@
                 <img :src=item.imageUrl class=""/>
             </div>
             <div class="space-y-5 p-2">
-                <button @click="showDetails()" class="self-center">
-                    <h1 class="md:text-3xl font-bold underline">{{ item.name }}</h1>
+                <button @click="showDetails()" class="items-start">
+                    <h1 class="md:text-2xl font-bold underline text-left">{{ item.name.split(" ")[0] }}</h1>
+                    <h1 class="md:text-2xl font-bold underline text-left">{{ item.name.split(/ (.*)/)[1] }}</h1>
                 </button>
                 <dialog ref="detail_modal" class="modal modal-bottom sm:modal-middle">
-                    <form method="dialog" class="modal-box relative min-w-[90%] h-full">
-                        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    <form v-if="isOpen" method="dialog" class="modal-box relative min-w-[90%] h-[75%]">
                         <product-details :item="curProduct!" :is-open="isOpen" v-if="curProduct != undefined"/>
-                        
+                    </form>
+                    <form v-if="isOpen" method="dialog" class="modal-backdrop">
+                        <button>close</button>
                     </form>
                 </dialog>
+			
                 <p class="md:text-lg">Brand: {{ brand?.name }}</p>
                 <p class="md:text-lg">Pieces: {{ item.pieces }}</p>
                 <p class="md:text-lg">Unit Price: C${{ item.unitPrice }}</p>

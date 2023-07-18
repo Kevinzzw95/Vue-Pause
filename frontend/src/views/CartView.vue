@@ -1,11 +1,11 @@
 <template>
-    <div class="h-full">
-        <div class="container p-6 lg:p-20 h-screen space-y-3">
+    <div class="">
+        <div class="container p-6 lg:p-20 min-h-screen space-y-3">
             <h1 class="text-2xl font-bold">Your Cart {{ totalQuantity === 0 ? "is Empty" : "" }}</h1>
             <div v-if="totalQuantity !== 0">
                 <div class="divider">{{ totalQuantity }} Items</div>
                     <div class="flex flex-col" v-for="item in cartItems" :key="item.id">
-                        <cart-card :item="item"/>
+                        <cart-card :item="item" :key="item.sku"/>
                     </div>
                     
                 <div class="divider"></div>

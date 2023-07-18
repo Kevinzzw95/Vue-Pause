@@ -62,6 +62,7 @@ const router = createRouter({
             path: '/checkout',
             name: 'checkout',
             component: CheckoutView,
+            props: true,
             children: [
                 {
                     name: 'chooseshipping',

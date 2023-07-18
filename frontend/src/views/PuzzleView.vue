@@ -1,12 +1,12 @@
 <template>
     <div >
-        <div class="sticky top-0 z-20 px-3 md:px-16 2xl:px-32 bg-white">
-            <div class="py-5">
+        <div class="sticky top-0 z-20 px-3 md:px-16 2xl:px-32  pb-2 glass">
+            <div class="py-3">
                 <div class="tabs flex flex-row justify-center">
-                    <a @click="() => curPieces = 500" :class="['tab','tab-bordered','tab-sm','basis-1/4', curPieces === 500 ?  ['tab-active','text-deep'] : '']">500 PC</a> 
-                    <a @click="() => curPieces = 800" :class="['tab','tab-bordered','tab-sm','basis-1/4', curPieces === 800 ?  ['tab-active','text-deep'] : '']">800 PC</a> 
-                    <a @click="() => curPieces = 1000" :class="['tab','tab-bordered','tab-sm','basis-1/4', curPieces === 1000 ?  ['tab-active','text-deep'] : '']">1000 PC</a>
-                    <a @click="() => curPieces = 2000" :class="['tab','tab-bordered','tab-sm','basis-1/4', curPieces === 2000 ?  ['tab-active','text-deep'] : '']">2000 PC</a>
+                    <a @click="() => curPieces = 500" :class="['tab','tab-bordered','tab-sm','sm:tab-md','sm:text-lg','basis-1/4', curPieces === 500 ?  ['tab-active','text-deep'] : '']">500 PC</a> 
+                    <a @click="() => curPieces = 800" :class="['tab','tab-bordered','tab-sm','sm:tab-md','sm:text-lg','basis-1/4', curPieces === 800 ?  ['tab-active','text-deep'] : '']">800 PC</a> 
+                    <a @click="() => curPieces = 1000" :class="['tab','tab-bordered','tab-sm','sm:tab-md','sm:text-lg','basis-1/4', curPieces === 1000 ?  ['tab-active','text-deep'] : '']">1000 PC</a>
+                    <a @click="() => curPieces = 2000" :class="['tab','tab-bordered','tab-sm','sm:tab-md','sm:text-lg','basis-1/4', curPieces === 2000 ?  ['tab-active','text-deep'] : '']">2000 PC</a>
                 </div>
             </div>
 
