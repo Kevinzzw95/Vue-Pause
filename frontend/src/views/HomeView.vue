@@ -28,16 +28,16 @@
 		<div class="py-2">
 			<event-slider>
 				<Slide key="1">
-					<event-card src="/public/img/events/events-1.jpg" />
+					<event-card src="/img/events/events-1.jpg" />
 				</Slide>
 				<Slide key="2">
-					<event-card src="/public/img/events/events-2.jpg" />
+					<event-card src="/img/events/events-2.jpg" />
 				</Slide>
 				<Slide key="3">
-					<event-card src="/public/img/events/events-1.jpg" />
+					<event-card src="/img/events/events-1.jpg" />
 				</Slide>
 				<Slide key="4">
-					<event-card src="/public/img/events/events-2.jpg" />
+					<event-card src="/img/events/events-2.jpg" />
 				</Slide>
 			</event-slider>
 		</div>
