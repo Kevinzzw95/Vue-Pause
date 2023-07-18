@@ -132,7 +132,6 @@ import { Address } from '@/types/Address';
 import { XCircleIcon } from '@heroicons/vue/24/outline'
 import { CheckCircleIcon } from '@heroicons/vue/24/outline'
 import axios from 'axios';
-import { zip } from 'rxjs';
 
 const store = useStore()
 const purchaseInfo = computed((): Purchase => store.getters['purchase/getPurchase']).value;
