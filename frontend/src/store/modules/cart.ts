@@ -6,12 +6,14 @@ import type { PlaceOrderResponse } from "@/types/RestData"
 
 export interface CartState {
     items: CartItem[],
-    checkoutStatus: string
+    checkoutStatus: string,
+    savings: number,
 }
 
 const state: CartState = {
     items: [],
-    checkoutStatus: ""
+    checkoutStatus: "",
+    savings: 0
 }
 
 const updateLocalStorage = (items: CartItem[]) => {
@@ -49,6 +51,10 @@ const getters = {
         return state.items != undefined ? state.items.reduce((total: number, product: CartItem) => {
             return total + product.quantity
         }, 0) : 0
+    },
+
+    getSavings: (state: CartState) => {
+        return state.savings;
     }
 }
 
@@ -136,6 +142,10 @@ const mutations = {
 
     setCheckoutStatus(state: CartState, status: string) {
         state.checkoutStatus = status
+    },
+
+    addSavings(state: CartState, saving: number) {
+        state.savings += saving;
     }
 }
 

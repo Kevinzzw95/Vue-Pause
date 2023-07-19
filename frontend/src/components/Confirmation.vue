@@ -5,7 +5,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             <span>Please confirm your information below. 
             After submit the order, you will get an order number and a confirmation email. 
-            Please refer the order number when you choose to pay online.</span>
+            <span class="font-bold">Please refer the order number when you choose to pay online.</span></span>
         </div>
         <div v-if="purchase.type === 'Pickup'" class="bg-base rounded-2xl p-5 space-y-4">
             <div><span class="font-bold">Email:</span> {{ purchase.customer.email }}</div>

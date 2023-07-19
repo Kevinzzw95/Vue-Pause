@@ -6,7 +6,7 @@
                 <!-- <img v-if="!item.active" src="../assets/coming-soon.png" class="absolute top-[25%] md:left-10 w-[12rem]" /> -->
                 <!-- <img v-if="item.unitsInStock === 0" src="../assets/sold-out.png" class="absolute top-[25%] md:left-10 w-[12rem]" /> -->
             </button>
-            <div v-if="item.special" class="absolute box rounded-r-md w-[4.5rem] h-8 top-3 bg-gradient-to-r from-green-400 to-blue-500 shadow-xl flex items-stretch p-2">
+            <div v-if="item.special" class="absolute box rounded-r-md w-[5rem] h-8 top-3 bg-gradient-to-r from-green-400 to-blue-500 shadow-xl flex items-stretch p-2">
                 <h1 className="text-white text-xs self-center">{{ item.special }}</h1>
             </div>
             <div class="grid grid-rows-4 h-[4.5rem] md:h-[5rem] p-1 font-primary">

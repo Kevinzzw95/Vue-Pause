@@ -5,19 +5,19 @@
             <label class="label font-bold">
                 <span class="label-text">Choose a Date*</span>
             </label>
-            <div class="alert alert-info bg-accent w-full max-w-lg py-4 rounded-lg">
+            <div class="alert alert-info bg-accent w-full max-w-full py-4 rounded-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 <span>Only <span class="font-bold">Wednesdays</span> and <span class="font-bold">Saturdays</span> within <span class="font-bold">2</span> months are avaliable</span>
             </div>
             <div class="flex flex-row space-x-2 items-center py-2">
-                <vue-tailwind-datepicker :start-from="today" :disable-date="dDate" :formatter="formatter" as-single v-model="dateValue" class="w-full light h-12"/>
+                <vue-tailwind-datepicker v-model="dateValue" :start-from="today" :disable-date="dDate" :formatter="formatter" as-single class="w-full light h-12"/>
             </div>
         </div>
-        <div v-if="dateValue"> 
+        <div v-if="dateValue != undefined && dateValue != null"> 
             <label class="label font-bold">
                 <span class="label-text">Choose A Time*</span>
             </label>
-            <select v-model="time" class="select select-bordered w-full max-w-lg">
+            <select v-model="time" class="select select-bordered w-full max-w-full">
                 <option disabled selected>Normal</option>
                 <option v-if="!isSat">7PM at 330 Hwy 7, Richmond Hill</option>
                 <option v-if="isSat">4PM at 3255 Hwy 7, Markham</option>
@@ -27,10 +27,19 @@
         </div>
         <div> 
             <label class="label font-bold">
+                <span class="label-text">Name*</span>
+            </label>
+            <div class="flex flex-row space-x-2 items-center">
+                <input type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" v-model="name"/> 
+            </div>
+            
+        </div>
+        <div> 
+            <label class="label font-bold">
                 <span class="label-text">Email Address*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
-                <input type="text" placeholder="" class="input input-bordered input-primary w-full max-w-lg max-h-[42px]" v-model="email"/> 
+                <input type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" v-model="email"/> 
                 <CheckCircleIcon v-if="validEmail && email" class="inline-flex flex-none w-6 h-6 text-green-700"/>
                 <XCircleIcon v-if="!validEmail && email" class="inline-flex flex-none w-6 h-6 text-red-600"/>
             </div>
@@ -41,7 +50,7 @@
                 <span class="label-text">Telephone*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
-                <input type="text" placeholder="" class="input input-bordered input-primary w-full max-w-lg max-h-[42px]" v-model="phone"/>
+                <input type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" v-model="phone"/>
                 <CheckCircleIcon v-if="validPhone && phone" class="inline-flex flex-none w-6 h-6 text-green-700"/>
                 <XCircleIcon v-if="!validPhone && phone" class="inline-flex flex-none w-6 h-6 text-red-600"/>
             </div>
@@ -52,7 +61,7 @@
             <label class="label font-bold">
                 <span class="label-text">Payment Method*</span>
             </label>
-            <select class="select select-bordered w-full max-w-lg max-h-[40px]" v-model="payment">
+            <select class="select select-bordered w-full max-w-full max-h-[40px]" v-model="payment">
                 <option disabled selected>Select A Method</option>
                 <option>Cash</option>
                 <option>e-Transfer</option>
@@ -67,7 +76,7 @@
                 </svg>
                 Back
             </button>
-            <button class="btn bg-base" @click="!validEmail || !validPhone || !dateValue || !time || !payment? null : createPurchase() " :disabled="!validEmail || !validPhone || !dateValue || !time || !payment ? true : false">Next
+            <button class="btn bg-base" @click="!validEmail || !validPhone || !dateValue || !time || !payment? null : createPurchase() " :disabled="!validEmail || !validPhone || !dateValue || !time || !payment || !name ? true : false">Next
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                 </svg>
@@ -110,6 +119,7 @@ const time = ref(purchaseInfo.pickupDate?.split(",")[1]);
 const email = ref(purchaseInfo.customer?.email);
 const phone = ref(purchaseInfo.customer?.phone);
 const payment = ref(purchaseInfo.order?.payment);
+const name = ref(purchaseInfo.customer?.firstName);
 
 const USER_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 const PHONE_REGEX = /^(1\s?)?(\d{3}|\(\d{3}\))[\s\-]?\d{3}[\s\-]?\d{4}$/;
@@ -140,6 +150,7 @@ watch( () => dateValue.value, () => {
 
 const createPurchase = () => {
     const customer = new Customer();
+    customer.firstName = name.value;
     customer.email = email.value;
     customer.phone = phone.value!;
 
@@ -147,6 +158,7 @@ const createPurchase = () => {
     order.payment = payment.value
     order.totalPrice = computed(() => store.getters['cart/cartTotalPrice']).value;
     order.totalQuantity = computed(() => store.getters['cart/cartTotalQuantity']).value;
+    order.savings = computed(() => store.getters['cart/getSavings']).value;
 
     const orderItems: OrderItem[] = [];
     const cartItems = computed((): CartItem[] => store.getters['cart/cartProducts']).value;

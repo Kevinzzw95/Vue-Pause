@@ -4,7 +4,7 @@ export class Order {
     shippingFee: number = 0;
     payment: string = '';
     orderNumber: string = "";
+    savings: number = 0;
     shippingAddress?: string;
-    
 }
   
