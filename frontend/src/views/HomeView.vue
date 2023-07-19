@@ -4,8 +4,8 @@
 		<div class="min-w-full w-auto pb-2">
 			<!-- <video-player /> -->
 			<HeroSlider>
-				<Slide v-for="slide in 4" :key="slide">
-					<HeroCard/>
+				<Slide v-for="slide in 4" :key="hero_img[slide-1]">
+					<HeroCard :src="hero_img[slide-1]"/>
 				</Slide>
 			</HeroSlider>
 		</div>
@@ -53,7 +53,32 @@ import EventSlider from '../components/EventSlider.vue';
 import { Slide } from 'vue3-carousel';
 import HeroCard from '../components/HeroCard.vue';
 import HeroSlider from '../components/HeroSlider.vue';
+import { onBeforeMount, onMounted, onUnmounted, ref } from 'vue';
 
+const hero_img = ref(['', '', '', '']);
+
+const handleResize = () => {
+	for(var i = 0; i < 4; ++i) {
+		if(window.innerWidth < 700) {
+			hero_img.value[i] = '/img/hero-' + (i+1) + '-small.jpg'
+		}
+		else{
+			hero_img.value[i] = '/img/hero-' + (i+1) + '.jpg'
+		}
+	}
+}
+
+onBeforeMount(() => {
+	handleResize();
+})
+
+onMounted(() => {
+    window.addEventListener('resize', handleResize)
+})
+
+onUnmounted(() => {
+    window.removeEventListener('resize', handleResize)
+})
 </script>
 
 <style scope>

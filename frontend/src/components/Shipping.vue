@@ -159,6 +159,9 @@ const validLastName = ref(NAME_REGEX.test(lastName.value!))
 
 const shippingFee = ref(purchaseInfo.order?.shippingFee);
 
+const totalPrice = computed(() => store.getters['cart/cartTotalPrice']);
+const totalQuantity = computed(() => store.getters['cart/cartTotalQuantity'])
+
 const emit = defineEmits<{
   (e: 'shipping', shipping: number | null): void
 }>()
@@ -174,7 +177,7 @@ watch( [email, phone, firstName, lastName], () => {
 watch([zipCode, province], () => {
     validZipCode.value = ZIPCODE_REGEX.test(zipCode.value!);
     if(province.value && validZipCode.value) {
-        axios.post<number>("/checkout/shipping", {province: province.value, postCode: zipCode.value}).then(
+        axios.post<number>("/checkout/shipping", {province: province.value, postCode: zipCode.value, totalPrice: totalPrice, totalQuantity: totalQuantity}).then(
             res => {
                 shippingFee.value = res.data;
                 emit('shipping', res.data);

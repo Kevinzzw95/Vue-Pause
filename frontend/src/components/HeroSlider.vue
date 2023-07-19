@@ -1,5 +1,5 @@
 <template>
-    <Carousel class="flex flex-col">
+    <Carousel class="flex flex-col min-h-full">
         <slot></slot>
   
       <template #addons>

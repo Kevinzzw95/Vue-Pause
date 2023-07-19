@@ -22,7 +22,7 @@
                             <h1 :class="[$route.name === 'shipping' ? '' : 'hidden']">Shipping: {{ shippingFee }}</h1>
                             <h1 :class="[$route.name === 'confirmation' ? '' : 'hidden']">Shipping: {{ getPurchase.order?.shippingFee }}</h1>
                             <h1>Savings: {{ savings }}</h1>
-                            <h1>Subtotal: {{ totalPrice }}</h1>
+                            <h1>Subtotal: {{ totalPrice - savings }}</h1>
                         </div>
                         
                         

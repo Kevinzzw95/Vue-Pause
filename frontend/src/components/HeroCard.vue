@@ -1,5 +1,5 @@
 <template>
-    <div class="hero min-h-[30rem] items-end" style="background-image: url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg);">
+    <div class="hero bg-cover bg-center items-end" :style="str">
         <div class="hero-overlay bg-opacity-10"></div>
         <div class="text-start sm:text-center text-neutral-content p-2">
             <div class="max-w-md">
@@ -12,6 +12,35 @@
 </template>
 
 <script setup lang="ts">
+import { onBeforeMount, onMounted, onUnmounted, ref } from 'vue';
+
+
+const props = defineProps<{
+    src: string
+}>();
+
+const str = ref('background-image: url(' + props.src + ');')
+
+const handleResize = () => {
+    if(window.innerWidth < 700) {
+        str.value += 'height:' + window.innerWidth * 1.333 + 'px;'
+    }
+ 	else {
+        str.value += 'height:' + window.innerWidth / 1.78 + 'px;'
+    }
+}
+
+onBeforeMount(() => {
+	handleResize();
+})
+
+onMounted(() => {
+    window.addEventListener('resize', handleResize)
+})
+
+onUnmounted(() => {
+    window.removeEventListener('resize', handleResize)
+})
 
 </script>
 
