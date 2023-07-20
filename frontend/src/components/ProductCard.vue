@@ -32,7 +32,7 @@
                 </form> -->
 
                 <dialog ref="detail_modal" class="modal modal-bottom sm:modal-middle">
-                    <form method="dialog" class="modal-box relative min-w-[90%] h-[75%]">
+                    <form method="dialog" class="modal-box relative min-w-[80%] h-[75%] 2xl:min-w-[70%]">
                         <product-details :item="item" :key="item.sku"/>
 
                     </form>
@@ -60,7 +60,7 @@ const props = defineProps<{
     item: Product
 }>()
 
-const detail_modal = ref<HTMLDialogElement>();
+const detail_modal = ref<HTMLDialogElement | null>(null);
 
 const isOpen = ref(false);
 
@@ -68,9 +68,9 @@ onMounted(() => {
   
 });
 
-onBeforeUpdate(() => {
+/* onBeforeUpdate(() => {
       detail_modal.value = undefined;
-});
+}); */
 
 const showDetails = () => {
     isOpen.value = true;

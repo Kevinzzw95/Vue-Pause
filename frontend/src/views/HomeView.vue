@@ -1,5 +1,5 @@
 <template>
-	<div class="min-h-screen sm:px-[8rem] 2xl:px-[15rem] sm:py-[2rem]">
+	<div class=" md:px-[8rem] 2xl:px-[15rem] md:py-[2rem]">
 		
 		<div class="min-w-full w-auto pb-2">
 			<!-- <video-player /> -->
@@ -11,7 +11,7 @@
 		</div>
 
 		<!-- ======= Slogan Section ======= -->
-		<div class="slogan p-6 sm:p-16">
+		<div class="slogan p-6 lg:p-16">
 			<div class="" data-aos="zoom-out">
 				<div class="flex flex-row justify-items-center">
 					<div class="stats-item text-center">
