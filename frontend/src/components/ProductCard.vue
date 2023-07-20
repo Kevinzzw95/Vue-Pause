@@ -1,13 +1,14 @@
 <template>
     <div>
         <input type="checkbox" :id="item.sku" class="modal-toggle" />
-        <form class="modal modal-bottom sm:modal-middle">
+        <div class="modal modal-bottom sm:modal-middle">
             <div v-if="isOpen" class="modal-box relative min-w-[80%] h-[75%] 2xl:min-w-[70%]">
-                <product-details :item="item" :key="item.sku"/>
+                    <product-details :item="item" :key="item.sku"/>
                 
             </div>
             <label class="modal-backdrop" :for="item.sku">Close</label>
-        </form>
+        </div>
+        
         <div class="relative flex card card-compact shadow-lg max-w-[18rem] bg-base hover:scale-105 transition duration-500 cursor-pointer object-cover">
             <label :for="item.sku" @click="showDetails()" class="self-center w-full">
             <!-- <button @click="showDetails(item.sku)" class="self-center w-full"> -->
