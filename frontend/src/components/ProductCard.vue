@@ -31,7 +31,7 @@
                     <label class="modal-backdrop" :for="item.sku">Close</label>
                 </form> -->
 
-                <dialog :ref="(el) => modal = el" class="modal modal-bottom sm:modal-middle" :id="item.sku">
+                <dialog :ref="item.sku" class="modal modal-bottom sm:modal-middle" :id="item.sku">
                     <form method="dialog" class="modal-box relative min-w-[80%] h-[75%] 2xl:min-w-[70%]">
                         <product-details :item="item" :key="item.sku"/>
 
@@ -64,7 +64,7 @@ const props = defineProps<{
 const isOpen = ref(false);
 
 onMounted(() => {
-  
+  modal.value = props.item.sku
 });
 
 const modal = ref();
