@@ -12,8 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { readFileSync } from 'fs';
-import { HTMLAttributes, onBeforeMount, onMounted, onUnmounted, ref } from 'vue';
+import { onBeforeMount, onMounted, onUnmounted, ref } from 'vue';
 
 
 const props = defineProps<{
