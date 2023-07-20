@@ -31,7 +31,7 @@
                     <label class="modal-backdrop" :for="item.sku">Close</label>
                 </form> -->
 
-                <dialog ref="detail_modal" class="modal modal-bottom sm:modal-middle">
+                <dialog ref="detail_modal" class="modal modal-bottom sm:modal-middle" :id="item.sku">
                     <form method="dialog" class="modal-box relative min-w-[80%] h-[75%] 2xl:min-w-[70%]">
                         <product-details :item="item" :key="item.sku"/>
 
