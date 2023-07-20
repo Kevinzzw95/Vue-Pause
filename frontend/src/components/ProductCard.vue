@@ -31,7 +31,7 @@
                     <label class="modal-backdrop" :for="item.sku">Close</label>
                 </form> -->
 
-                <dialog :ref="(el) => { modal = el }" class="modal modal-bottom sm:modal-middle" :id="item.sku">
+                <dialog :ref="item.sku" class="modal modal-bottom sm:modal-middle" :id="item.sku">
                     <form method="dialog" class="modal-box relative min-w-[80%] h-[75%] 2xl:min-w-[70%]">
                         <product-details :item="item" :key="item.sku"/>
 
@@ -53,7 +53,8 @@
 
 <script setup lang="ts">
 import type { Product } from '@/types/Product';
-import { onMounted, ref } from 'vue';
+import type { Ref } from 'vue';
+import { getCurrentInstance, onMounted, ref } from 'vue';
 import ProductDetails from './ProductDetails.vue'
 
 const props = defineProps<{
@@ -66,14 +67,13 @@ onMounted(() => {
   
 });
 
+const instance = getCurrentInstance();
 /* onBeforeUpdate(() => {
       detail_modal.value = undefined;
 }); */
 
-const modal = ref();
-
 const showDetails = (sku: string) => {
     isOpen.value = true;
-    modal.value!.showModal();
+    (instance!.refs.sku as Ref<HTMLDialogElement>).value!.showModal();
 }
 </script>
