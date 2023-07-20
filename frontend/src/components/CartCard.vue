@@ -1,22 +1,23 @@
 <template>
     <div>
+        <input type="checkbox" :id="item.sku" class="modal-toggle" />
+        <form class="modal modal-bottom sm:modal-middle">
+            <div v-if="isOpen" class="modal-box relative min-w-[80%] h-[75%] 2xl:min-w-[70%]">
+                <product-details :item="curProduct" :key="item.sku"/>
+                
+            </div>
+            <label class="modal-backdrop" :for="item.sku">Close</label>
+        </form>
         <div class="flex flex-row space-x-3 lg:space-x-10 font-default">
             <div class="p-2 basis-1/2 max-w-[13rem] max-h-[15rem]">
                 <img :src=item.imageUrl class=""/>
             </div>
             <div class="space-y-5 p-2">
-                <button @click="showDetails()" class="items-start">
+                <label :for="item.sku" @click="showDetails()" class="self-center w-full">
                     <h1 class="md:text-2xl font-bold underline text-left">{{ item.name.split(" ")[0] }}</h1>
                     <h1 class="md:text-2xl font-bold underline text-left">{{ item.name.split(/ (.*)/)[1] }}</h1>
-                </button>
-                <dialog ref="detail_modal" class="modal modal-bottom sm:modal-middle">
-                    <form method="dialog" class="modal-box relative min-w-[90%] h-[75%]">
-                        <product-details :item="curProduct!" :is-open="isOpen" v-if="curProduct != undefined"/>
-                    </form>
-                    <form v-if="isOpen" method="dialog" class="modal-backdrop">
-                        <button>close</button>
-                    </form>
-                </dialog>
+                </label>
+            
 			
                 <p class="md:text-lg">Brand: {{ brand?.name }}</p>
                 <p class="md:text-lg">Pieces: {{ item.pieces }}</p>
@@ -98,8 +99,6 @@ const onClickPlus = () => {
     }
 }
 
-const detail_modal = ref<HTMLDialogElement | null>(null)
-
 onMounted(() => {
   
 })
@@ -110,6 +109,5 @@ onMounted(() => {
 
 const showDetails = () => {
     isOpen.value = true;
-    detail_modal.value!.showModal();
 }
 </script>
