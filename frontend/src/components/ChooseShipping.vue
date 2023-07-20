@@ -6,7 +6,7 @@
                 <div class="collapse-title text-xl font-medium">
                     Free Pickup
                 </div>
-                <div class="collapse-content"> 
+                <div class="p-5"> 
                     <div class="grid grid-rows-2"> 
                         <p>hello</p>
                         <router-link to="/checkout/pickup" class="place-self-end">

@@ -1,5 +1,5 @@
 <template>
-    <div class="container lg:px-24 gap-5">
+    <div class="container lg:px-20 2xl:px-32 gap-5">
         <div class="grid grid-cols-1 lg:grid-cols-7 lg:gap-4 lg:space-x-16">
             <div class="row-span-2 col-span-3 max-h-[40rem]">
                 <div class="relative flex flex-col-reverse lg:flex-row lg:gap-4">
@@ -20,7 +20,7 @@
                     
                 </div>
             </div>
-            <div class="col-span-4 space-y-8 pt-[2rem] pl-3">
+            <div class="col-span-4 space-y-8 pt-[3rem] pl-3">
                 <h1 class="text-xl lg:text-3xl font-bold">{{ item.name }}</h1>
                 <div>
                     <h1 class="text-lg">Brand: {{ brand?.name }}</h1>
