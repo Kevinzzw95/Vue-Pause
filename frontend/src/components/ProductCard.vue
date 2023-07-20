@@ -22,7 +22,7 @@
                 
                 <!-- </router-link> -->
                 <dialog ref="detail_modal" class="modal modal-bottom sm:modal-middle">
-                    <form v-if="isOpen" method="dialog" class="modal-box relative min-w-[90%] h-[75%]">
+                    <form method="dialog" class="modal-box relative min-w-[90%] h-[75%]">
                         <product-details :item="item" :key="item.sku"/>
                         
                     </form>
@@ -64,6 +64,6 @@ onBeforeUpdate(() => {
 
 const showDetails = () => {
     isOpen.value = true;
-    detail_modal.value?.showModal()
+    detail_modal.value.showModal();
 }
 </script>
