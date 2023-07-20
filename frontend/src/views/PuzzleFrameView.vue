@@ -37,7 +37,7 @@ import axios from 'axios';
 import { onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import router from '@/router'
-import { GetResponsePuzzleFrames } from '../types/RestData';
+import type { GetResponsePuzzleFrames } from '../types/RestData';
 
 const route = useRoute();
 const products = ref<Product[]>();
