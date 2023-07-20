@@ -3,7 +3,7 @@
         <input type="checkbox" :id="item.sku" class="modal-toggle" />
         <form class="modal modal-bottom sm:modal-middle">
             <div v-if="isOpen" class="modal-box relative min-w-[80%] h-[75%] 2xl:min-w-[70%]">
-                <product-details :item="curProduct" :key="item.sku"/>
+                <product-details :item="curProduct!" :key="item.sku"/>
                 
             </div>
             <label class="modal-backdrop" :for="item.sku">Close</label>
