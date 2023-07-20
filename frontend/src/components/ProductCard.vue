@@ -2,7 +2,7 @@
     <div>
         <div class="relative flex card card-compact shadow-lg max-w-[18rem] bg-base hover:scale-105 transition duration-500 cursor-pointer object-cover">
             <!-- <label :for="item.sku" @click="showDetails()" class="self-center w-full"> -->
-            <button @click="showDetails()" class="self-center w-full">
+            <button @click="showDetails(item.sku)" class="self-center w-full">
                 <figure><img :src=item.imageUrl[0] alt="Puzzle" class="object-cover w-full h-[13rem] md:h-[18rem] max-h-[20rem]"/></figure>
                 <!-- <img v-if="!item.active" src="../assets/coming-soon.png" class="absolute top-[25%] md:left-10 w-[12rem]" /> -->
                 <!-- <img v-if="item.unitsInStock === 0" src="../assets/sold-out.png" class="absolute top-[25%] md:left-10 w-[12rem]" /> -->
@@ -14,7 +14,7 @@
             <div class="grid grid-rows-4 h-[4.5rem] md:h-[5rem] p-1 font-primary">
                 <!-- <router-link :to="'/details/' + item.id" class="self-center"> -->
                 <!-- <label :for="item.sku" @click="showDetails()" class="self-start items-center row-span-3"> -->
-                <button @click="showDetails()" class="self-start items-center row-span-3">   
+                <button @click="showDetails(item.sku)" class="self-start items-center row-span-3">   
                     <h2 class="text-xs md:text-md flex flex-col font-bold items-center">
                         <p>{{ item.name.split(" ")[0] }}</p>
                         <p>{{ item.name.split(/ (.*)/)[1] }}</p>
@@ -31,7 +31,7 @@
                     <label class="modal-backdrop" :for="item.sku">Close</label>
                 </form> -->
 
-                <dialog ref="detail_modal" class="modal modal-bottom sm:modal-middle" :id="item.sku">
+                <dialog :ref="(el) => { modal = el }" class="modal modal-bottom sm:modal-middle" :id="item.sku">
                     <form method="dialog" class="modal-box relative min-w-[80%] h-[75%] 2xl:min-w-[70%]">
                         <product-details :item="item" :key="item.sku"/>
 
@@ -53,14 +53,12 @@
 
 <script setup lang="ts">
 import type { Product } from '@/types/Product';
-import { onMounted, ref, onBeforeUpdate } from 'vue';
+import { onMounted, ref } from 'vue';
 import ProductDetails from './ProductDetails.vue'
 
 const props = defineProps<{
     item: Product
 }>()
-
-const detail_modal = ref<HTMLDialogElement | null>(null);
 
 const isOpen = ref(false);
 
@@ -72,8 +70,10 @@ onMounted(() => {
       detail_modal.value = undefined;
 }); */
 
-const showDetails = () => {
+const modal = ref();
+
+const showDetails = (sku: string) => {
     isOpen.value = true;
-    detail_modal.value!.showModal();
+    modal.value!.showModal();
 }
 </script>
