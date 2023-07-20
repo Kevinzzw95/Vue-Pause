@@ -1,5 +1,5 @@
 <template>
-	<div class="min-h-screen">
+	<div class="min-h-screen sm:px-[8rem] 2xl:px-[15rem] sm:py-[2rem]">
 		
 		<div class="min-w-full w-auto pb-2">
 			<!-- <video-player /> -->

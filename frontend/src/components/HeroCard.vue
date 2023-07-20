@@ -12,7 +12,8 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeMount, onMounted, onUnmounted, ref } from 'vue';
+import { readFileSync } from 'fs';
+import { HTMLAttributes, onBeforeMount, onMounted, onUnmounted, ref } from 'vue';
 
 
 const props = defineProps<{
@@ -25,8 +26,11 @@ const handleResize = () => {
     if(window.innerWidth < 700) {
         str.value += 'height:' + window.innerWidth * 1.333 + 'px;'
     }
- 	else {
-        str.value += 'height:' + window.innerWidth / 1.78 + 'px;'
+ 	else if(window.innerWidth < 1920) {
+        str.value += 'height:' + (window.innerWidth - 256) / 1.78 + 'px;'
+    }
+    else {
+        str.value += 'height:' + (window.innerWidth - 480) / 1.78 + 'px;'
     }
 }
 

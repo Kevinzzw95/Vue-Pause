@@ -1,6 +1,6 @@
 
 <template>
-  <div class="flex relative flex-col min-h-screen bg-base-100">
+  <div class="flex relative flex-col min-h-screen bg-base-100 overflow-hidden;">
     <!-- <the-header /> -->
     <site-navigation :key="route.fullPath"/>
     <div className="divider m-0 bg-deep overflow-hidden"></div> 

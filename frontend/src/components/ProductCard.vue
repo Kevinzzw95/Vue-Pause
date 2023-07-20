@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="relative flex card card-compact shadow-lg max-w-[18rem] bg-base hover:scale-105 transition duration-500 cursor-pointer object-cover">
+        <div class="relative flex card card-compact shadow-lg max-w-[18rem] bg-base object-cover">
             <button @click="showDetails()" class="self-center w-full">
                 <figure><img :src=item.imageUrl[0] alt="Puzzle" class="object-cover w-full h-[13rem] md:h-[18rem] max-h-[20rem]"/></figure>
                 <!-- <img v-if="!item.active" src="../assets/coming-soon.png" class="absolute top-[25%] md:left-10 w-[12rem]" /> -->

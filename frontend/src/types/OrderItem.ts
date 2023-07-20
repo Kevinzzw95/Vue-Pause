@@ -7,6 +7,7 @@ export class OrderItem {
     productId: string;
     name: string;
     sku: string;
+    pieces: number;
 
     constructor(cartItem: CartItem) {
         this.imageUrl = cartItem.imageUrl;
@@ -15,5 +16,6 @@ export class OrderItem {
         this.productId = cartItem.id;
         this.name = cartItem.name;
         this.sku = cartItem.sku;
+        this.pieces = cartItem.pieces
     }
 }
