@@ -58,10 +58,6 @@ onMounted(() => {
   
 });
 
-onBeforeUpdate(() => {
-      detail_modal.value = undefined;
-});
-
 const showDetails = () => {
     isOpen.value = true;
     detail_modal.value.showModal();
