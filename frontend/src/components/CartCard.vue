@@ -10,7 +10,7 @@
                     <h1 class="md:text-2xl font-bold underline text-left">{{ item.name.split(/ (.*)/)[1] }}</h1>
                 </button>
                 <dialog ref="detail_modal" class="modal modal-bottom sm:modal-middle">
-                    <form v-if="isOpen" method="dialog" class="modal-box relative min-w-[90%] h-[75%]">
+                    <form method="dialog" class="modal-box relative min-w-[90%] h-[75%]">
                         <product-details :item="curProduct!" :is-open="isOpen" v-if="curProduct != undefined"/>
                     </form>
                     <form v-if="isOpen" method="dialog" class="modal-backdrop">
@@ -98,18 +98,18 @@ const onClickPlus = () => {
     }
 }
 
-const detail_modal = ref<HTMLDialogElement>()
+const detail_modal = ref<HTMLDialogElement | null>(null)
 
 onMounted(() => {
   
 })
 
-onBeforeUpdate(() => {
+/* onBeforeUpdate(() => {
       detail_modal.value = undefined;
-});
+}); */
 
 const showDetails = () => {
     isOpen.value = true;
-    detail_modal.value?.showModal();
+    detail_modal.value!.showModal();
 }
 </script>
