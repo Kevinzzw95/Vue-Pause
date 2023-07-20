@@ -26,7 +26,7 @@
                 <div class="collapse-title text-xl font-medium">
                     Shipping
                 </div>
-                <div class="collapse-content"> 
+                <div class="p-5"> 
                     <div class="grid grid-rows-2"> 
                         <p>hello</p>
                         <router-link to="/checkout/shipping" class="place-self-end">
