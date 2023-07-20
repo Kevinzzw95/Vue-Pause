@@ -31,7 +31,7 @@
                     <label class="modal-backdrop" :for="item.sku">Close</label>
                 </form> -->
 
-                <dialog :ref="item.sku" class="modal modal-bottom sm:modal-middle" :id="item.sku">
+                <dialog :ref="(el) => modal = el" class="modal modal-bottom sm:modal-middle" :id="item.sku">
                     <form method="dialog" class="modal-box relative min-w-[80%] h-[75%] 2xl:min-w-[70%]">
                         <product-details :item="item" :key="item.sku"/>
 
@@ -67,13 +67,13 @@ onMounted(() => {
   
 });
 
-const instance = getCurrentInstance();
+const modal = ref();
 /* onBeforeUpdate(() => {
       detail_modal.value = undefined;
 }); */
 
 const showDetails = (sku: string) => {
     isOpen.value = true;
-    (instance!.refs.sku as Ref<HTMLDialogElement>).value!.showModal();
+    modal.value!.showModal();
 }
 </script>
