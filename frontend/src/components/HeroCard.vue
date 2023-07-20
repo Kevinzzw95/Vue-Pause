@@ -25,7 +25,7 @@ const handleResize = () => {
     if(window.innerWidth < 700) {
         str.value += 'height:' + window.innerWidth * 1.333 + 'px;'
     }
- 	else if(window.innerWidth < 1920) {
+ 	else if(window.innerWidth < 1536) {
         str.value += 'height:' + (window.innerWidth - 256) / 1.78 + 'px;'
     }
     else {

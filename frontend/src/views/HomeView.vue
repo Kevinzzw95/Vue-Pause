@@ -26,7 +26,21 @@
 		<!-- End Slogan Section -->
 
 		<div class="py-2">
-			<event-slider>
+			<div class="flex flex-col w-full md:flex-row gap-4 font-default pt-5">
+				<div class="basis-1/2 bg-base rounded-lg p-5">
+					<h1 class="text-lg font-bold">Shipping</h1>
+					<p>Free shipping on orders:</p>
+					<p>over $95 in Scarborough/Markham/Richmond HIill/Vaughan/North York;</p>
+					<p>over $150 Canada wide;</p>
+					<p>over $180 worldwide.</p>
+				</div>
+				<div class="basis-1/2 bg-base rounded-lg p-5">
+					<h1 class="text-lg font-bold">Happy puzzle month!</h1>
+					<p>Order any 1000 pieces puzzle + frame</p> 
+					<p>Get $5 OFF (*^▽^*)</p> 
+				</div>
+			</div>
+			<!-- <event-slider>
 				<Slide key="1">
 					<event-card src="/img/events/events-1.jpg" />
 				</Slide>
@@ -39,7 +53,8 @@
 				<Slide key="4">
 					<event-card src="/img/events/events-2.jpg" />
 				</Slide>
-			</event-slider>
+			</event-slider> -->
+
 		</div>
 	</div>
 	
@@ -83,7 +98,7 @@ onUnmounted(() => {
 
 <style scope>
 .slogan {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/stats-bg.jpg") center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/stats-bg.png") center center;
   background-size: cover;
 }
 

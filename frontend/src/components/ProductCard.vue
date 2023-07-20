@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="relative flex card card-compact shadow-lg max-w-[18rem] bg-base object-cover">
-            <label for="my_modal" @click="showDetails()" class="self-center w-full">
+            <label :for="item.sku" @click="showDetails()" class="self-center w-full">
                 <figure><img :src=item.imageUrl[0] alt="Puzzle" class="object-cover w-full h-[13rem] md:h-[18rem] max-h-[20rem]"/></figure>
                 <!-- <img v-if="!item.active" src="../assets/coming-soon.png" class="absolute top-[25%] md:left-10 w-[12rem]" /> -->
                 <!-- <img v-if="item.unitsInStock === 0" src="../assets/sold-out.png" class="absolute top-[25%] md:left-10 w-[12rem]" /> -->
@@ -11,22 +11,22 @@
             </div>
             <div class="grid grid-rows-4 h-[4.5rem] md:h-[5rem] p-1 font-primary">
                 <!-- <router-link :to="'/details/' + item.id" class="self-center"> -->
-                <label for="my_modal" @click="showDetails()" class="self-start items-center row-span-3">
-                    <h2 class="text-xs md:text-md flex flex-col font-bold">
+                <label :for="item.sku" @click="showDetails()" class="self-start items-center row-span-3">
+                    <h2 class="text-xs md:text-md flex flex-col font-bold items-center">
                         <p>{{ item.name.split(" ")[0] }}</p>
                         <p>{{ item.name.split(/ (.*)/)[1] }}</p>
                     <!-- <div class="badge badge-secondary">NEW</div> -->
                     </h2>
                 </label>
                     
-                <input type="checkbox" id="my_modal" class="modal-toggle" />
+                <input type="checkbox" :id="item.sku" class="modal-toggle" />
                 <!-- </router-link> -->
                 <div class="modal modal-bottom sm:modal-middle">
                     <div v-if="isOpen" class="modal-box relative min-w-[90%] h-[75%]">
                         <product-details :item="item" :key="item.sku"/>
                         
                     </div>
-                    <label class="modal-backdrop" for="my_modal">Close</label>
+                    <label class="modal-backdrop" :for="item.sku">Close</label>
                 </div>
 			
                 <div class="flex flex-row justify-end font-default text-xs space-x-1">
