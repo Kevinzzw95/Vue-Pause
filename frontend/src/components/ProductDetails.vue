@@ -23,8 +23,8 @@
             <div class="col-span-4 space-y-8 pt-[3rem] pl-3">
                 <h1 class="text-xl lg:text-3xl font-bold">{{ item.name }}</h1>
                 <div>
-                    <h1 class="text-lg">Brand: {{ brand?.name }}</h1>
-                    <h1 class="text-lg">Pieces: {{ item?.pieces }} Pieces</h1>
+                    <h1 v-if="item.sku[0] === 'P'" class="text-lg">Brand: {{ brand?.name }}</h1>
+                    <h1 v-if="item.sku[0] === 'P'" class="text-lg">Pieces: {{ item?.pieces }} Pieces</h1>
                     <h1 class="text-lg">Dimension(cm): {{ item.dimension }}</h1>
                 </div>
                 

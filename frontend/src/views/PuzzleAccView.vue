@@ -12,7 +12,7 @@
             </div>
         </div>
         
-        <div class="container px-3 md:px-16 2xl:px-32 min-h-screen space-y-5">
+        <div class="container p-3 md:px-16 2xl:px-32 min-h-screen space-y-5">
             <div class="container">
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
                     <product-card :item="product" v-for="product in products" :key="product.id"/>
