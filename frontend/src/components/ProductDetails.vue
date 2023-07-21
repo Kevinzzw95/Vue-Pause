@@ -83,9 +83,10 @@ const currPic = ref(0);
 const quantity = ref(1);
 const addToCart = ref(false);
 const alert = ref(false);
-const brand = ref<Brand>()
+const brand = ref<Brand>();
+const unitsInStock = ref<number>();
 
-const getData = (async() => {
+const getBrand = (async() => {
     if(props.item.sku[0] === 'P') {
         try {
             await axios.get<Brand>(`/puzzles/${props.item.id}/brand`).then(
@@ -94,6 +95,16 @@ const getData = (async() => {
         } catch (error) {
             throw error
         }
+    }
+});
+
+const getStock = (async() => {
+    try {
+        await axios.get<number>(`/searchViews/search/getStock?sku=${props.item.sku}`).then(
+            (res) => unitsInStock.value = res.data
+        )
+    } catch (error) {
+        throw error
     }
 });
 
@@ -108,13 +119,14 @@ const onClickMinus = () => {
 }
 
 const onClickPlus = () => {
-    //if(quantity.value < props.item.unitsInStock) {
+    //if(quantity.value < unitsInStock.value) {
         quantity.value++;
     //}
 }
 
 const addProduct = (product: Product) => {
-    if(quantity.value + cartItemQauntity.value > props.item.unitsInStock) {
+    getStock();
+    if(quantity.value + cartItemQauntity.value > unitsInStock.value) {
         alert.value = true;
     }
     else {
@@ -128,7 +140,8 @@ const addProduct = (product: Product) => {
 }
 
 onMounted(() => {
-    getData();
+    getStock();
+    getBrand();
 });
 
 </script>

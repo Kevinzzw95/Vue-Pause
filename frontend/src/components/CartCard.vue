@@ -8,24 +8,26 @@
             </div>
             <label class="modal-backdrop" :for="item.sku">Close</label>
         </form>
-        <div class="flex flex-row space-x-3 lg:space-x-10 font-default">
-            <div class="p-2 basis-1/2 max-w-[13rem] max-h-[15rem]">
-                <img :src=item.imageUrl class=""/>
+        <div class="flex flex-row space-x-2 md:space-x-3 lg:space-x-10 font-default">
+            <div class="p-2 basis-2/3 max-w-[15rem] max-h-[18rem]">
+                <img :src="item.imageUrl" class=""/>
             </div>
-            <div class="space-y-5 p-2">
-                <label :for="item.sku" @click="showDetails()" class="self-center w-full">
-                    <h1 class="md:text-2xl font-bold underline text-left">{{ item.name.split(" ")[0] }}</h1>
-                    <h1 class="md:text-2xl font-bold underline text-left">{{ item.name.split(/ (.*)/)[1] }}</h1>
+            <div class="basis-1/3 md:space-y-3 p-2">
+                <label :for="item.sku" @click="showDetails()" class="text-sm self-center w-full">
+                    <h1 class="md:text-xl font-bold underline text-left">{{ item.name.split(" ")[0] }}</h1>
+                    <h1 class="md:text-xl font-bold underline text-left">{{ item.name.split(/ (.*)/)[1] }}</h1>
                 </label>
             
-			
-                <p class="md:text-lg">Brand: {{ brand?.name }}</p>
-                <p class="md:text-lg">Pieces: {{ item.pieces }}</p>
-                <p class="md:text-lg">Unit Price: C${{ item.unitPrice }}</p>
-                <div class="flex flex-row space-x-2 items-center">
+                <div class="text-sm">
+                    <p class="md:text-lg">Brand: {{ brand?.name }}</p>
+                    <p class="md:text-lg">Pieces: {{ item.pieces }}</p>
+                    <p class="md:text-lg">Unit Price: C${{ item.unitPrice }}</p>
+                </div>
+                
+                <div class="flex flex-row md:space-x-2 items-center">
                     <div class="join">
                         <button class="btn btn-xs rounded-r-sm" @click="onClickMinus()">-</button>
-                        <input type="text" class="input input-bordered input-xs w-[3rem] rounded-none text-center" v-model="quantity"/>
+                        <input type="text" class="input input-bordered input-xs w-[3rem] rounded-none text-center" :input="quantity" :value="latestQnt"/>
                         <button class="btn btn-xs rounded-l-sm" @click="onClickPlus()">+</button>
                     </div>
                     <div class="btn btn-link text-black">
@@ -42,10 +44,10 @@
 <script setup lang="ts">
 import { useStore } from '@/store';
 import { CartItem } from '@/types/CartItem';
-import { ref, watch, onMounted, onBeforeUpdate, onBeforeMount } from 'vue'
+import { ref, watch, onMounted, onBeforeMount, onUpdated, computed } from 'vue'
 import ProductDetails from './ProductDetails.vue'
 import { TrashIcon } from '@heroicons/vue/24/outline'
-import type { Product } from '@/types/Product';
+import { Product } from '@/types/Product';
 import axios from 'axios';
 import type { Brand } from '@/types/Brand';
 
@@ -53,55 +55,84 @@ const props = defineProps<{
   item: CartItem
 }>()
 
-const quantity = ref(props.item.quantity)
+const latestQnt = computed(() => store.getters['cart/findCartQauntity'](props.item.sku));
+const quantity = ref(1)
 const store = useStore();
-const inStock = ref(5);
 const curProduct = ref<Product>();
 const brand = ref<Brand>();
 const isOpen = ref(false);
+const unitsInStock = ref<number>();
 
-const getData = async() => {
+const getBrand = async() => {
+    if(props.item.sku[0] === 'P') {
+        try {
+            await axios.get<Brand>(`/puzzles/${props.item.id}/brand`).then(
+                (res) => brand.value = res.data
+            );
+        } catch (error) {
+            throw error
+        }
+    }
+    
+}
+
+const getProduct = async() => {
     try {
-        await axios.get<Brand>(`/puzzles/${props.item.id}/brand`).then(
-            (res) => brand.value = res.data
-        )
-        await axios.get<Product>(`/puzzles/search/findById?id=${props.item.id}`).then(
+        await axios.get<Product>(`/searchViews/search/findBySku?sku=${props.item.sku}`).then(
             (res) => curProduct.value = res.data
+        );
+    } catch (error) {
+        throw error
+    }
+    
+}
+
+const getStock = (async() => {
+    try {
+        await axios.get<number>(`/searchViews/search/getStock?sku=${props.item.sku}`).then(
+            (res) => unitsInStock.value = res.data
         )
     } catch (error) {
         throw error
     }
-}
-
+});
 
 onBeforeMount(() => {
-    getData();
+    getBrand();
+    getProduct();
 })
 
+onMounted(() => {
+    quantity.value = store.getters['cart/findCartQauntity'](props.item.sku)
+})
+
+onUpdated(() => {
+    quantity.value = latestQnt.value
+})
 
 watch(quantity, () => {
+    console.log("watch")
     if(quantity.value > 0) {
-        store.commit('cart/setItemQuantity', { id: props.item.id, quantity: quantity.value })
+        store.commit('cart/setItemQuantity', { sku: props.item.sku, quantity: quantity.value })
     }
     else if(quantity.value === 0) {
-        store.commit('cart/removeItemFromCart', props.item.id)
+        store.commit('cart/removeItemFromCart', props.item.sku)
     }
-    
 })
 
 const onClickMinus = () => {
-    quantity.value--
+    quantity.value--;
+    
 }
 
-const onClickPlus = () => {
-    if(quantity.value < inStock.value) {
+const onClickPlus = async() => {
+    console.log("get")
+    console.log(quantity.value)
+    await getStock()
+    if(quantity.value < unitsInStock.value) {
         quantity.value++
     }
 }
-
-onMounted(() => {
-  
-})
 
 /* onBeforeUpdate(() => {
       detail_modal.value = undefined;

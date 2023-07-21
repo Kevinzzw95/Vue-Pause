@@ -10,6 +10,7 @@ export interface RootState {
     purchase: PurchaseState;
     brand: BrandState;
 }
+  
 
 export const key: InjectionKey<Store<RootState>> = Symbol()
 

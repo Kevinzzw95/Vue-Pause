@@ -3,6 +3,7 @@ import {Product} from "@/types/Product"
 import type {RootState} from ".."
 import axios from "axios"
 import type { PlaceOrderResponse } from "@/types/RestData"
+import { dispatch } from "rxjs/internal/observable/pairs"
 
 export interface CartState {
     items: CartItem[],
@@ -30,10 +31,10 @@ const getters = {
         return state.checkoutStatus;
     },
 
-    findCartQauntity: (state: CartState) => (id: string) => {
+    findCartQauntity: (state: CartState) => (sku: string) => {
         var res = 0;
         state.items.forEach((item) => {
-            if(item.id === id) {
+            if(item.sku === sku) {
                 res = item.quantity;
                 return res;
             }
@@ -90,13 +91,13 @@ const actions = {
     }: { product: Product, qnt: number }) {
         commit('setCheckoutStatus', null);
         if (product.unitsInStock >= qnt) {
-            const cartItem = state.items.find((item: CartItem) => item.id === product.id)
+            const cartItem = state.items.find((item: CartItem) => item.sku === product.sku)
             if (!cartItem) {
                 commit('pushProductToCart', {product: product, quantity: qnt})
             } else {
                 if (product.unitsInStock >= cartItem.quantity + qnt) {
                     const newQnt = qnt + cartItem.quantity;
-                    commit('setItemQuantity', {id: cartItem.id, quantity: newQnt})
+                    commit('setItemQuantity', {sku: cartItem.sku, quantity: newQnt})
                 }
 
             }
@@ -104,6 +105,16 @@ const actions = {
             //commit('products/decrementProductInventory', { id: product.id }, { root: true })
         }
     },
+
+    async calculateSavings({state, commit}: { state: CartState, commit: Function }) {
+        try {
+            await axios.post<number>('/sales', state.items).then(
+                (res) => commit('setSavings', res.data)
+            );
+        } catch (error) {
+            throw error
+        }
+    }
 
 }
 
@@ -123,14 +134,14 @@ const mutations = {
         }
     },
 
-    removeItemFromCart(state: CartState, id: string ) {
-        state.items = state.items.filter((item) => item.id !== id);
+    removeItemFromCart(state: CartState, sku: string ) {
+        state.items = state.items.filter((item) => item.sku !== sku);
         updateLocalStorage(state.items);
     },
 
-    setItemQuantity(state: CartState, {id, quantity}: { id: string, quantity: number }) {
+    setItemQuantity(state: CartState, {sku, quantity}: { sku: string, quantity: number }) {
         
-        const cartItem = state.items.find(item => item.id === id)!
+        const cartItem = state.items.find(item => item.sku === sku)!
         cartItem.quantity = quantity;
         updateLocalStorage(state.items);
     },
@@ -144,8 +155,8 @@ const mutations = {
         state.checkoutStatus = status
     },
 
-    addSavings(state: CartState, saving: number) {
-        state.savings += saving;
+    setSavings(state: CartState, saving: number) {
+        state.savings = saving;
     }
 }
 

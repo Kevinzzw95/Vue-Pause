@@ -123,6 +123,7 @@
 import { Customer } from '@/types/Customer';
 import { Order } from '@/types/Order';
 import { Purchase } from '@/types/Purchase';
+import { ShippingInfo } from '@/types/ShippingInfo';
 import { onMounted, onUpdated, ref, watch } from 'vue';
 import { computed } from 'vue'
 import { useStore } from '@/store';
@@ -174,16 +175,24 @@ watch( [email, phone, firstName, lastName], () => {
 
 })
 
-watch([zipCode, province], () => {
-    validZipCode.value = ZIPCODE_REGEX.test(zipCode.value!);
-    if(province.value && validZipCode.value) {
-        axios.post<number>("/checkout/shipping", {province: province.value, postCode: zipCode.value, totalPrice: totalPrice, totalQuantity: totalQuantity}).then(
+const getShippingFee = () => {
+    try {
+        axios.post<number>("/checkout/shipping", new ShippingInfo(province.value, zipCode.value, totalPrice.value, totalQuantity.value)).then(
             res => {
                 shippingFee.value = res.data;
                 emit('shipping', res.data);
             },
             err => console.log(err)
         )
+    } catch (error) {
+        throw error
+    }
+}
+
+watch([() => zipCode.value, () => province.value], () => {
+    validZipCode.value = ZIPCODE_REGEX.test(zipCode.value!);
+    if(province.value && validZipCode.value) {
+        getShippingFee();
         
     }
     
@@ -225,5 +234,11 @@ const createPurchase = () => {
 
     store.commit('purchase/setPurchase', purchase);
 }
+
+onMounted(() => {
+    if(province.value && validZipCode.value) {
+        getShippingFee();
+    }
+})
 </script>
 

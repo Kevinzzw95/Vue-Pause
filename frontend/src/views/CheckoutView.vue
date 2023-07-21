@@ -26,7 +26,7 @@
                                 <h1 :class="[$route.name === 'shipping' ? '' : 'hidden']">Shipping: {{ shippingFee }}</h1>
                                 <h1 :class="[$route.name === 'confirmation' ? '' : 'hidden']">Shipping: {{ getPurchase.order?.shippingFee }}</h1>
                                 <h1>Savings: {{ savings }}</h1>
-                                <h1>Subtotal: {{ totalPrice - savings }}</h1>
+                                <h1>Subtotal: {{ totalPrice - savings + shippingFee }}</h1>
                             </div>
                             
                         </div>
@@ -66,8 +66,8 @@ const getPurchase = computed((): Purchase => store.getters['purchase/getPurchase
 const cartItems = computed((): CartItem[] => store.getters['cart/cartProducts'])
 const totalPrice = computed(() => store.getters['cart/cartTotalPrice'])
 const totalQuantity = computed(() => store.getters['cart/cartTotalQuantity'])
-const shippingFee = ref();
-const savings = computed(() => store.getters['cart/getSavings']).value;
+const shippingFee = ref(0);
+const savings = computed(() => store.getters['cart/getSavings'])
 
 const route = useRoute();
 

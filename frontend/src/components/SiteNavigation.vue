@@ -6,7 +6,7 @@
                 <label @click="" tabindex="0" class="btn btn-ghost btn-circle">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                 </label>
-                <ul tabindex="0" class="dropdown-content z-50 menu mt-3 p-2 shadow bg-deep w-65 text-white font-primary rounded-md">
+                <ul tabindex="0" class="dropdown-content z-50 menu mt-3 p-2 shadow bg-deep w-65 text-white font-primary rounded-xl">
                     <router-link to="/puzzles/1000">
                         <li><a>拼图 PUZZLES</a></li>
                     </router-link>
@@ -66,7 +66,7 @@
                     </ul>
                 </div>
             </div>
-            <router-link to="/cart">
+            <div class="dropdown dropdown-end">
                 <label tabindex="0" class="btn btn-ghost btn-circle">
                     
                         <div class="indicator">
@@ -74,7 +74,42 @@
                             <span class="badge badge-sm indicator-item">{{ totalQuantity }}</span>
                         </div>
                 </label>
-            </router-link>
+                <div tabindex="0" class="mt-3 z-40 card card-compact dropdown-content w-[15rem] bg-base-100 shadow rounded-xl">
+                    <div class="card-body">
+                    <span class="font-bold text-lg">{{ totalQuantity }} Items</span>
+                    <span class="text-primary">Savings: C${{ savings }}</span>
+                    <span class="text-primary">Subtotal: C${{ totalPrice - savings }}</span>
+                    <div class="overflow-x-auto">
+                        <table class="table">
+                            <tbody>
+                            <!-- row 1 -->
+                            <tr v-for="cartItem in cartItems">
+                                <td class="p-2">
+                                    <div class="flex items-center space-x-1">
+                                        <div class="avatar">
+                                        <div class="mask mask-squircle w-12 h-12">
+                                            <img :src="cartItem.imageUrl" alt="CartItem" />
+                                        </div>
+                                        </div>
+                                        <div>
+                                        <div class="font-bold">{{ cartItem.name.split(" ")[0] }}</div>
+                                        <div class="font-bold">{{ cartItem.name.split(/ (.*)/)[1] }}</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="p-2">
+                                    <div class="text-sm opacity-50">C${{ cartItem.unitPrice }} x{{ cartItem.quantity }}</div>
+                                </td>
+                            </tr>
+                            </tbody> 
+                        </table>
+                    </div>
+                    <div class="card-actions">
+                        <button @click="$router.push('/cart')" class="btn text-white btn-sm md:btn-md btn-block bg-deep">View cart</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -83,10 +118,17 @@
 <script setup lang="ts">
 import { ShoppingBagIcon } from '@heroicons/vue/24/outline'
 import { useStore } from '@/store';
-import { computed, ref } from 'vue';
+import { computed, onBeforeUpdate, onMounted, onUpdated, ref, watch } from 'vue';
 import router from '@/router';
+import { CartItem } from '../types/CartItem';
+import cart from '../store/modules/cart';
 
-const store = useStore()
+const store = useStore();
+
+const totalPrice = computed(() => store.getters['cart/cartTotalPrice']);
+const totalQuantity = computed(() => store.getters['cart/cartTotalQuantity']);
+const cartItems = computed((): CartItem[] => store.getters['cart/cartProducts']);
+const savings = computed(() => store.getters['cart/getSavings']);
 
 const keywords = ref<string>();
 
@@ -97,5 +139,7 @@ const search = (target: string) => {
     
 }
 
-const totalQuantity = computed(() => store.getters['cart/cartTotalQuantity'])
+onBeforeUpdate(() => {
+    store.dispatch('cart/calculateSavings')
+})
 </script>

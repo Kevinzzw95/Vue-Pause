@@ -18,7 +18,7 @@
                 <span class="label-text">Choose A Time*</span>
             </label>
             <select v-model="time" class="select select-bordered w-full max-w-full">
-                <option disabled selected>Normal</option>
+                <option disabled selected>Please choose a time</option>
                 <option v-if="!isSat">7PM at 330 Hwy 7, Richmond Hill</option>
                 <option v-if="isSat">4PM at 3255 Hwy 7, Markham</option>
                 <option v-if="isSat">6PM at 330 Hwy 7, Richmond Hill</option>
