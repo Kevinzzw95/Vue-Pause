@@ -61,7 +61,7 @@ const store = useStore();
 const curProduct = ref<Product>();
 const brand = ref<Brand>();
 const isOpen = ref(false);
-const unitsInStock = ref<number>();
+const unitsInStock = ref<number>(0);
 
 const getBrand = async() => {
     if(props.item.sku[0] === 'P') {
@@ -98,6 +98,7 @@ const getStock = (async() => {
 });
 
 onBeforeMount(() => {
+    getStock();
     getBrand();
     getProduct();
 })

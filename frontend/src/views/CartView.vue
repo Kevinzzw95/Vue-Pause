@@ -35,10 +35,11 @@ import { computed, onBeforeMount, onBeforeUpdate, onMounted, onUpdated, ref, wat
 import CartCard from '../components/CartCard.vue'
 import { useStore } from '@/store';
 import axios from 'axios';
-import { GetResponseSearchView } from '../types/RestData';
+import type { GetResponseSearchView } from '../types/RestData';
 import ProductCard from '../components/ProductCard.vue';
+import { Product } from '../types/Product';
 
-const recommendation = ref([]);
+const recommendation = ref<Product[]>([]);
 
 const cartItems = computed((): CartItem[] => store.getters['cart/cartProducts'])
 const checkoutStatus = computed(() => store.state.cart.checkoutStatus)
@@ -49,7 +50,7 @@ const savings = computed(() => store.getters['cart/getSavings']);
 const store = useStore();
 
 onBeforeMount(() => {
-    var skuList = [];
+    var skuList: string[] = [];
     const Items = computed((): CartItem[] => store.getters['cart/cartProducts'])
     Items.value.forEach(item => {
         skuList.push(item.sku);

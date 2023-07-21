@@ -84,7 +84,7 @@ const quantity = ref(1);
 const addToCart = ref(false);
 const alert = ref(false);
 const brand = ref<Brand>();
-const unitsInStock = ref<number>();
+const unitsInStock = ref<number>(props.item.unitsInStock);
 
 const getBrand = (async() => {
     if(props.item.sku[0] === 'P') {

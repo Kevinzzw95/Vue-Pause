@@ -177,7 +177,7 @@ watch( [email, phone, firstName, lastName], () => {
 
 const getShippingFee = () => {
     try {
-        axios.post<number>("/checkout/shipping", new ShippingInfo(province.value, zipCode.value, totalPrice.value, totalQuantity.value)).then(
+        axios.post<number>("/checkout/shipping", new ShippingInfo(province.value!, zipCode.value!, totalPrice.value!, totalQuantity.value!)).then(
             res => {
                 shippingFee.value = res.data;
                 emit('shipping', res.data);
