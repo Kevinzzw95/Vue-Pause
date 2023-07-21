@@ -3,7 +3,6 @@ import {Product} from "@/types/Product"
 import type {RootState} from ".."
 import axios from "axios"
 import type { PlaceOrderResponse } from "@/types/RestData"
-import { dispatch } from "rxjs/internal/observable/pairs"
 
 export interface CartState {
     items: CartItem[],
