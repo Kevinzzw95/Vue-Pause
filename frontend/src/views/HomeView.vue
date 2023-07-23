@@ -5,7 +5,7 @@
 			<!-- <video-player /> -->
 			<HeroSlider>
 				<Slide v-for="slide in 4" :key="hero_img[slide-1]">
-					<HeroCard :src="hero_img[slide-1]"/>
+					<HeroCard :src="hero_img[slide-1]" :url="'/search?keywords=' + hero_keywords[slide-1] + '&stock=true'"/>
 				</Slide>
 			</HeroSlider>
 		</div>
@@ -25,12 +25,12 @@
 		</div>
 		<!-- End Slogan Section -->
 
-		<div class="py-2">
-			<div class="flex flex-col w-full md:flex-row gap-2 md:gap-4 font-default">
-				<div class="basis-1/2 bg-base rounded-lg p-5">
+		<div class="md:py-2">
+			<div class="flex flex-row md:gap-4 font-default">
+				<div class="basis-1/2 bg-base md:rounded-lg p-2 md:p-5">
 					<img src="/img/event-1.jpg" />
 				</div>
-				<div class="basis-1/2 bg-base rounded-lg p-5">
+				<div class="basis-1/2 bg-base md:rounded-lg p-2 md:p-5">
 					<img src="/img/event-2.jpg" />
 				</div>
 			</div>
@@ -65,6 +65,7 @@ import HeroSlider from '../components/HeroSlider.vue';
 import { onBeforeMount, onMounted, onUnmounted, ref } from 'vue';
 
 const hero_img = ref(['', '', '', '']);
+const hero_keywords = ['Pixel Pieces', '六米大象', 'Seren Art']
 
 const handleResize = () => {
 	for(var i = 0; i < 4; ++i) {

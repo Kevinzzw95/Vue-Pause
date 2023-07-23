@@ -24,7 +24,7 @@
                 <!-- <router-link :to="'/details/' + item.id" class="self-center"> -->
                 <label :for="randomId" @click="showDetails()" class="self-start items-center row-span-3 bg-transparent">
                 <!-- <button @click="showDetails(item.sku)" class="self-start items-center row-span-3">    -->
-                    <h2 class="text-xs md:text-md flex flex-col font-bold items-center">
+                    <h2 class="text-xs md:text-md flex flex-col font-bold text-center">
                         <p>{{ item.name.split(" ")[0] }}</p>
                         <p>{{ item.name.split(/ (.*)/)[1] }}</p>
                     <!-- <div class="badge badge-secondary">NEW</div> -->

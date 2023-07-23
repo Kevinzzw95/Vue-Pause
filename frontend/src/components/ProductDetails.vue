@@ -3,24 +3,24 @@
         <div class="grid grid-cols-1 lg:grid-cols-7 lg:gap-4 lg:space-x-16">
             <div class="row-span-2 col-span-3 max-h-[40rem]">
                 <div class="relative flex flex-col-reverse lg:flex-row lg:gap-4">
-                    <div class="flex flex-row w-full lg:flex-col lg:w-[4rem] justify-center lg:gap-4">
+                    <div class="flex flex-row w-full lg:flex-col lg:w-[5rem] justify-center gap-2 lg:gap-4 p-2">
                         <div v-for="(imgUrl, index) in item.imageUrl" :key="index" class="flex flex-col py-2 gap-3">
-                            <a @click="currPic = index" class="btn btn-link w-15 h-20 p-0">
-                                <img :src="imgUrl" class="object-cover w-20 h-20 rounded-lg self-center"/>
+                            <a @click="currPic = index" class="btn btn-link w-[4rem] h-20 p-0">
+                                <img :src="imgUrl" class="object-cover w-16 h-20 md:w-[4rem] md:h-24 rounded-lg self-center"/>
                             </a> 
                         </div>
                     </div>
-                    <div class="self-center py-5">
+                    <div class="self-center md:py-5">
                         <div v-for="(imgUrl, index) in item.imageUrl" :key="index" class="items-center">
                             <div v-if="currPic === index" class="">
-                                <img :src="imgUrl" class="object-contain w-96 rounded-lg" />
+                                <img :src="imgUrl" class="object-cover h-[25rem] w-[25rem] rounded-xl" />
                             </div> 
                         </div>  
                     </div>
                     
                 </div>
             </div>
-            <div class="col-span-4 space-y-8 pt-[3rem] pl-3">
+            <div class="col-span-4 space-y-8 pt-[1rem] md:pt-[3rem] pl-3">
                 <h1 class="text-xl lg:text-3xl font-bold">{{ item.name }}</h1>
                 <div>
                     <h1 v-if="item.sku[0] === 'P'" class="text-lg">Brand: {{ brand?.name }}</h1>

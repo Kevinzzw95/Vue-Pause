@@ -1,11 +1,10 @@
 <template>
     <div class="hero bg-cover bg-center items-end" :style="str">
         <div class="hero-overlay bg-opacity-10"></div>
-        <div class="text-start sm:text-center text-neutral-content p-2">
+        <div class="flex sm:text-center text-neutral-content p-2 lg:pb-10">
             <div class="max-w-md">
-            <h1 class="mb-5 text-3xl font-bold">Hello there</h1>
-            <p class="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-            <button class="btn btn-primary">Shop Now</button>
+            <h1 class="mb-5 text-3xl lg:text-5xl font-bold text-white">New Arrival</h1>
+            <button @click="$router.push(url)" class="btn btn-base lg:btn-lg">Shop Now</button>
         </div>
   </div>
 </div>
@@ -16,7 +15,8 @@ import { onBeforeMount, onMounted, onUnmounted, ref } from 'vue';
 
 
 const props = defineProps<{
-    src: string
+    src: string;
+    url: string
 }>();
 
 const str = ref('background-image: url(' + props.src + ');')

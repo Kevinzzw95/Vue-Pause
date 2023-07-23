@@ -38,20 +38,23 @@
             </router-link>
         </div>
         <div class="navbar-end px-2">
-            <div class="drawer drawer-end z-40">
+            <label @click="openSearch = !openSearch" class="btn btn-ghost btn-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+            </label>
+
+            <!-- <div class="drawer drawer-end z-40">
                 <input id="my-drawer" type="checkbox" class="drawer-toggle" />
                 <div class="drawer-content flex justify-end">
-                    <!-- Page content here -->
                     <label for="my-drawer" class="btn btn-ghost btn-circle selection:drawer-button">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                     </label>
-                </div> 
+                </div>
                 <div class="drawer-side">
                     <label for="my-drawer" class="drawer-overlay"></label>
-                    <ul class="menu p-4 w-80 h-full bg-base-200 text-base-content space-y-2">
-                        <!-- Sidebar content here -->
-                            <div class="flex flex-row items-center space-x-2">
-                                <input @keyup.enter="search(keywords!)" v-model="keywords" type="text" placeholder="Search for products" class="input input-bordered input-deep w-full max-w-xs" />
+                    <ul class="menu p-4 w-screen h-full bg-base-200 text-base-content space-y-2 items-center">
+                        
+                            <div class="flex flex-row items-center space-x-2 self-center">
+                                <input @keyup.enter="search(keywords!)" v-model="keywords" type="text" placeholder="Search for products" class="input input-bordered input-deep w-full text-sm md:text-md max-w-xs" />
                                 <label for="my-drawer" class="btn btn-circle btn-ghost selection:drawer-button">✕</label>
                             </div>
                             <h1 class="font-bold pt-2">You may want</h1>
@@ -65,7 +68,7 @@
                     
                     </ul>
                 </div>
-            </div>
+            </div> -->
             <div class="dropdown dropdown-end">
                 <label tabindex="0" class="btn btn-ghost btn-circle">
                     
@@ -87,9 +90,9 @@
                                 <td class="p-2">
                                     <div class="flex items-center space-x-1">
                                         <div class="avatar">
-                                        <div class="mask mask-squircle w-12 h-12">
-                                            <img :src="cartItem.imageUrl" alt="CartItem" />
-                                        </div>
+                                            <div class="mask mask-square rounded-md w-12 h-12">
+                                                <img :src="cartItem.imageUrl" alt="CartItem" />
+                                            </div>
                                         </div>
                                         <div>
                                         <div class="font-bold">{{ cartItem.name.split(" ")[0] }}</div>
@@ -111,8 +114,18 @@
                 </div>
             </div>
         </div>
+        
     </div>
-
+    <div v-if="openSearch" class="grid grid-cols-3 space-x-2 self-center bg-base w-full p-2">
+        <div class="join self-center justify-self-center col-start-2 col-span-1">
+            <input @keyup.enter="search(keywords!)" v-model="keywords" type="text" placeholder="Search for products" class="input input-deep join-item text-sm md:text-md max-w-md md:w-[26rem] p-2" />
+            <label @click="search(keywords!)" class="btn bg-white join-item border-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-[2.5rem] w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+            </label>
+        </div>
+        <label @click="openSearch= false" class="btn btn-circle btn-ghost text-center col-start-3 justify-self-end">✕</label>
+    </div>
+    <div className="divider m-0 bg-deep overflow-hidden"></div> 
 </template>
 
 <script setup lang="ts">
@@ -129,6 +142,7 @@ const totalPrice = computed(() => store.getters['cart/cartTotalPrice']);
 const totalQuantity = computed(() => store.getters['cart/cartTotalQuantity']);
 const cartItems = computed((): CartItem[] => store.getters['cart/cartProducts']);
 const savings = computed(() => store.getters['cart/getSavings']);
+const openSearch = ref(false)
 
 const keywords = ref<string>();
 

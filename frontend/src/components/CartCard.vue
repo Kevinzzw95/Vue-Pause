@@ -10,10 +10,10 @@
         </form>
         <div class="flex flex-row space-x-2 md:space-x-3 lg:space-x-10 font-default">
             <div class="p-2 basis-2/3 max-w-[15rem] max-h-[18rem]">
-                <img :src="item.imageUrl" class=""/>
+                <img :src="item.imageUrl" class="rounded-lg"/>
             </div>
             <div class="basis-1/3 md:space-y-3 p-2">
-                <label :for="item.sku" @click="showDetails()" class="text-sm self-center w-full">
+                <label :for="item.sku" @click="showDetails()" class="text-md self-center w-full">
                     <h1 class="md:text-xl font-bold underline text-left">{{ item.name.split(" ")[0] }}</h1>
                     <h1 class="md:text-xl font-bold underline text-left">{{ item.name.split(/ (.*)/)[1] }}</h1>
                 </label>
