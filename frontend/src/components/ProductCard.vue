@@ -20,13 +20,13 @@
             <div v-if="item.special" class="absolute box rounded-r-md w-[5rem] h-8 top-3 bg-gradient-to-r from-green-400 to-blue-500 shadow-xl flex items-stretch p-2">
                 <h1 className="text-white text-xs self-center">{{ item.special }}</h1>
             </div>
-            <div class="grid grid-rows-4 h-[4.5rem] md:h-[5rem] p-1 font-primary">
+            <div class="grid grid-rows-4 h-[4.5rem] md:h-[5rem] p-1">
                 <!-- <router-link :to="'/details/' + item.id" class="self-center"> -->
                 <label :for="randomId" @click="showDetails()" class="self-start items-center row-span-3 bg-transparent">
                 <!-- <button @click="showDetails(item.sku)" class="self-start items-center row-span-3">    -->
-                    <h2 class="text-xs md:text-md flex flex-col font-bold text-center">
-                        <p>{{ item.name.split(" ")[0] }}</p>
-                        <p>{{ item.name.split(/ (.*)/)[1] }}</p>
+                    <h2 class="text-sm lg:text-lg flex flex-col font-bold text-center font-default">
+                        <p class="">{{ item.name.split(" ")[0] }}</p>
+                        <p class="">{{ item.name.split(/ (.*)/)[1] }}</p>
                     <!-- <div class="badge badge-secondary">NEW</div> -->
                     </h2>
                 </label>

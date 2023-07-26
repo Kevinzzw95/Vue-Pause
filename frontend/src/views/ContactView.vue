@@ -1,6 +1,6 @@
 <template>
   <div class="hero min-h-screen" style="background-image: url(/img/bg-contact.png);">
-    <div class="hero-overlay bg-opacity-30"></div>
+    <div class="hero-overlay bg-opacity-60 bg-zinc-500"></div>
     <div class="flex flex-col sm:flex-row text-center text-white w-[90%] justify-center">
       <div class="hero-content basis-1/3 flex flex-col w-full items-center content-center">
         <div class="">

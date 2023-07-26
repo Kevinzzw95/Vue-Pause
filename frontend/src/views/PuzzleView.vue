@@ -1,6 +1,6 @@
 <template>
-    <div >
-        <div class="sticky top-0 z-20 px-3 md:px-16 2xl:px-32  pb-2 glass">
+    <div class="relative">
+        <div class="sticky top-24 z-20 px-3 md:px-16 2xl:px-32  pb-2 glass">
             <div class="py-3">
                 <div class="tabs flex flex-row justify-center">
                     <a @click="() => curPieces = 500" :class="['tab','tab-bordered','tab-sm','sm:tab-md','sm:text-lg','basis-1/4', curPieces === 500 ?  ['tab-active','text-deep'] : '']">500 PC</a> 
@@ -59,7 +59,7 @@ const route = useRoute();
 const query = route.query;
 const products = ref<Product[]>();
 const brands = ref<Brand[]>();
-const curPage = ref(query.page ? query.page : 1);
+const curPage = ref(query.page ? Number(query.page) : 1);
 const curBrandId = ref(query.brand ? query.brand : undefined);
 const totalPages = ref<number>(0);
 const inStock = ref(query.stock ? query.stock : false);

@@ -77,7 +77,7 @@
                             <span class="badge badge-sm indicator-item">{{ totalQuantity }}</span>
                         </div>
                 </label>
-                <div tabindex="0" class="mt-3 z-40 card card-compact dropdown-content w-[15rem] bg-base-100 shadow rounded-xl">
+                <div tabindex="0" class="mt-3 z-40 card card-compact dropdown-content w-[16rem] lg:w-[20rem] bg-base-100 shadow rounded-xl font-default">
                     <div class="card-body">
                     <span class="font-bold text-lg">{{ totalQuantity }} Items</span>
                     <span class="text-primary">Savings: C${{ savings }}</span>
@@ -88,15 +88,15 @@
                             <!-- row 1 -->
                             <tr v-for="cartItem in cartItems">
                                 <td class="p-2">
-                                    <div class="flex items-center space-x-1">
-                                        <div class="avatar">
+                                    <div class="flex flex-row">
+                                        <div class="avatar self-start">
                                             <div class="mask mask-square rounded-md w-12 h-12">
                                                 <img :src="cartItem.imageUrl" alt="CartItem" />
                                             </div>
                                         </div>
-                                        <div>
-                                        <div class="font-bold">{{ cartItem.name.split(" ")[0] }}</div>
-                                        <div class="font-bold">{{ cartItem.name.split(/ (.*)/)[1] }}</div>
+                                        <div class="flex flex-col items-start pl-2 text-sm lg:text-md">
+                                            <p class="font-bold">{{ cartItem.name.split(" ")[0] }}</P>
+                                            <p class="font-bold">{{ cartItem.name.split(/ (.*)/)[1] }}</p>
                                         </div>
                                     </div>
                                 </td>
@@ -125,7 +125,7 @@
         </div>
         <label @click="openSearch= false" class="btn btn-circle btn-ghost text-center col-start-3 justify-self-end">✕</label>
     </div>
-    <div className="divider m-0 bg-deep overflow-hidden"></div> 
+    <div className="divider m-0 bg-deep overflow-hidden"></div>
 </template>
 
 <script setup lang="ts">

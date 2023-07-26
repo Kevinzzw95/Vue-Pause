@@ -33,7 +33,7 @@ module.exports = {
       center: true,
     },
     fontFamily: {
-      default: ["Inter, sans-serif"],
+      default: ["xxrt"],
       primary: ['modist'],
       secondary: ["Inter, sans-serif"],
     }

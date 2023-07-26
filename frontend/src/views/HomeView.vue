@@ -1,9 +1,14 @@
 <template>
-	<div class=" md:px-[8rem] 2xl:px-[15rem] md:py-[2rem]">
+	<div class="md:px-[8rem] 2xl:px-[15rem] md:py-[2rem]">
 		
 		<div class="min-w-full w-auto pb-2">
 			<!-- <video-player /> -->
-			<HeroSlider>
+			
+			<div class="lg:hidden">
+				<HeroCard v-for="slide in 4" :key="hero_img[slide-1]" :src="hero_img[slide-1]" :url="'/search?keywords=' + hero_keywords[slide-1] + '&stock=true'"/>
+			</div>
+			
+			<HeroSlider class="hidden lg:block">
 				<Slide v-for="slide in 4" :key="hero_img[slide-1]">
 					<HeroCard :src="hero_img[slide-1]" :url="'/search?keywords=' + hero_keywords[slide-1] + '&stock=true'"/>
 				</Slide>
@@ -11,7 +16,7 @@
 		</div>
 
 		<!-- ======= Slogan Section ======= -->
-		<div class="slogan p-6 lg:p-16">
+		<div class="slogan py-6 px-3 lg:p-16">
 			<div class="" data-aos="zoom-out">
 				<div class="flex flex-row justify-items-center">
 					<div class="stats-item text-center">
@@ -26,11 +31,11 @@
 		<!-- End Slogan Section -->
 
 		<div class="md:py-2">
-			<div class="flex flex-row md:gap-4 font-default">
-				<div class="basis-1/2 bg-base md:rounded-lg p-2 md:p-5">
+			<div class="flex flex-col lg:flex-row md:gap-4 font-default">
+				<div class="bg-base md:rounded-lg lg:basis-1/2 p-2 md:p-5">
 					<img src="/img/event-1.jpg" />
 				</div>
-				<div class="basis-1/2 bg-base md:rounded-lg p-2 md:p-5">
+				<div class=" bg-base md:rounded-lg lg:basis-1/2 p-2 md:p-5">
 					<img src="/img/event-2.jpg" />
 				</div>
 			</div>
@@ -74,8 +79,8 @@ const handleResize = () => {
 		}
 		else{
 			hero_img.value[i] = '/img/hero-' + (i+1) + '.jpg'
-		}
-	}
+		} 
+	}	
 }
 
 onBeforeMount(() => {

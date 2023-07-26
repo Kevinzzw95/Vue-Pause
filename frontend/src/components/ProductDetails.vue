@@ -1,9 +1,9 @@
 <template>
-    <div class="container lg:px-20 2xl:px-32 gap-5">
-        <div class="grid grid-cols-1 lg:grid-cols-7 lg:gap-4 lg:space-x-16">
+    <div class="container xl:px-20 2xl:px-32 gap-5">
+        <div class="grid grid-cols-1 xl:grid-cols-7 xl:gap-4 xl:space-x-16">
             <div class="row-span-2 col-span-3 max-h-[40rem]">
-                <div class="relative flex flex-col-reverse lg:flex-row lg:gap-4">
-                    <div class="flex flex-row w-full lg:flex-col lg:w-[5rem] justify-center gap-2 lg:gap-4 p-2">
+                <div class="relative flex flex-col-reverse xl:flex-row xl:gap-4">
+                    <div class="flex flex-row w-full xl:flex-col xl:w-[5rem] justify-center gap-2 xl:gap-4 p-2">
                         <div v-for="(imgUrl, index) in item.imageUrl" :key="index" class="flex flex-col py-2 gap-3">
                             <a @click="currPic = index" class="btn btn-link w-[4rem] h-20 p-0">
                                 <img :src="imgUrl" class="object-cover w-16 h-20 md:w-[4rem] md:h-24 rounded-lg self-center"/>
@@ -20,8 +20,12 @@
                     
                 </div>
             </div>
-            <div class="col-span-4 space-y-8 pt-[1rem] md:pt-[3rem] pl-3">
-                <h1 class="text-xl lg:text-3xl font-bold">{{ item.name }}</h1>
+            <div class="col-span-4 space-y-8 pt-[1rem] md:pt-[4.5rem] pl-3 font-default">
+                <div>
+                    <h1 class="text-xl lg:text-3xl font-bold">{{ item.name.split(" ")[0] }}</h1>
+                    <h1 class="text-xl lg:text-3xl font-bold">{{ item.name.split(/ (.*)/)[1] }}</h1>
+                </div>
+                
                 <div>
                     <h1 v-if="item.sku[0] === 'P'" class="text-lg">Brand: {{ brand?.name }}</h1>
                     <h1 v-if="item.sku[0] === 'P'" class="text-lg">Pieces: {{ item?.pieces }} Pieces</h1>
@@ -51,7 +55,7 @@
             </div>
             
         </div>
-        <div class="flex flex-col w-full md:flex-row gap-4 font-default pt-5">
+        <div class="flex flex-col w-full md:flex-row gap-4 pt-5">
             <div class="basis-1/2 bg-base rounded-lg p-5">
                 <h1 class="text-lg font-bold">Shipping</h1>
                 <p>Free shipping on orders over $95 in Scarborough/Markham/Richmond HIill/Vaughan/North York, over $150 Canada wide, over $180 worldwide.</p>

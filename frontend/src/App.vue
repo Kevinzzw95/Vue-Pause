@@ -2,7 +2,10 @@
 <template>
   <div class="flex relative flex-col min-h-screen bg-base-100 overflow-hidden;">
     <!-- <the-header /> -->
-    <site-navigation :key="route.fullPath"/>
+    <div class="sticky top-0 z-40">
+      <site-navigation :key="route.fullPath"/>
+    </div>
+    
     <router-view @processing="(status: boolean) => isLoading = status"/>
     <the-footer />
     <div v-if="isLoading" class="grid absolute top-0 left-0 items-center justify-items-center h-full w-screen opacity-80 bg-zinc-200 z-50">

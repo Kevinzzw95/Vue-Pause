@@ -15,7 +15,7 @@
         <div class="container p-3 md:px-16 2xl:px-32 min-h-screen space-y-5">
             <div class="alert alert-info bg-accent p-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-deep shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                <span class="font-bold">We don not have shipping options for Frames at this time. All Frames can only be picked up!</span>
+                <span class="font-bold">We do not have shipping options for Frames at this time. All Frames can only be picked up!</span>
             </div>
             <div class="container">
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
