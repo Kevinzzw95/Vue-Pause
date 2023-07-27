@@ -1,5 +1,5 @@
 <template>
-	<div class="md:px-[8rem] 2xl:px-[15rem] md:py-[2rem]">
+	<div class="md:px-[8rem] 2xl:px-[15rem] md:py-[2rem] font-secondary">
 		
 		<div class="min-w-full w-auto pb-2">
 			<!-- <video-player /> -->

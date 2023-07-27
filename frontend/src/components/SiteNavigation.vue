@@ -1,12 +1,12 @@
 
 <template>
-    <div class="navbar bg-base p-0">
+    <div class="navbar bg-base p-0 font-default">
         <div class="navbar-start">
             <div class="dropdown px-2">
                 <label @click="" tabindex="0" class="btn btn-ghost btn-circle">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                 </label>
-                <ul tabindex="0" class="dropdown-content z-50 menu mt-3 p-2 shadow bg-deep w-65 text-white font-primary rounded-xl">
+                <ul tabindex="0" class="dropdown-content z-50 menu mt-3 p-2 shadow bg-deep w-65 text-white font-default rounded-xl">
                     <router-link to="/puzzles/1000">
                         <li><a>拼图 PUZZLES</a></li>
                     </router-link>

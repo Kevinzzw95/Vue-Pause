@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+    <div class="font-default">
         <div class="container p-6 lg:p-32 min-h-screen space-y-3">
             <h1 class="text-xl md:text-2xl font-bold text-start">Your Cart {{ totalQuantity === 0 ? "is Empty" : "" }}</h1>
             <div v-if="totalQuantity !== 0">

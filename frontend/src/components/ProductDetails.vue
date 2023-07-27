@@ -1,6 +1,6 @@
 <template>
     <div class="container xl:px-20 2xl:px-32 gap-5">
-        <div class="grid grid-cols-1 xl:grid-cols-7 xl:gap-4 xl:space-x-16">
+        <div class="grid grid-cols-1 xl:grid-cols-6 2xl:grid-cols-7 xl:gap-4 xl:space-x-16">
             <div class="row-span-2 col-span-3 max-h-[40rem]">
                 <div class="relative flex flex-col-reverse xl:flex-row xl:gap-4">
                     <div class="flex flex-row w-full xl:flex-col xl:w-[5rem] justify-center gap-2 xl:gap-4 p-2">
@@ -20,7 +20,7 @@
                     
                 </div>
             </div>
-            <div class="col-span-4 space-y-8 pt-[1rem] md:pt-[4.5rem] pl-3 font-default">
+            <div class="col-span-3 2xl:col-span-4 space-y-8 pt-[1rem] md:pt-[4.5rem] pl-3 font-default">
                 <div>
                     <h1 class="text-xl lg:text-3xl font-bold">{{ item.name.split(" ")[0] }}</h1>
                     <h1 class="text-xl lg:text-3xl font-bold">{{ item.name.split(/ (.*)/)[1] }}</h1>
@@ -29,7 +29,8 @@
                 <div>
                     <h1 v-if="item.sku[0] === 'P'" class="text-lg">Brand: {{ brand?.name }}</h1>
                     <h1 v-if="item.sku[0] === 'P'" class="text-lg">Pieces: {{ item?.pieces }} Pieces</h1>
-                    <h1 class="text-lg">Dimension(cm): {{ item.dimension }}</h1>
+                    <h1 v-if="item.sku[0] !== 'T'" class="text-lg">Dimension(cm): {{ item.dimension }}</h1>
+                    <h1 v-if="item.sku[0] === 'T'" class="text-lg">Players: {{ item.dimension }}</h1>
                 </div>
                 
                 <h1 class="text-2xl font-bold text-deep">C$ {{ item.unitPrice }}</h1>

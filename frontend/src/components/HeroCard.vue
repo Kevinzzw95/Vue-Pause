@@ -1,10 +1,10 @@
 <template>
-    <div class="hero bg-cover bg-center items-end bg-fixed" :style="str">
+    <div class="hero bg-center lg:items-end" :style="str">
         <div class="hero-overlay bg-opacity-10"></div>  
         <div class="flex sm:text-center text-neutral-content p-2 lg:pb-10 items-center ">
         <div class="max-w-md grid justify-items-center">
-            <h1 class="mb-5 text-3xl lg:text-5xl font-bold text-white">New Arrival</h1>
-            <button @click="$router.push(url)" class="btn btn-base lg:btn-lg">Shop Now</button>
+            <h1 class="mb-2 xl:mb-5 text-3xl lg:text-5xl text-white">New Arrival</h1>
+            <button @click="$router.push(url)" class="btn btn-sm outline-white bg-transparent rounded-full lg:btn-md font-bold text-white">Shop Now</button>
         </div> 
     </div>
 </div>
