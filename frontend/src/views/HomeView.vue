@@ -74,7 +74,7 @@ import HeroSlider from '../components/HeroSlider.vue';
 import { onBeforeMount, onMounted, onUnmounted, ref } from 'vue';
 import { Product } from '../types/Product';
 import axios from 'axios';
-import { GetResponseSearchView } from '../types/RestData';
+import type { GetResponseSearchView } from '../types/RestData';
 import ProductCard from '../components/ProductCard.vue';
 
 const hero_img = ref(['', '', '', '']);
