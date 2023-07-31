@@ -15,7 +15,7 @@
 			</HeroSlider>
 		</div>
 
-		<div class="container grid lg:px-10 py-8 justify-items-center">
+		<div class="container grid lg:px-10 py-8 justify-items-center p-2">
 			<h1 class="font-default text-4xl pb-5">Our Favorites</h1>
 			<div class="justify-items-start grid grid-cols-2 sm:grid-cols-4 gap-4 xl:gap-8">
 				<product-card v-for="item in recommendation" :item="item"/>
