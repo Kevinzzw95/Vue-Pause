@@ -1,22 +1,29 @@
 <template>
-	<div class="md:px-[8rem] 2xl:px-[15rem] md:py-[2rem] font-secondary">
+	<div class="font-secondary">
 		
-		<div class="min-w-full w-auto pb-2">
+		<div class="w-auto pb-2">
 			<!-- <video-player /> -->
 			
-			<div class="lg:hidden">
+			<!-- <div class="md:hidden">
 				<HeroCard v-for="slide in 4" :key="hero_img[slide-1]" :src="hero_img[slide-1]" :url="'/search?keywords=' + hero_keywords[slide-1] + '&stock=true'"/>
-			</div>
+			</div> -->
 			
-			<HeroSlider class="hidden lg:block">
+			<HeroSlider >
 				<Slide v-for="slide in 4" :key="hero_img[slide-1]">
 					<HeroCard :src="hero_img[slide-1]" :url="'/search?keywords=' + hero_keywords[slide-1] + '&stock=true'"/>
 				</Slide>
 			</HeroSlider>
 		</div>
 
+		<div class="container grid lg:px-10 py-8 justify-items-center">
+			<h1 class="font-default text-4xl pb-5">Our Favorites</h1>
+			<div class="justify-items-start grid grid-cols-2 sm:grid-cols-4 gap-4 xl:gap-8">
+				<product-card v-for="item in recommendation" :item="item"/>
+			</div>
+		</div>
+
 		<!-- ======= Slogan Section ======= -->
-		<div class="slogan py-6 px-3 lg:p-16">
+		<div class="slogan py-6 px-3 lg:p-16 font-default lg:text-4xl">
 			<div class="" data-aos="zoom-out">
 				<div class="flex flex-row justify-items-center">
 					<div class="stats-item text-center">
@@ -30,12 +37,12 @@
 		</div>
 		<!-- End Slogan Section -->
 
-		<div class="md:py-2">
-			<div class="flex flex-col lg:flex-row md:gap-4 font-default">
-				<div class="bg-base md:rounded-lg lg:basis-1/2 p-2 md:p-5">
+		<div class="container grid md:py-2 justify-items-center">
+			<div class="flex flex-col md:flex-row font-default lg:px-10 py-8 max-w-[70rem]">
+				<div class="bg-base md:rounded-lg lg:basis-1/2">
 					<img src="/img/event-1.jpg" />
 				</div>
-				<div class=" bg-base md:rounded-lg lg:basis-1/2 p-2 md:p-5">
+				<div class=" bg-base md:rounded-lg lg:basis-1/2">
 					<img src="/img/event-2.jpg" />
 				</div>
 			</div>
@@ -61,20 +68,22 @@
 </template>
 
 <script setup lang="ts">
-import VideoPlayer from '../components/VideoPlayer.vue';
-import EventCard from '../components/EventCard.vue';
-import EventSlider from '../components/EventSlider.vue';
 import { Slide } from 'vue3-carousel';
 import HeroCard from '../components/HeroCard.vue';
 import HeroSlider from '../components/HeroSlider.vue';
 import { onBeforeMount, onMounted, onUnmounted, ref } from 'vue';
+import { Product } from '../types/Product';
+import axios from 'axios';
+import { GetResponseSearchView } from '../types/RestData';
+import ProductCard from '../components/ProductCard.vue';
 
 const hero_img = ref(['', '', '', '']);
-const hero_keywords = ['Pixel Pieces', '六米大象', 'Seren Art']
+const hero_keywords = ['Pixel Pieces', '六米大象', 'Seren Art'];
+const recommendation = ref<Product[]>([]);
 
 const handleResize = () => {
 	for(var i = 0; i < 4; ++i) {
-		if(window.innerWidth < 700) {
+		if(window.innerWidth <= 1024) {
 			hero_img.value[i] = '/img/hero-' + (i+1) + '-small.jpg'
 		}
 		else{
@@ -85,6 +94,7 @@ const handleResize = () => {
 
 onBeforeMount(() => {
 	handleResize();
+	getData(["P001"]);
 })
 
 onMounted(() => {
@@ -94,6 +104,16 @@ onMounted(() => {
 onUnmounted(() => {
     window.removeEventListener('resize', handleResize)
 })
+
+const getData = async(skuList: string[]) => {
+    try {
+        await axios.get<GetResponseSearchView>(`/searchViews/search/findByTopStock?skuList=${skuList}&size=4`).then(
+            (res) => recommendation.value = res.data._embedded.searchViews
+        );
+    } catch (error) {
+        throw error
+    }
+}
 </script>
 
 <style scope>
@@ -113,7 +133,6 @@ onUnmounted(() => {
 }
 
 .slogan .stats-item span {
-  font-size: 20px;
   display: block;
   color: #fff;
   font-weight: 400;

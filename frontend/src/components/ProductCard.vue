@@ -9,7 +9,7 @@
             <label class="modal-backdrop" :for="randomId">Close</label>
         </div>
         
-        <div class="relative flex card card-compact shadow-lg max-w-[18rem] bg-base hover:scale-105 transition duration-500 cursor-pointer object-cover">
+        <div class="relative flex card card-compact shadow-lg bg-base hover:scale-105 transition duration-500 cursor-pointer object-cover">
             <label :for="randomId" @click="showDetails()" class="self-center w-full">
             <!-- <button @click="showDetails(item.sku)" class="self-center w-full"> -->
                 <figure><img :src=item.imageUrl[0] alt="Puzzle" class="object-fill w-full"/></figure>
@@ -20,15 +20,15 @@
             <div v-if="item.special" class="absolute box rounded-r-md w-[5rem] h-8 top-3 bg-gradient-to-r from-green-400 to-blue-500 shadow-xl flex items-stretch p-2">
                 <h1 className="text-white text-xs self-center">{{ item.special }}</h1>
             </div>
-            <div class="grid grid-rows-4 h-[4.5rem] md:h-[5rem] p-1">
+            <div class="grid grid-rows-4 h-[4.5rem] md:h-[5rem] xl:h-[5.5rem] p-1 text-sm lg:text-md xl:text-lg">
                 <!-- <router-link :to="'/details/' + item.id" class="self-center"> -->
                 <label :for="randomId" @click="showDetails()" class="self-start items-center row-span-3 bg-transparent">
                 <!-- <button @click="showDetails(item.sku)" class="self-start items-center row-span-3">    -->
-                    <h2 class="text-sm lg:text-lg flex flex-col font-bold text-center font-default">
+                    <div class="flex flex-col font-bold text-center font-default">
                         <p class="">{{ item.name.split(" ")[0] }}</p>
                         <p class="">{{ item.name.split(/ (.*)/)[1] }}</p>
                     <!-- <div class="badge badge-secondary">NEW</div> -->
-                    </h2>
+                    </div>
                 </label>
                 <!-- </button>     -->
                 

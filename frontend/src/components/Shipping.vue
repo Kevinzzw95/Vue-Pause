@@ -1,10 +1,10 @@
 <template>
     <div class="flex flex-col w-full">
-        <h1 class="font-bold text-xl self-start">Shipping Infomation</h1>
+        <h1 class="font-bold text-lg lg:text-2xl self-start">Shipping Infomation</h1>
     
         <div> 
             <label class="label">
-                <span class="label-text font-bold">Email Address*</span>
+                <span class="label-text font-bold lg:text-lg">Email Address*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
                 <input type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" v-model="email"/> 
@@ -15,7 +15,7 @@
         
         <div> 
             <label class="label">
-                <span class="label-text font-bold">Telephone*</span>
+                <span class="label-text font-bold lg:text-lg">Telephone*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
                 <input type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" v-model="phone"/>
@@ -26,7 +26,7 @@
 
         <div> 
             <label class="label">
-                <span class="label-text font-bold">First Name*</span>
+                <span class="label-text font-bold lg:text-lg">First Name*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
                 <input v-model="firstName" type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" />
@@ -34,7 +34,7 @@
                 <XCircleIcon v-if="!validFirstName && firstName" class="inline-flex flex-none w-6 h-6 text-red-600"/>
             </div>
             <label class="label">
-                <span class="label-text font-bold">Last Name*</span>
+                <span class="label-text font-bold lg:text-lg">Last Name*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
                 <input v-model="lastName" type="text" placeholder=" " class="input input-bordered input-primary w-full max-w-full max-h-[42px]" />
@@ -42,21 +42,21 @@
                 <XCircleIcon v-if="!validLastName && lastName" class="inline-flex flex-none w-6 h-6 text-red-600"/>
             </div>
             <label class="label">
-                <span class="label-text font-bold">Address*</span>
+                <span class="label-text font-bold lg:text-lg">Address*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
                 <input v-model="street" type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" />
                 <CheckCircleIcon v-if="street" class="inline-flex flex-none w-6 h-6 text-green-700"/>
             </div>
             <label class="label">
-                <span class="label-text font-bold">City*</span>
+                <span class="label-text font-bold lg:text-lg">City*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
                 <input v-model="city" type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" />
                 <CheckCircleIcon v-if="city" class="inline-flex flex-none w-6 h-6 text-green-700"/>
             </div>
             <label class="label">
-                <span class="label-text font-bold">Province*</span>
+                <span class="label-text font-bold lg:text-lg">Province*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
                 <select v-model="province" class="shrink select select-bordered w-full max-w-full max-h-[40px]">
@@ -76,7 +76,7 @@
             </div>
 
             <label class="label">
-                <span class="label-text font-bold">Post Code*(e.g. L4B 3P8)</span>
+                <span class="label-text font-bold lg:text-lg">Post Code*(e.g. L4B 3P8)</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
                 <input v-model="zipCode" type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" />
@@ -87,7 +87,7 @@
 
         <div> 
             <label class="label">
-                <span class="label-text font-bold">Payment Method*</span>
+                <span class="label-text font-bold lg:text-lg">Payment Method*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
                 <select v-model="payment" class="shrink select select-bordered w-full max-w-full max-h-[40px]">

@@ -25,15 +25,15 @@
             </div>
         </div>
         
-        <div class="container p-3 md:p-16 2xl:p-32 min-h-screen space-y-5">
+        <div class="container p-3 lg:p-16 2xl:p-32 min-h-screen lg:space-y-5">
             <div class="container">
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+                <div class="grid grid-cols-2 md:grid-col-3 lg:grid-cols-4 gap-4 lg:gap-8">
                     <product-card :item="product" v-for="product in products" :key="product.sku"/>
                 </div>
             </div>
 
             <div v-if="totalPages > 1" class="join flex justify-center pt-5">
-                <input @click="curPage = index" v-for="index in totalPages" class="join-item btn btn-square" type="radio" name="options" :aria-label="index.toString()" :checked="index === curPage" />
+                <input @click="curPage = index" v-for="index in totalPages" class="join-item btn btn-sm md:btn-md btn-square" type="radio" name="options" :aria-label="index.toString()" :checked="index === curPage" />
             </div>
         </div>
         

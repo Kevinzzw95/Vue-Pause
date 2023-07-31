@@ -1,5 +1,5 @@
 <template>
-    <div class="hero bg-center lg:items-end" :style="str">
+    <div class="hero bg-center lg:items-end min-h-[calc(100vh-128px)] 2xl:max-h-[calc(100vh-128px)]" :style="str">
         <div class="hero-overlay bg-opacity-10"></div>  
         <div class="flex sm:text-center text-neutral-content p-2 lg:pb-10 items-center ">
         <div class="max-w-md grid justify-items-center">

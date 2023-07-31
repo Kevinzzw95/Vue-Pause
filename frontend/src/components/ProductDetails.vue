@@ -27,10 +27,10 @@
                 </div>
                 
                 <div>
-                    <h1 v-if="item.sku[0] === 'P'" class="text-lg">Brand: {{ brand?.name }}</h1>
-                    <h1 v-if="item.sku[0] === 'P'" class="text-lg">Pieces: {{ item?.pieces }} Pieces</h1>
-                    <h1 v-if="item.sku[0] !== 'T'" class="text-lg">Dimension(cm): {{ item.dimension }}</h1>
-                    <h1 v-if="item.sku[0] === 'T'" class="text-lg">Players: {{ item.dimension }}</h1>
+                    <h1 v-if="item.sku[0] === 'P'" class="text-xl">Brand: {{ brand?.name }}</h1>
+                    <h1 v-if="item.sku[0] === 'P'" class="text-xl">Pieces: {{ item?.pieces }} Pieces</h1>
+                    <h1 v-if="item.sku[0] !== 'T'" class="text-xl">Dimension(cm): {{ item.dimension }}</h1>
+                    <h1 v-if="item.sku[0] === 'T'" class="text-xl">Players: {{ item.dimension }}</h1>
                 </div>
                 
                 <h1 class="text-2xl font-bold text-deep">C$ {{ item.unitPrice }}</h1>
@@ -138,6 +138,7 @@ const addProduct = (product: Product) => {
         alert.value = false;
         store.dispatch('cart/addProductToCart', { product: product,  qnt: quantity.value }); 
         addToCart.value = true;
+        updateSavings();
         setTimeout(() => {
             addToCart.value = false;
         }, 1000);
@@ -148,5 +149,9 @@ onMounted(() => {
     getStock();
     getBrand();
 });
+
+const updateSavings = () => {
+    store.dispatch('cart/calculateSavings')
+}
 
 </script>

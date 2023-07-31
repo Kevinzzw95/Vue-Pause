@@ -1,7 +1,7 @@
 <template>
-    <div class="font-default">
+    <div class="font-default text-lg lg:text-2xl">
         <div class="container p-6 lg:p-32 min-h-screen space-y-3">
-            <h1 class="text-xl md:text-2xl font-bold text-start">Your Cart {{ totalQuantity === 0 ? "is Empty" : "" }}</h1>
+            <h1 class="font-bold text-start">Your Cart {{ totalQuantity === 0 ? "is Empty" : "" }}</h1>
             <div v-if="totalQuantity !== 0">
                 <div class="divider">{{ totalQuantity }} Items</div>
                     <div class="flex flex-col" v-for="item in cartItems" :key="item.id">
@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="self-end md:pt-[4rem]">
-                <h1 class="text-xl md:text-2xl font-bold py-5">You may also like</h1>
+                <h1 class="font-bold py-5">You may also like</h1>
                 <div class="container justify-items-start grid grid-cols-2 p-2 sm:grid-cols-4 gap-4 xl:gap-12 xl:pr-[5rem]">
                     <product-card v-for="item in recommendation" :item="item"/>
                 </div>

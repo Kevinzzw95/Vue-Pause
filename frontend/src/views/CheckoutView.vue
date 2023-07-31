@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-[84vh]">
+    <div class="min-h-[84vh] font-default text-lg">
         <div class="flex min-h-full p-2 sm:p-6 md:p-16 xl:p-20 lg:pt-32">
             <div class="container flex h-full">
                 <div class="flex flex-wrap justify-center"> 

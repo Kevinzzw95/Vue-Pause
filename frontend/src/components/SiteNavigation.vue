@@ -69,7 +69,7 @@
                     </ul>
                 </div>
             </div> -->
-            <div class="dropdown dropdown-end">
+            <div class="dropdown dropdown-end text-lg">
                 <label tabindex="0" class="btn btn-ghost btn-circle">
                     
                         <div class="indicator">
@@ -118,7 +118,7 @@
     </div>
     <div v-if="openSearch" class="grid grid-cols-3 space-x-2 self-center bg-base w-full p-2">
         <div class="join self-center justify-self-center col-start-2 col-span-1">
-            <input @keyup.enter="search(keywords!)" v-model="keywords" type="text" placeholder="Search for products" class="input input-deep join-item text-sm md:text-md max-w-md md:w-[26rem] p-2" />
+            <input @keyup.enter="search(keywords!)" v-model="keywords" type="text" placeholder="Search for products" class="input input-deep join-item text-sm md:text-md w-[13rem] md:w-[60rem] p-2" />
             <label @click="search(keywords!)" class="btn bg-white join-item border-none">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-[2.5rem] w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
             </label>
@@ -153,7 +153,4 @@ const search = (target: string) => {
     
 }
 
-onBeforeUpdate(() => {
-    store.dispatch('cart/calculateSavings')
-})
 </script>

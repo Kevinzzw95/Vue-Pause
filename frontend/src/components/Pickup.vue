@@ -1,9 +1,9 @@
 <template>
-    <div class="flex flex-col">
-        <h1 class="font-bold text-xl self-start">Pickup Infomation</h1>
+    <div class="flex flex-col lg:text-lg">
+        <h1 class="font-bold text-lg lg:text-2xl self-start">Pickup Infomation</h1>
         <div> 
             <label class="label font-bold">
-                <span class="label-text">Choose a Date*</span>
+                <span class="label-text lg:text-lg">Choose a Date*</span>
             </label>
             <div class="alert alert-info bg-accent w-full max-w-full py-4 rounded-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -15,7 +15,7 @@
         </div>
         <div v-if="dateValue != undefined && dateValue != null"> 
             <label class="label font-bold">
-                <span class="label-text">Choose A Time*</span>
+                <span class="label-text lg:text-lg">Choose A Time*</span>
             </label>
             <select v-model="time" class="select select-bordered w-full max-w-full">
                 <option disabled selected>Please choose a time</option>
@@ -27,7 +27,7 @@
         </div>
         <div> 
             <label class="label font-bold">
-                <span class="label-text">Name*</span>
+                <span class="label-text lg:text-lg">Name*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
                 <input type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" v-model="name"/> 
@@ -36,7 +36,7 @@
         </div>
         <div> 
             <label class="label font-bold">
-                <span class="label-text">Email Address*</span>
+                <span class="label-text lg:text-lg">Email Address*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
                 <input type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" v-model="email"/> 
@@ -47,7 +47,7 @@
         </div>
         <div> 
             <label class="label font-bold">
-                <span class="label-text">Telephone*</span>
+                <span class="label-text lg:text-lg">Telephone*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
                 <input type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" v-model="phone"/>
@@ -59,7 +59,7 @@
 
         <div> 
             <label class="label font-bold">
-                <span class="label-text">Payment Method*</span>
+                <span class="label-text lg:text-lg">Payment Method*</span>
             </label>
             <select class="select select-bordered w-full max-w-full max-h-[40px]" v-model="payment">
                 <option disabled selected>Select A Method</option>
