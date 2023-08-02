@@ -3,8 +3,8 @@
         <div class="hero-overlay bg-opacity-10"></div>  
         <div class="flex sm:text-center text-neutral-content p-2 lg:pb-10 items-center ">
         <div class="max-w-md grid justify-items-center">
-            <h1 class="mb-2 xl:mb-5 text-4xl lg:text-5xl text-white">New Arrival</h1>
-            <button @click="$router.push(url)" class="btn btn-sm outline-white border-2 bg-transparent rounded-full lg:btn-md font-bold text-white">Shop Now</button>
+            <h1 class="mb-2 xl:mb-5 text-4xl md:text-5xl text-white">New Arrival</h1>
+            <button @click="$router.push(url)" class="btn btn-sm outline-white border-2 bg-transparent rounded-full md:btn-lg font-bold text-white">Shop Now</button>
         </div> 
     </div>
 </div>
