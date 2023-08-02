@@ -8,7 +8,6 @@
                 </div>
                 <div class="p-2 md:p-5"> 
                     <div class="grid grid-rows-2"> 
-                        <p>hello</p>
                         <router-link to="/checkout/pickup" class="place-self-end">
                             <button class="btn btn-xs md:btn-sm btn-outline">Continue
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
@@ -28,7 +27,6 @@
                 </div>
                 <div class="p-2 md:p-5"> 
                     <div class="grid grid-rows-2"> 
-                        <p>hello</p>
                         <router-link :to="hasFrame ? '' : '/checkout/shipping'" class="place-self-end" :disabled="hasFrame">
                             <button :class="[hasFrame ? 'btn-ghost' : 'btn-outline', 'btn', 'btn-xs', 'md:btn-sm', ]">Continue
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">

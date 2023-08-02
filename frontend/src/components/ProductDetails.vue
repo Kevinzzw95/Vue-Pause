@@ -57,11 +57,11 @@
             
         </div>
         <div class="flex flex-col w-full md:flex-row gap-4 pt-5">
-            <div class="basis-1/2 bg-base rounded-lg p-5">
+            <div class="basis-1/2 bg-base rounded-lg p-5 font-default">
                 <h1 class="text-lg font-bold">Shipping</h1>
                 <p>Free shipping on orders over $95 in Scarborough/Markham/Richmond HIill/Vaughan/North York, over $150 Canada wide, over $180 worldwide.</p>
             </div>
-            <div class="basis-1/2 bg-base rounded-lg p-5">
+            <div class="basis-1/2 bg-base rounded-lg p-5 font-default">
                 <h1 class="text-lg font-bold">Return</h1>
                 <p>The item can be returned within 10 days of the original shipment date.</p> 
                 <p>Opened packages cannot be returned. All items must be in the original packages with all pieces and in original condition.</p> 
