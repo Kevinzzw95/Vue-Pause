@@ -49,35 +49,32 @@
                 </div>
                 
             </div>
-            <div class="absolute dropdown xl:hidden items-center" @click="openMenu = !openMenu">
-                <details>
-                    <summary class="btn btn-ghost btn-circl">
-                        <svg v-if="!openMenu" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
-                        <svg v-if="openMenu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </summary>
-                    <ul class="realtive top-[66px] left-0 dropdown-content z-50 menu p-0 mt-3 shadow bg-white w-screen h-screen font-default" >
-                        <router-link to="/puzzles/1000">
-                            <li class="border-b border-deep p-2"><a>PUZZLES</a></li>
-                        </router-link>
-                        <router-link to="/puzzle_frames">
-                            <li class="border-b border-deep p-2"><a>FRAMES</a></li>
-                        </router-link>
-                        <router-link to="/puzzle_acc">
-                            <li class="border-b border-deep p-2"><a>PUZZLE ACCESSORIES</a></li>
-                        </router-link>
-                        <router-link to="/table_games">
-                            <li class="border-b border-deep p-2"><a>TABLE GAMES</a></li>
-                        </router-link>
-                        <router-link to="/contact">
-                            <li class="border-b border-deep p-2"><a>CONTACT US</a></li>
-                        </router-link>
-                        
-                    </ul>
-                </details>
-            </div>
-            
+            <details class="absolute dropdown xl:hidden">
+                <summary @click="openMenu = !openMenu" class="btn btn-ghost btn-circl">
+                    <svg v-if="!openMenu" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+                    <svg v-if="openMenu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </summary>
+                <ul class="realtive top-[66px] left-0 dropdown-content z-50 menu p-0 mt-3 shadow bg-white w-screen h-screen font-default" >
+                    <router-link to="/puzzles/1000">
+                        <li class="border-b border-deep p-2"><a>PUZZLES</a></li>
+                    </router-link>
+                    <router-link to="/puzzle_frames">
+                        <li class="border-b border-deep p-2"><a>FRAMES</a></li>
+                    </router-link>
+                    <router-link to="/puzzle_acc">
+                        <li class="border-b border-deep p-2"><a>PUZZLE ACCESSORIES</a></li>
+                    </router-link>
+                    <router-link to="/table_games">
+                        <li class="border-b border-deep p-2"><a>TABLE GAMES</a></li>
+                    </router-link>
+                    <router-link to="/contact">
+                        <li class="border-b border-deep p-2"><a>CONTACT US</a></li>
+                    </router-link>
+                    
+                </ul>
+            </details>
         </div>
         <div class="navbar-center">
             <router-link to="/">
