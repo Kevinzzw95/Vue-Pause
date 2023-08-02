@@ -5,8 +5,8 @@
         <div class="max-w-md grid justify-items-center">
             <h1 v-if="url.split('=')[1].substring(0, 5) !== 'Pixel'" class="mb-2 xl:mb-5 text-4xl md:text-5xl text-white">New Arrival</h1>
             <h1 v-if="url.split('=')[1].substring(0, 5) === 'Pixel'" class="mb-2 xl:mb-5 text-4xl md:text-5xl text-white">Comming Soon</h1>
-            <button v-if="url.split('=')[1].substring(0, 5) !== 'Pixel'" @click="$router.push(url)" class="btn btn-sm outline-white border-2 bg-transparent rounded-full md:btn-lg font-bold text-white">Shop Now</button>
-            <button v-if="url.split('=')[1].substring(0, 5) === 'Pixel'" @click="$router.push(url)" class="btn btn-sm outline-white border-2 bg-transparent rounded-full md:btn-lg font-bold text-white">See Details</button>
+            <button v-if="url.split('=')[1].substring(0, 5) !== 'Pixel'" @click="$router.push(url)" class="btn btn-sm outline-white border-2 bg-transparent rounded-full lg:btn-lg font-bold text-white"><h1 class="font-bold text-lg md:text-2xl">Shop Now</h1></button>
+            <button v-if="url.split('=')[1].substring(0, 5) === 'Pixel'" @click="$router.push(url)" class="btn btn-sm outline-white border-2 bg-transparent rounded-full lg:btn-lg text-white"><h1 class="font-bold text-lg md:text-2xl">See Details</h1></button>
         </div> 
     </div>
 </div>
