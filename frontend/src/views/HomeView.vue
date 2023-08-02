@@ -23,7 +23,7 @@
 		</div>
 
 		<!-- ======= Slogan Section ======= -->
-		<div class="slogan py-6 px-3 lg:p-16 font-default lg:text-4xl">
+		<div class="slogan py-6 px-3 md:p-8 lg:p-16 font-default text-lg md:text-2xl lg:text-4xl">
 			<div class="" data-aos="zoom-out">
 				<div class="flex flex-row justify-items-center">
 					<div class="stats-item text-center">
@@ -78,12 +78,12 @@ import type { GetResponseSearchView } from '@/types/RestData';
 import ProductCard from '../components/ProductCard.vue';
 
 const hero_img = ref(['', '', '', '']);
-const hero_keywords = ['Pixel Pieces', '六米大象', 'Seren Art'];
+const hero_keywords = ['六米大象', 'Seren Art', '百商图 鹅 环球', 'Pixel Pieces'];
 const recommendation = ref<Product[]>([]);
 
 const handleResize = () => {
 	for(var i = 0; i < 4; ++i) {
-		if(window.innerWidth <= 1024) {
+		if(window.innerWidth <= 1024 && window.innerWidth < window.innerHeight) {
 			hero_img.value[i] = '/img/hero-' + (i+1) + '-small.jpg'
 		}
 		else{

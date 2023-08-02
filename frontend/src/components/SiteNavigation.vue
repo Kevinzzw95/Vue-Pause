@@ -49,8 +49,8 @@
                 </div>
                 
             </div>
-            <details @click="openMenu = !openMenu" class="absolute dropdown xl:hidden items-center">
-                <summary class="btn btn-ghost btn-circl">
+            <details class="absolute dropdown xl:hidden items-center">
+                <summary @click="() => openMenu = !openMenu" class="btn btn-ghost btn-circl">
                     <svg v-if="!openMenu" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                     <svg v-if="openMenu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -201,7 +201,7 @@
     </div>
     <div v-if="openSearch" class="grid grid-cols-3 space-x-2 self-center bg-base w-full p-2">
         <div class="join self-center justify-self-center col-start-2 col-span-1">
-            <input @keyup.enter="search(keywords!)" v-model="keywords" type="text" placeholder="Search for products" class="input input-deep join-item text-sm md:text-md w-[13rem] md:w-[60rem] p-2" />
+            <input @keyup.enter="search(keywords!)" v-model="keywords" type="text" placeholder="Search for products" class="input input-deep join-item text-sm md:text-md w-[13rem] md:w-[30rem] xl:w-[60rem] p-2" />
             <label @click="search(keywords!)" class="btn bg-white join-item border-none">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-[2.5rem] w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
             </label>
