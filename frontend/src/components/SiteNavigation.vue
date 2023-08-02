@@ -49,10 +49,12 @@
                 </div>
                 
             </div>
-            <details class="absolute dropdown xl:hidden">
+            <details @click="openMenu = !openMenu" class="absolute dropdown xl:hidden items-center">
                 <summary class="btn btn-ghost btn-circl">
                     <svg v-if="!openMenu" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
-                    
+                    <svg v-if="openMenu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
                 </summary>
                 <ul class="realtive top-[66px] left-0 dropdown-content z-50 menu p-0 mt-3 shadow bg-white w-screen h-screen font-default" >
                     <router-link to="/puzzles/1000">
