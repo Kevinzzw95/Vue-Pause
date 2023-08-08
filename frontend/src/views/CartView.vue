@@ -1,5 +1,5 @@
 <template>
-    <div class="font-default text-lg lg:text-2xl">
+    <div class="font-default text-lg lg:text-2xl min-h-[84vh]">
         <div class="container p-6 lg:p-32 min-h-screen space-y-3">
             <h1 class="font-bold text-start">Your Cart {{ totalQuantity === 0 ? "is Empty" : "" }}</h1>
             <div v-if="totalQuantity !== 0">
@@ -46,6 +46,7 @@ const checkoutStatus = computed(() => store.state.cart.checkoutStatus)
 const totalPrice = computed(() => store.getters['cart/cartTotalPrice'])
 const totalQuantity = computed(() => store.getters['cart/cartTotalQuantity'])
 const savings = computed(() => store.getters['cart/getSavings']);
+const isLoading = ref(true);
 
 const store = useStore();
 

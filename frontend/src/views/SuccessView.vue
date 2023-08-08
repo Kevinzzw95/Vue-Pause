@@ -1,5 +1,5 @@
 <template>
-    <div class="container p-5 lg:p-20 flex flex-col gap-5">
+    <div class="container p-5 lg:p-20 flex flex-col gap-5 min-h-[84vh]">
         <h1 class="self-center font-bold text-3xl">Thanks for your shopping!</h1>
         <p class="self-center">Your order number is: {{ $route.params.orderNumber }}</p>
         <p class="flex flex-row gap-2">

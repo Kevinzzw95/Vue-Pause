@@ -1,5 +1,5 @@
 <template>
-    <div class="relative">
+    <div class="relative min-h-[84vh]">
         <div class="sticky top-24 z-20 px-3 md:px-16 2xl:px-32  pb-2 glass">
             <div class="py-3">
                 <div class="tabs flex flex-row justify-center">
@@ -28,7 +28,16 @@
         <div class="container p-3 lg:p-16 2xl:p-32 min-h-screen lg:space-y-5">
             <div class="container">
                 <div class="grid grid-cols-2 md:grid-col-3 lg:grid-cols-4 gap-4 lg:gap-8">
-                    <product-card :item="product" v-for="product in products" :key="product.sku"/>
+                    <div v-if="isLoading" v-for="index in 8" class="relative animate-pulse flex card card-compact shadow-lg bg-base hover:scale-105 transition duration-500 cursor-pointer object-cover">
+                        <figure class="bg-gray-300 w-full h-[10rem] md:h-[16rem]"></figure>
+                        <div class="grid grid-rows-1 h-[4.5rem] md:h-[5rem] xl:h-[5.5rem] p-1 text-sm lg:text-md xl:text-lg">
+                            <div class="flex flex-col font-bold items-center font-default gap-2 p-2">
+                                <p class="w-36 bg-gray-300 h-4 rounded-md"></p>
+                                <p class="w-36 bg-gray-300 h-4 rounded-md"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <product-card v-if="!isLoading" :item="product" v-for="product in products" :key="product.sku"/>
                 </div>
             </div>
 
@@ -53,7 +62,6 @@ import type { GetResponseBrands } from '@/types/RestData'
 import type { Brand } from '@/types/Brand';
 import { useRoute } from 'vue-router';
 import router from '@/router'
-import { store } from '@/store';
 
 const route = useRoute();
 const query = route.query;
@@ -65,6 +73,7 @@ const totalPages = ref<number>(0);
 const inStock = ref(query.stock ? query.stock : false);
 const curPieces = ref(Number(route.params.pieces));
 const baseUrl = `/puzzles/search/findByPiecesAndFilter`;
+const isLoading = ref(true);
 
 
 const refresh = async () => {
@@ -85,6 +94,7 @@ const refresh = async () => {
         },
         (err) => console.log(err) 
     )
+    isLoading.value = false
     scrollToTop();
 }
 
@@ -110,7 +120,8 @@ watch(() => curPieces.value, () => {
 
 onMounted(() => {
     axios.get<GetResponseBrands>("/brands").then(
-        (res) => brands.value = res.data._embedded.brands
+        (res) => {brands.value = res.data._embedded.brands
+        }
     )
     refresh();
 })

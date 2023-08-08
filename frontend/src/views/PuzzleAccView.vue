@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="min-h-[84vh]">
         <div class="sticky top-24 z-20 px-3 md:px-16 2xl:px-32 glass">
             <div class="flex flex-row items-center space-x-2 md:space-x-4 text-sm md:text-md py-5">
                 <h1>Filter:</h1>
@@ -15,7 +15,16 @@
         <div class="container p-3 md:px-16 2xl:px-32 min-h-screen lg:space-y-5">
             <div class="container">
                 <div class="grid grid-cols-2 md:grid-col-3 lg:grid-cols-4 gap-4 lg:gap-8">
-                    <product-card :item="product" v-for="product in products" :key="product.id"/>
+                    <div v-if="isLoading" v-for="index in 8" class="relative animate-pulse flex card card-compact shadow-lg bg-base hover:scale-105 transition duration-500 cursor-pointer object-cover">
+                        <figure class="bg-gray-300 w-full h-[10rem] md:h-[16rem]"></figure>
+                        <div class="grid grid-rows-1 h-[4.5rem] md:h-[5rem] xl:h-[5.5rem] p-1 text-sm lg:text-md xl:text-lg">
+                            <div class="flex flex-col font-bold items-center font-default gap-2 p-2">
+                                <p class="w-36 bg-gray-300 h-4 rounded-md"></p>
+                                <p class="w-36 bg-gray-300 h-4 rounded-md"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <product-card v-if="!isLoading" :item="product" v-for="product in products" :key="product.id"/>
                 </div>
             </div>
 
@@ -45,6 +54,7 @@ const curPage = ref<number>(1);
 const totalPages = ref<number>(0);
 const inStock = ref(false);
 const baseUrl = `/accessories`;
+const isLoading = ref(true)
 
 
 const refresh = () => {
@@ -59,6 +69,8 @@ const refresh = () => {
         },
         (err) => console.log(err) 
     )
+    isLoading.value = false
+    scrollToTop();
 }
 
 watch(
@@ -75,6 +87,8 @@ onMounted(() => {
     inStock.value = query.stock ? Boolean(query.stock) : false;
     refresh();
 })
-
+const scrollToTop = () => {
+    window.scrollTo(0,0);
+}
 
 </script>

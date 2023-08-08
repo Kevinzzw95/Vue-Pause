@@ -149,6 +149,7 @@ watch( () => dateValue.value, () => {
 })
 
 const createPurchase = () => {
+    console.log(dateValue.value)
     const customer = new Customer();
     customer.firstName = name.value;
     customer.email = email.value;
