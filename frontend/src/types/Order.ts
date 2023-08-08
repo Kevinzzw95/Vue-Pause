@@ -6,5 +6,6 @@ export class Order {
     orderNumber: string = "";
     savings: number = 0;
     shippingAddress?: string;
+    pickupDate?: string;
 }
   
