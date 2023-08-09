@@ -121,7 +121,7 @@
 
 <script setup lang="ts">
 import { Customer } from '@/types/Customer';
-import { Order } from '@/types/Order';
+import { Order } from '../types/Order';
 import { Purchase } from '@/types/Purchase';
 import { ShippingInfo } from '@/types/ShippingInfo';
 import { onMounted, onUpdated, ref, watch } from 'vue';
