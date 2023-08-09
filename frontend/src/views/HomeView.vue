@@ -10,7 +10,7 @@
 			
 			<HeroSlider >
 				<Slide v-for="slide in 4" :key="hero_img[slide-1]">
-					<HeroCard :src="hero_img[slide-1]" :url="'/search?keywords=' + hero_keywords[slide-1] + '&stock=true'"/>
+					<HeroCard :src="hero_img[slide-1]" :url="'/search?keywords=' + hero_keywords[slide-1] + '&stock=false'"/>
 				</Slide>
 			</HeroSlider>
 		</div>
@@ -78,7 +78,7 @@ import type { GetResponseSearchView } from '@/types/RestData';
 import ProductCard from '../components/ProductCard.vue';
 
 const hero_img = ref(['', '', '', '']);
-const hero_keywords = ['六米大象', 'Seren Art', '百商图 鹅 环球', 'Pixel Pieces'];
+const hero_keywords = ['六米大象', 'Seren Art', 'T001 T002 T003', 'Pixel Pieces'];
 const recommendation = ref<Product[]>([]);
 
 const handleResize = () => {

@@ -25,7 +25,7 @@
             </div>
         </div>
         
-        <div class="container p-3 lg:p-16 2xl:p-32 min-h-screen lg:space-y-5">
+        <div class="container p-3 md:px-16 2xl:p-32 min-h-screen lg:space-y-5">
             <div class="container">
                 <div class="grid grid-cols-2 md:grid-col-3 lg:grid-cols-4 gap-4 lg:gap-8">
                     <div v-if="isLoading" v-for="index in 8" class="relative animate-pulse flex card card-compact shadow-lg bg-base hover:scale-105 transition duration-500 cursor-pointer object-cover">
@@ -77,6 +77,7 @@ const isLoading = ref(true);
 
 
 const refresh = async () => {
+    isLoading.value = true;
     var targetUrl = baseUrl + `?pieces=${curPieces.value}&inStock=${inStock.value}&size=12`;
     if(curBrandId.value) {
         targetUrl += `&id=${curBrandId.value}`;

@@ -60,6 +60,7 @@ const isLoading = ref(true)
 
 
 const refresh = async () => {
+    isLoading.value = true;
     var targetUrl = baseUrl + `/search/findByKeywordsAndStock?keywords=${keywords.value}&inStock=${inStock.value}`;  
     if(curPage.value !== 1){
         targetUrl += `&page=${curPage.value}`

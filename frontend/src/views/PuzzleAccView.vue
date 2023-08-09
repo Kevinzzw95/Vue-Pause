@@ -57,12 +57,13 @@ const baseUrl = `/accessories`;
 const isLoading = ref(true)
 
 
-const refresh = () => {
+const refresh = async () => {
+    isLoading.value = true;
     var targetUrl = baseUrl + `/search/findByStock?inStock=${inStock.value}&size=12`;  
     if(curPage.value !== 1){
         targetUrl += `&page=${curPage.value}`
     }
-    axios.get<GetResponseAccs>(targetUrl).then(
+    await axios.get<GetResponseAccs>(targetUrl).then(
         (res) => {
             products.value = res.data._embedded.accessories;
             totalPages.value = res.data.page.totalPages;
