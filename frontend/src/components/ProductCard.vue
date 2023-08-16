@@ -2,7 +2,7 @@
     <div>
         <input type="checkbox" :id="randomId" class="modal-toggle" />
         <div class="modal modal-bottom sm:modal-middle">
-            <div v-if="isOpen" class="modal-box relative min-w-[80%] h-[75%] 2xl:min-w-[70%]">
+            <div v-if="isOpen" class="modal-box relative min-w-[85%] h-[82.5%] md:h-[85%] 2xl:w-[75%]">
                     <product-details :item="item" :key="item.sku"/>
                 
             </div>

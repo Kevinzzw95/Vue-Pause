@@ -41,8 +41,18 @@
                 </div>
             </div>
 
-            <div v-if="totalPages > 1" class="join flex justify-center pt-5">
-                <input @click="curPage = index" v-for="index in totalPages" class="join-item btn btn-sm md:btn-md btn-square" type="radio" name="options" :aria-label="index.toString()" :checked="index === curPage" />
+            <div v-if="totalPages > 1" class="flex justify-center py-5 space-x-4">
+                <button @click="curPage--" v-if="curPage !== 1" class="btn-page">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                    </svg>
+                </button>
+                <button @click="curPage = index" v-for="index in totalPages > 5 ? 5 : totalPages" :class="['btn-page-number','h-10','w-10','rounded-md', curPage === index ? 'btn-page-number--current' : '']">{{ index }}</button>
+                <button @click="curPage++" v-if="curPage !== totalPages" class="btn-page">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                </button>
             </div>
         </div>
         
@@ -96,7 +106,6 @@ const refresh = async () => {
         (err) => console.log(err) 
     )
     isLoading.value = false
-    scrollToTop();
 }
 
 watch(
@@ -126,10 +135,31 @@ onMounted(() => {
     )
     refresh();
 })
+</script>
 
-const scrollToTop = () => {
-    window.scrollTo(0,0);
+<style>
+
+.btn-page {
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    stroke: green;
+}
+
+.btn-page-number:link,
+.btn-page-number:visited {
+    font-size: 18px;
+    border-radius: 50%;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.btn-page-number:hover,
+.btn-page-number:active,
+.btn-page-number--current {
+    background-color: green;
+    color: white;
 }
 
 
-</script>
+</style>

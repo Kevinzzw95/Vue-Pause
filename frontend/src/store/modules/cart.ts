@@ -61,7 +61,8 @@ const getters = {
 // actions
 const actions = {
     async checkout({commit, state, rootState}: { state: CartState, commit: Function, rootState: RootState }) {
-    const savedCartItems = [...state.items];
+        const savedCartItems = [...state.items];
+        const savedPurchase = rootState.purchase.purchaseItem
         const purchase = rootState.purchase.purchaseItem;        
         commit('setCheckoutStatus', null);
         let orderNumber =""
@@ -77,6 +78,7 @@ const actions = {
                 commit('setCheckoutStatus', 'failed')
                 // rollback to the cart saved before sending the request
                 commit('setCartItems', {items: savedCartItems})
+                commit('purchase/setPurchase', {purchase: purchase})
                 alert(`There was an error: ${err.message}`);
             }
                 

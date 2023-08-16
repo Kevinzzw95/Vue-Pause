@@ -92,6 +92,11 @@ const router = createRouter({
             component: SuccessView,
         },
     ],
+    scrollBehavior(to, from, savedPosition) {
+        // always scroll to top
+        return { top: 0 }
+    },
+      
 })
 
 

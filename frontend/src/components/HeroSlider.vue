@@ -7,6 +7,7 @@
         <Navigation />
       </template>
     </Carousel>
+    
   </template>
   
   <script lang="ts">
