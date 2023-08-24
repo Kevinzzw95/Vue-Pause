@@ -1,15 +1,15 @@
 <template>
     <div class="hero bg-center lg:items-end min-h-[calc(100vh-128px)] 2xl:max-h-[calc(100vh-128px)] font-default" :style="str">
         <div class="hero-overlay bg-opacity-10"></div>  
-        <div class="flex sm:text-center text-neutral-content p-2 lg:pb-10 items-center ">
-        <div class="max-w-md grid justify-items-center">
-            <h1 v-if="url.split('=')[1].substring(0, 5) !== 'Pixel'" class="mb-2 xl:mb-5 text-5xl text-white">New Arrival</h1>
-            <h1 v-if="url.split('=')[1].substring(0, 5) === 'Pixel'" class="mb-2 xl:mb-5 text-5xl text-white">Comming Soon</h1>
-            <button v-if="url.split('=')[1].substring(0, 5) !== 'Pixel'" @click="$router.push(url)" class="btn btn-sm outline-white border-2 bg-transparent rounded-full lg:btn-lg font-bold text-white"><h1 class="font-bold text-lg md:text-2xl">Shop Now</h1></button>
-            <button v-if="url.split('=')[1].substring(0, 5) === 'Pixel'" @click="$router.push(url)" class="btn btn-sm outline-white border-2 bg-transparent rounded-full lg:btn-lg text-white"><h1 class="font-bold text-lg md:text-2xl">See Details</h1></button>
-        </div> 
+        <div class="flex w-full h-[30%] sm:text-center text-neutral-content p-2 lg:pb-[4rem] justify-center items-end bg-gradient-to-t to-transparent-10 from-stone-600">
+            <div class="max-w-md w-full grid justify-items-center">
+                <h1 v-if="url.split('=')[1].substring(0, 5) !== 'Pixel'" class="mb-2 xl:mb-5 text-5xl text-white">New Arrival</h1>
+                <h1 v-if="url.split('=')[1].substring(0, 5) === 'Pixel'" class="mb-2 xl:mb-5 text-5xl text-white">Comming Soon</h1>
+                <button v-if="url.split('=')[1].substring(0, 5) !== 'Pixel'" @click="$router.push(url)" class="btn btn-sm outline-white border-2 bg-transparent rounded-full lg:btn-md max-w-[12rem] font-bold text-white"><h1 class="font-bold text-lg md:text-2xl">Shop Now</h1></button>
+                <button v-if="url.split('=')[1].substring(0, 5) === 'Pixel'" @click="$router.push(url)" class="btn btn-sm outline-white border-2 bg-transparent rounded-full lg:btn-md max-w-[12rem] text-white"><h1 class="font-bold text-lg md:text-2xl">See Details</h1></button>
+            </div> 
+        </div>
     </div>
-</div>
 </template>
 
 <script setup lang="ts">

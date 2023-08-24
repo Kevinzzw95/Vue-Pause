@@ -12,7 +12,7 @@
             <div class="relative flex card card-compact shadow-lg bg-base hover:scale-105 transition duration-500 cursor-pointer object-cover">
                 
                 <!-- <button @click="showDetails(item.sku)" class="self-center w-full"> -->
-                    <figure><img :src=item.imageUrl[0] alt="Puzzle" class="object-fill w-full"/></figure>
+                    <figure><img :src="`${baseUrl}${item.imageUrl[0]}`" alt="Puzzle" class="object-fill w-full"/></figure>
                     <!-- <img v-if="!item.active" src="../assets/coming-soon.png" class="absolute top-[25%] md:left-10 w-[12rem]" /> -->
                     <!-- <img v-if="item.unitsInStock === 0" src="../assets/sold-out.png" class="absolute top-[25%] md:left-10 w-[12rem]" /> -->
                 
@@ -62,6 +62,7 @@ const props = defineProps<{
     item: Product
 }>()
 let randomId: string;
+const baseUrl = "https://rds-pause.s3.ca-central-1.amazonaws.com/public"
 
 const isOpen = ref(false);
 

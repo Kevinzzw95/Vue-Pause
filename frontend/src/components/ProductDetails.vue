@@ -1,19 +1,19 @@
 <template>
-    <div class="container xl:px-20 xl:pt-5 2xl:px-32 gap-5">
+    <div class="container xl:px-20 2xl:px-32 gap-5">
         <div class="grid grid-cols-1 xl:grid-cols-6 2xl:grid-cols-7 xl:gap-4 xl:space-x-16">
             <div class="row-span-2 col-span-3 max-h-[40rem]">
                 <div class="relative flex flex-col-reverse xl:flex-row xl:gap-4">
                     <div class="flex flex-row w-full xl:flex-col xl:w-[5rem] justify-center gap-2 xl:gap-4 p-2">
                         <div v-for="(imgUrl, index) in item.imageUrl" :key="index" class="flex flex-col py-2 gap-3">
                             <a @click="currPic = index" class="btn btn-link w-[4rem] h-20 p-0">
-                                <img :src="imgUrl" class="object-scale-down w-16 h-20 md:w-[4rem] md:h-[5rem] self-center rounded-lg"/>
+                                <img :src="baseUrl + imgUrl" class="object-scale-down w-16 h-20 md:w-[4rem] md:h-[5rem] self-center rounded-lg"/>
                             </a> 
                         </div>
                     </div>
                     <div class="self-center md:py-5">
                         <div v-for="(imgUrl, index) in item.imageUrl" :key="index" class="items-center">
                             <div v-if="currPic === index" class="">
-                                <img :src="imgUrl" class="object-cover h-[26rem] w-[25rem] rounded-xl" />
+                                <img :src="baseUrl + imgUrl" class="object-cover h-[26rem] w-[25rem] rounded-xl" />
                             </div> 
                         </div>  
                     </div>
@@ -78,7 +78,6 @@ import { Product } from '@/types/Product';
 import axios from 'axios';
 import { computed, onMounted, ref, watch } from 'vue';
 
-
 const props = defineProps<{
     item: Product,
 
@@ -90,6 +89,7 @@ const addToCart = ref(false);
 const alert = ref(false);
 const brand = ref<Brand>();
 const unitsInStock = ref<number>(props.item.unitsInStock);
+const baseUrl = "https://rds-pause.s3.ca-central-1.amazonaws.com/public"
 
 const getBrand = (async() => {
     if(props.item.sku[0] === 'P') {
