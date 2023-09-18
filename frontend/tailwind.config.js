@@ -10,7 +10,7 @@ module.exports = {
       colors: {
         base: '#eef0e1',
         deep: '#14532d',
-        "vtd-primary": colors.gray, 
+        "vtd-primary": colors.lime, 
         "vtd-secondary": colors.gray,
       },
       keyframes: {

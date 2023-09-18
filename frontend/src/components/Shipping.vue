@@ -7,7 +7,7 @@
                 <span class="label-text font-bold lg:text-lg">Email Address*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
-                <input type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" v-model="email"/> 
+                <input type="text" placeholder="" class="input input-bordered input-primary text-lg w-full max-w-full max-h-[42px]" v-model="email"/> 
                 <CheckCircleIcon v-if="validEmail && email" class="inline-flex flex-none w-6 h-6 text-green-700"/>
                 <XCircleIcon v-if="!validEmail && email" class="inline-flex flex-none w-6 h-6 text-red-600"/>
             </div>
@@ -18,7 +18,7 @@
                 <span class="label-text font-bold lg:text-lg">Telephone*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
-                <input type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" v-model="phone"/>
+                <input type="text" placeholder="" class="input text-lg input-bordered input-primary w-full max-w-full max-h-[42px]" v-model="phone"/>
                 <CheckCircleIcon v-if="validPhone && phone" class="inline-flex flex-none w-6 h-6 text-green-700"/>
                 <XCircleIcon v-if="!validPhone && phone" class="inline-flex flex-none w-6 h-6 text-red-600"/>
             </div>
@@ -29,7 +29,7 @@
                 <span class="label-text font-bold lg:text-lg">First Name*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
-                <input v-model="firstName" type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" />
+                <input v-model="firstName" type="text" placeholder="" class="input input-bordered text-lg input-primary w-full max-w-full max-h-[42px]" />
                 <CheckCircleIcon v-if="validFirstName && firstName" class="inline-flex flex-none w-6 h-6 text-green-700"/>
                 <XCircleIcon v-if="!validFirstName && firstName" class="inline-flex flex-none w-6 h-6 text-red-600"/>
             </div>
@@ -37,7 +37,7 @@
                 <span class="label-text font-bold lg:text-lg">Last Name*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
-                <input v-model="lastName" type="text" placeholder=" " class="input input-bordered input-primary w-full max-w-full max-h-[42px]" />
+                <input v-model="lastName" type="text" placeholder=" " class="input text-lg input-bordered input-primary w-full max-w-full max-h-[42px]" />
                 <CheckCircleIcon v-if="validLastName && lastName" class="inline-flex flex-none w-6 h-6 text-green-700"/>
                 <XCircleIcon v-if="!validLastName && lastName" class="inline-flex flex-none w-6 h-6 text-red-600"/>
             </div>
@@ -45,21 +45,21 @@
                 <span class="label-text font-bold lg:text-lg">Address*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
-                <input v-model="street" type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" />
+                <input v-model="street" type="text" placeholder="" class="input text-lg input-bordered input-primary w-full max-w-full max-h-[42px]" />
                 <CheckCircleIcon v-if="street" class="inline-flex flex-none w-6 h-6 text-green-700"/>
             </div>
             <label class="label">
                 <span class="label-text font-bold lg:text-lg">City*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
-                <input v-model="city" type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" />
+                <input v-model="city" type="text" placeholder="" class="input text-lg text-lginput-bordered input-primary w-full max-w-full max-h-[42px]" />
                 <CheckCircleIcon v-if="city" class="inline-flex flex-none w-6 h-6 text-green-700"/>
             </div>
             <label class="label">
                 <span class="label-text font-bold lg:text-lg">Province*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
-                <select v-model="province" class="shrink select select-bordered w-full max-w-full max-h-[40px]">
+                <select v-model="province" class="shrink select select-bordered text-lg w-full max-w-full max-h-[40px]">
                     <option disabled selected>Select A Province</option>
                     <option>ON</option>
                     <option>QC</option>
@@ -79,7 +79,7 @@
                 <span class="label-text font-bold lg:text-lg">Post Code*(e.g. L4B 3P8)</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
-                <input v-model="zipCode" type="text" placeholder="" class="input input-bordered input-primary w-full max-w-full max-h-[42px]" />
+                <input v-model="zipCode" type="text" placeholder="" class="input text-lg input-bordered input-primary w-full max-w-full max-h-[42px]" />
                 <CheckCircleIcon v-if="validZipCode && zipCode" class="inline-flex flex-none w-6 h-6 text-green-700"/>
                 <XCircleIcon v-if="!validZipCode && zipCode" class="inline-flex flex-none w-6 h-6 text-red-600"/>
             </div>
@@ -90,7 +90,7 @@
                 <span class="label-text font-bold lg:text-lg">Payment Method*</span>
             </label>
             <div class="flex flex-row space-x-2 items-center">
-                <select v-model="payment" class="shrink select select-bordered w-full max-w-full max-h-[40px]">
+                <select v-model="payment" class="shrink select select-bordered text-lg w-full max-w-full max-h-[40px]">
                     <option disabled selected>Select A Method</option>
                     <option>e-Transfer</option>
                     <option>WeChat</option>
@@ -100,14 +100,14 @@
             </div>
         </div>
         <div class="flex flex-row justify-between pt-4"> 
-            <button @click="$router.go(-1)" class="btn bg-base flex">
+            <button @click="$router.go(-1)" class="btn bg-base flex text-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                 </svg>
                 Back
             </button>
             <router-link to="/checkout/confirmation" class="">
-                <button class="btn bg-base" @click="createPurchase()" :disabled="!validEmail || !validFirstName || !validLastName || !validPhone || !validZipCode || !province || !payment || !street || !city">Next
+                <button class="btn bg-base text-lg" @click="createPurchase()" :disabled="!validEmail || !validFirstName || !validLastName || !validPhone || !validZipCode || !province || !payment || !street || !city">Next
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                     </svg>

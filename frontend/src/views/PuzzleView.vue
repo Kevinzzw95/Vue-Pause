@@ -2,17 +2,17 @@
     <div class="relative min-h-[84vh]">
         <div class="sticky top-24 z-20 px-3 md:px-16 2xl:px-32  pb-2 glass">
             <div class="py-3">
-                <div class="tabs flex flex-row justify-center">
-                    <a @click="() => curPieces = 500" :class="['tab','tab-bordered','tab-sm','sm:tab-md','sm:text-lg','basis-1/4', curPieces === 500 ?  ['tab-active','text-deep'] : '']">500 PC</a> 
-                    <a @click="() => curPieces = 800" :class="['tab','tab-bordered','tab-sm','sm:tab-md','sm:text-lg','basis-1/4', curPieces === 800 ?  ['tab-active','text-deep'] : '']">800 PC</a> 
-                    <a @click="() => curPieces = 1000" :class="['tab','tab-bordered','tab-sm','sm:tab-md','sm:text-lg','basis-1/4', curPieces === 1000 ?  ['tab-active','text-deep'] : '']">1000 PC</a>
-                    <a @click="() => curPieces = 2000" :class="['tab','tab-bordered','tab-sm','sm:tab-md','sm:text-lg','basis-1/4', curPieces === 2000 ?  ['tab-active','text-deep'] : '']">2000 PC</a>
+                <div class="tabs flex flex-row justify-center font-default">
+                    <a @click="() => curPieces = 500" :class="['tab','tab-bordered','tab-sm','sm:tab-lg','sm:text-xl','basis-1/4', curPieces === 500 ?  ['tab-active','text-deep'] : '']">500 PC</a> 
+                    <a @click="() => curPieces = 800" :class="['tab','tab-bordered','tab-sm','sm:tab-lg','sm:text-xl','basis-1/4', curPieces === 800 ?  ['tab-active','text-deep'] : '']">800 PC</a> 
+                    <a @click="() => curPieces = 1000" :class="['tab','tab-bordered','tab-sm','sm:tab-lg','sm:text-xl','basis-1/4', curPieces === 1000 ?  ['tab-active','text-deep'] : '']">1000 PC</a>
+                    <a @click="() => curPieces = 2000" :class="['tab','tab-bordered','tab-sm','sm:tab-lg','sm:text-xl','basis-1/4', curPieces === 2000 ?  ['tab-active','text-deep'] : '']">2000 PC</a>
                 </div>
             </div>
 
-            <div class="flex flex-row items-center space-x-2 md:space-x-4 text-sm md:text-md">
+            <div class="flex flex-row items-center space-x-2 md:space-x-4 md:text-xl font-default">
                 <h1>Filter:</h1>
-                <select v-model="curBrandId" class="select select-xs md:select-sm bg-base">
+                <select v-model="curBrandId" class="select select-xs text-lg md:select-sm bg-base">
                     <option :value="undefined">ALL BRANDS</option>
                     <option v-for="brand in brands" :value="brand.id">{{ brand.name }}</option>
                 </select>

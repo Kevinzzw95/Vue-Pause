@@ -1,5 +1,5 @@
 <template>
-    <div class="font-default text-lg lg:text-2xl min-h-[84vh]">
+    <div class="font-default text-2xl lg:text-3xl min-h-[84vh]">
         <div class="container p-6 lg:p-32 min-h-screen space-y-3">
             <h1 class="font-bold text-start">Your Cart {{ totalQuantity === 0 ? "is Empty" : "" }}</h1>
             <div v-if="totalQuantity !== 0">
@@ -9,13 +9,19 @@
                     </div>
                     
                 <div class="divider"></div>
-                <div class="flex flex-col items-center space-y-2">
-                    <p>Savings: C${{ savings }}</p>
-                    <p>Subtotal: C${{ totalPrice - savings }}</p>
+                <div class="flex flex-col space-y-2 text-xl md:px-10">
+                    <p>Subtotal: C${{ totalPrice }}</p>
+                    <p>Savings: -C${{ savings }}</p>
+                    
+                </div>
+                <div class="divider"></div>
+                <p class="text-xl font-bold md:px-10">Order Total: C${{ totalPrice - savings }}</p>
+                <div class="flex justify-center md:justify-end pt-3">
                     <router-link to="/checkout/chooseshipping">
-                        <button class="btn btn-active bg-deep text-white w-[10rem]">Proceed to Checkout</button>
+                        <button class="btn btn-active text-lg bg-deep text-white w-[15rem]">Proceed to Checkout</button>
                     </router-link>
                 </div>
+                
             </div>
             <div class="self-end md:pt-[4rem]">
                 <h1 class="font-bold py-5">You may also like</h1>

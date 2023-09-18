@@ -1,5 +1,5 @@
 <template>
-    <Carousel class="flex flex-col" :wrap-around="true">
+    <Carousel :autoplay="2000" class="flex flex-col" :wrap-around="true">
         <slot></slot>
   
       <template #addons>

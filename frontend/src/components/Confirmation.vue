@@ -1,6 +1,6 @@
 <template>
-    <div class="flex flex-col space-y-2 md:space-y-5 h-full">
-        <h1 class="font-bold text-lg md:text-xl self-start">Confirmation</h1>
+    <div class="flex flex-col space-y-2 md:space-y-5 h-full text-xl">
+        <h1 class="font-bold text-lg md:text-2xl self-start">Confirmation</h1>
         <div class="alert alert-info bg-accent w-full">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             <span>Please confirm your information below. 
@@ -22,13 +22,13 @@
             <div><span class="font-bold">Payment Method:</span> {{ purchase.order.payment }}</div>
         </div>
         <div class="flex flex-row justify-between w-full">                 
-            <button @click="$router.go(-1)" class="btn bg-base flex">
+            <button @click="$router.go(-1)" class="btn bg-base flex text-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                 </svg>
                 Edit
             </button>
-            <button class="btn bg-base" @click="processOrder()">Place Order</button>
+            <button class="btn bg-base text-lg" @click="processOrder()">Place Order</button>
         </div>
     </div>
     

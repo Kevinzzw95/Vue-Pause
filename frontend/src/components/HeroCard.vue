@@ -1,7 +1,7 @@
 <template>
-    <div class="hero bg-center lg:items-end min-h-[calc(100vh-128px)] 2xl:max-h-[calc(100vh-128px)] font-default" :style="str">
+    <div class="hero bg-center lg:items-end min-h-[calc(100vh-128px)] 2xl:min-h-[calc(120vh)] font-default" :style="str">
         <div class="hero-overlay bg-opacity-10"></div>  
-        <div class="flex w-full h-[30%] sm:text-center text-neutral-content p-2 lg:pb-[4rem] justify-center items-end bg-gradient-to-t to-transparent-10 from-stone-600">
+        <div class="flex w-full h-[30%] sm:text-center text-neutral-content p-2 pb-[4rem] justify-center items-end self-end bg-gradient-to-t to-transparent-10 from-stone-600">
             <div class="max-w-md w-full grid justify-items-center">
                 <h1 v-if="url.split('=')[1].substring(0, 5) !== 'Pixel'" class="mb-2 xl:mb-5 text-5xl text-white">New Arrival</h1>
                 <h1 v-if="url.split('=')[1].substring(0, 5) === 'Pixel'" class="mb-2 xl:mb-5 text-5xl text-white">Comming Soon</h1>

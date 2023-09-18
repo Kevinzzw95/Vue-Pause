@@ -5,8 +5,9 @@
                 <div class="flex flex-wrap justify-center"> 
                     <div class="lg:order-last lg:pt-10 w-full lg:w-[40%] xl:w-[28rem] items-center">
                         <div class="overflow-x-auto space-y-2">
-                            <h1 class="font-bold text-lg md:text-xl space-x-2">Order Summary</h1>
-                            <table class="table">
+                            <h1 class="font-bold text-lg md:text-2xl space-x-2">Order Summary</h1>
+                            <div class="divider">{{ totalQuantity }} items</div>
+                            <table class="table border-none">
                                 <tbody>
                                     <tr v-for="(item, index) in cartItems" class="sm:text-lg">
                                         <td class="p-2 sm:p-8 max-w-[5rem] sm:max-w-[10rem]"><img :src="item.imageUrl" class="object-scale-down w-56 rounded-lg"/></td>
@@ -19,14 +20,15 @@
                                     </tr>
                                 </tbody>
                             </table> 
-                            <div class="divider">{{ totalQuantity }} items</div>
-                            <div class="text-sm sm:text-md font-bold">
+                            <div class="text-lg md:text-xl font-bold">
+                                <h1>Subtotal: {{ totalPrice }}</h1>
                                 <h1 :class="[$route.name === 'chooseshipping' ? '' : 'hidden']">Shipping: calculated at next step</h1>
-                                <h1 :class="[$route.name === 'pickup' ? '' : 'hidden']">Shipping: 0</h1>
-                                <h1 :class="[$route.name === 'shipping' ? '' : 'hidden']">Shipping: {{ shippingFee }}</h1>
-                                <h1 :class="[$route.name === 'confirmation' ? '' : 'hidden']">Shipping: {{ getPurchase.order?.shippingFee }}</h1>
-                                <h1>Savings: {{ savings }}</h1>
-                                <h1>Subtotal: {{ totalPrice - savings + shippingFee }}</h1>
+                                <h1 :class="[$route.name === 'pickup' ? '' : 'hidden']">Shipping: C$0</h1>
+                                <h1 :class="[$route.name === 'shipping' ? '' : 'hidden']">Shipping: C${{ shippingFee }}</h1>
+                                <h1 :class="[$route.name === 'confirmation' ? '' : 'hidden']">Shipping: C${{ getPurchase.order?.shippingFee }}</h1>
+                                <h1>Savings: C${{ savings }}</h1>
+                                <div class="divider"></div>
+                                <h1>Order Total: C${{ totalPrice - savings + shippingFee }}</h1>
                             </div>
                             
                         </div>
@@ -35,7 +37,7 @@
                     </div>
 
                     <div class="flex flex-col lg:p-10 w-full lg:w-[50%] xl:w-[42rem] items-center"> 
-                        <ul class="steps text-xs py-5 md:text-md self-center">
+                        <ul class="steps py-5 text-sm md:text-md self-center">
                             <li class="step step-primary">CHOOSE A METHOD</li>
                             <li :class="[$route.name == 'chooseshipping' ? '' : 'step-primary', 'step']">CUSTOMER INFORMATION</li>
                             <li :class="[$route.name == 'confirmation' ? 'step-primary' : '', 'step']">CONFIRMATION</li>
