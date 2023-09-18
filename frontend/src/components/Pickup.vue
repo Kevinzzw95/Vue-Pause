@@ -111,8 +111,8 @@ const endDate = new Date(new Date().getFullYear(), new Date().getMonth() + 2, ne
 /* const dDate = (date: Date) => {
     return date < new Date() || date > new Date(today.getFullYear(), today.getMonth() + 2, today.getDate()) || (date.getDay() !== 3 && date.getDay() !== 6);
 } */
-const highlightedDates = ref([])
-const format = (date) => {
+const highlightedDates = ref<Date[]>([])
+const format = (date: Date) => {
   const day = date.getDate();
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
